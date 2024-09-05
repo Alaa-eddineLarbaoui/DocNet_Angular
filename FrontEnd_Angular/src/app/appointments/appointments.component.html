@@ -1,0 +1,18 @@
+<div>
+  <h2>Sélectionnez une date</h2>
+  <input type="date" [(ngModel)]="selectedDate" (change)="loadAvailableTimes()" />
+
+  <div *ngIf="availableTimes.length > 0">
+    <h3>Créneaux disponibles</h3>
+    <div *ngFor="let time of availableTimes">
+      <button class="css-button" (click)="reserveTime(time)">
+        {{ time }}
+      </button>
+    </div>
+
+  </div>
+
+  <div *ngIf="availableTimes.length === 0 && selectedDate">
+    <p>Aucun créneau disponible pour cette date.</p>
+  </div>
+</div>
