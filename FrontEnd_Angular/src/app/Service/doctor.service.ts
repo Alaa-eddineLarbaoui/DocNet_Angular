@@ -8,7 +8,7 @@ import {HealthProfessional} from "../Models/HealthProfessional";
 })
 export class DoctorService {
 
-  private apiUrl = 'http://localhost:8090/api/health-professionals'; // Remplacez par l'URL correcte de votre API
+  private apiUrl = 'http://localhost:8090/api/health-professionals';
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +16,12 @@ export class DoctorService {
   getAllHealthProfessionals(): Observable<HealthProfessional[]> {
     return this.http.get<HealthProfessional[]>(`${this.apiUrl}/getAll`);
   }
+
+  getHealthProfById(idProf:number):Observable<HealthProfessional>{
+    return this.http.get<HealthProfessional>(`${this.apiUrl}get/${idProf}`);
+  }
+
+
+
 
 }
