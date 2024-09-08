@@ -1,4 +1,5 @@
 import {AppointmentStatus} from "../Enums/AppointmentStatus";
+import {AppointmentReason} from "../Enums/AppointmentReason";
 
 export interface Appointment {
   id?: number;

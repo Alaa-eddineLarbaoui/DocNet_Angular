@@ -10,12 +10,14 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AppointmentsComponent implements OnInit {
 
+
   availableTimes: string[] = [];
   appointmentForm: FormGroup;
   submitted = false;
   successMessage: string | null = null;
   idPatient: number = 1;
   idProfessional: number = 2;
+
 
   constructor(
     private appointmentService: AppointmentService,
@@ -31,6 +33,7 @@ export class AppointmentsComponent implements OnInit {
     });
   }
 
+
   ngOnInit(): void {}
 
   getAvailableTimes(): void {
@@ -44,6 +47,7 @@ export class AppointmentsComponent implements OnInit {
       });
     }
   }
+
 
   // Soumettre la réservation
   onSubmit(): void {
@@ -66,6 +70,7 @@ export class AppointmentsComponent implements OnInit {
         });
     }
   }
+
   protected readonly AppointmentReason = AppointmentReason;
 }
 
