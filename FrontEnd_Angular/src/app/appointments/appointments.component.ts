@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AppointmentService} from "../Service/AppointmentService";
-import {Appointment, AppointmentReason, AppointmentStatus} from "../Models/File";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Appointment} from "../Models/Appointment";
+import {AppointmentStatus} from "../Enums/AppointmentStatus";
+import {AppointmentReason} from "../Enums/AppointmentReason";
 
 @Component({
   selector: 'app-appointments',

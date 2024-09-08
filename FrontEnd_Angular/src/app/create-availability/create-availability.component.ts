@@ -1,7 +1,7 @@
 // create-availability.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AvailabilityService} from "../Service/AvailabilityService";
+import {AvailabilityService} from "../Service/availability.service";
 
 @Component({
   selector: 'app-create-availability',
