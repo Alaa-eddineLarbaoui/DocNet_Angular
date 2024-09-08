@@ -8,12 +8,14 @@ import { HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppointmentsComponent } from './appointments/appointments.component';
 import {CommonModule, DatePipe} from "@angular/common";
+import { CreateAvailabilityComponent } from './create-availability/create-availability.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    CreateAvailabilityComponent
   ],
   imports: [
     BrowserModule,

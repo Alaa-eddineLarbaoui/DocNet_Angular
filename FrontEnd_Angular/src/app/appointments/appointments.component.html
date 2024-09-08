@@ -1,21 +1,39 @@
-<div>
-  <h2>Sélectionnez une date</h2>
-  <input type="date" [(ngModel)]="selectedDate" [min]="minDate" (change)="loadAvailableTimes()" />
 
-  <div *ngIf="isWeekend(selectedDate)">
-    <p>Le dimanche ne sont pas disponibles. Veuillez choisir un autre jour.</p>
-  </div>
 
-  <div *ngIf="!isWeekend(selectedDate) && availableTimes.length > 0">
-    <h3>Créneaux disponibles</h3>
-    <div *ngFor="let time of availableTimes">
-      <button class="css-button" (click)="reserveTime(time)">
-        {{ time }}
-      </button>
+<!-- appointment.component.html -->
+<div class="container">
+  <h2>Réserver un Rendez-vous</h2>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" formControlName="date" (change)="getAvailableTimes()" class="form-control" required />
     </div>
-  </div>
 
-  <div *ngIf="!isWeekend(selectedDate) && availableTimes.length === 0 && selectedDate">
-    <p>Aucun créneau disponible pour cette date.</p>
-  </div>
+    <div class="form-group">
+      <label for="time">Créneau Horaire Disponible</label>
+      <select id="time" formControlName="time" class="form-control" required>
+        <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="reason">Raison du Rendez-vous</label>
+      <select id="reason" formControlName="reason" class="form-control" required>
+        <option [value]="AppointmentReason.CONSULTATION">Consultation</option>
+        <option [value]="AppointmentReason.CHECKUP">Contrôle</option>
+        <option [value]="AppointmentReason.SURGERY">Chirurgie</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="note">Note</label>
+      <textarea id="note" formControlName="note" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!appointmentForm.valid || submitted">Réserver</button>
+  </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
 </div>
+

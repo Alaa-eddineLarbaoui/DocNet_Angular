@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppointmentService} from "../Service/AppointmentService";
+import {Appointment, AppointmentReason, AppointmentStatus} from "../Models/File";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-appointments',
@@ -9,55 +11,67 @@ import {AppointmentService} from "../Service/AppointmentService";
 export class AppointmentsComponent implements OnInit {
 
   availableTimes: string[] = [];
-  selectedDate: string = '';
-  patientId: number = 1;
-  minDate: string;
+  appointmentForm: FormGroup;
+  submitted = false;
+  successMessage: string | null = null;
+  idPatient: number = 1;
+  idProfessional: number = 2;
 
-
-  constructor(private appointmentService: AppointmentService ) {
-    this.minDate = new Date().toISOString().split('T')[0];
-
+  constructor(
+    private appointmentService: AppointmentService,
+    private fb: FormBuilder
+  ) {
+    this.appointmentForm = this.fb.group({
+      date: ['', Validators.required],
+      time: ['', Validators.required],
+      reason: ['', Validators.required],
+      note: [''],
+      patientId: [1, Validators.required],
+      professionalId: [2, Validators.required]
+    });
   }
 
   ngOnInit(): void {}
 
-  loadAvailableTimes() {
-    this.appointmentService.getAvailableTimes(this.selectedDate)
-      .subscribe(times => {
+  getAvailableTimes(): void {
+    const date = this.appointmentForm.get('date')?.value;
+    //const professionalId = this.appointmentForm.get('professionalId')?.value;
+    const professionalId = 2;
 
-        this.availableTimes = times.map(time => {
+    if (date && professionalId) {
+      this.appointmentService.getAvailableTimes(date, professionalId).subscribe(times => {
+        this.availableTimes = times;
+      });
+    }
+  }
 
-          return time.slice(0, 5);
+  // Soumettre la réservation
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.appointmentForm.valid) {
+      const appointment: Appointment = {
+        ...this.appointmentForm.value,
+        status: AppointmentStatus.RESERVED
+      };
+
+      this.appointmentService.reserveAppointment(appointment, this.idPatient, this.idProfessional)
+        .subscribe({
+          next: () => {
+            this.successMessage = 'Rendez-vous réservé avec succès !';
+            this.appointmentForm.reset();
+            this.submitted = false;
+          },
+          error: err => console.error('Erreur lors de la réservation', err)
         });
-      }, error => {
-        console.error('Erreur lors de la récupération des créneaux disponibles:', error);
-      });
-  }
-
-  isWeekend(dateString: string): boolean {
-    if (!dateString) {
-      return false;
     }
-    const date = new Date(dateString);
-    const day = date.getDay();
-    if (day === 0){
-      this.showAlert();
-      return true
-    }
-    return false ;
   }
-
-  showAlert(): void {
-    window.alert("Le dimanche n'est pas disponible. Veuillez choisir un autre jour.");
-  }
-
-  reserveTime(time: string) {
-    this.appointmentService.reserveTime(this.selectedDate, time, this.patientId)
-      .subscribe(() => {
-        alert('Créneau réservé avec succès !');
-        this.loadAvailableTimes();
-      });
-  }
-
-  protected readonly length = length;
+  protected readonly AppointmentReason = AppointmentReason;
 }
+
+
+
+
+
+
+

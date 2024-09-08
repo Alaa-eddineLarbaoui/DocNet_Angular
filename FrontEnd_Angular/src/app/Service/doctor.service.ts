@@ -12,7 +12,6 @@ export class DoctorService {
 
   constructor(private http: HttpClient) { }
 
-  // Méthode pour récupérer tous les professionnels de santé
   getAllHealthProfessionals(): Observable<HealthProfessional[]> {
     return this.http.get<HealthProfessional[]>(`${this.apiUrl}/getAll`);
   }
@@ -20,6 +19,12 @@ export class DoctorService {
   getHealthProfById(idProf:number):Observable<HealthProfessional>{
     return this.http.get<HealthProfessional>(`${this.apiUrl}get/${idProf}`);
   }
+  deleteHealthProf(id:number){
+    return this.http.delete(`${this.apiUrl}delete/${id}`)
+  }
+
+
+
 
 
 

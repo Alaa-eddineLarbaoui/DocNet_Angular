@@ -1,0 +1,22 @@
+<!-- create-availability.component.html -->
+<form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="date">Date:</label>
+    <input id="date" formControlName="date" type="date" />
+  </div>
+  <div>
+    <label for="startTime">Start Time:</label>
+    <input id="startTime" formControlName="startTime" type="time" />
+  </div>
+  <div>
+    <label for="endTime">End Time:</label>
+    <input id="endTime" formControlName="endTime" type="time" />
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" formControlName="available" />
+      Available
+    </label>
+  </div>
+  <button type="submit" [disabled]="availabilityForm.invalid">Create Availability</button>
+</form>
