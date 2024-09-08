@@ -1,8 +1,14 @@
+import {AppointmentStatus} from "../Enums/AppointmentStatus";
+
 export interface Appointment {
-  id: number;
-  date: string;  // Utiliser 'string' pour les dates au format ISO (YYYY-MM-DD)
-  time: string;  // Utiliser 'string' pour les heures au format ISO (HH:MM)
+  id?: number;
+  date: string; // Format: "yyyy-MM-dd"
+  time: string; // Format: "HH:mm:ss"
+  status: AppointmentStatus;
+  appointmentReason: AppointmentReason;
   note: string;
+  patientId: number;
+  professionalId: number;
 
 
 }
