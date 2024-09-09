@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Appointment} from "../Models/Appointment";
 import {AppointmentStatus} from "../Enums/AppointmentStatus";
 import {AppointmentReason} from "../Enums/AppointmentReason";
+import {AvailabilityService} from "../Service/availability.service";
 
 @Component({
   selector: 'app-appointments',
@@ -22,8 +23,7 @@ export class AppointmentsComponent implements OnInit {
 
 
   constructor(
-    private appointmentService: AppointmentService,
-    private fb: FormBuilder
+    private appointmentService: AppointmentService, private availabilityService:AvailabilityService  ,private fb: FormBuilder
   ) {
     this.appointmentForm = this.fb.group({
       date: ['', Validators.required],
@@ -44,7 +44,7 @@ export class AppointmentsComponent implements OnInit {
     const professionalId = 2;
 
     if (date && professionalId) {
-      this.appointmentService.getAvailableTimes(date, professionalId).subscribe(times => {
+      this.availabilityService.getAvailableTimes(date, professionalId).subscribe(times => {
         this.availableTimes = times;
       });
     }

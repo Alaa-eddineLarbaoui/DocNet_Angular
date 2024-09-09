@@ -13,14 +13,7 @@ export class AppointmentService {
   constructor(private http: HttpClient) {}
 
 
-  getAvailableTimes(date: string, professionalId: number): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/available-times`, {
-      params: {
-        date: date,
-        professionalId: professionalId.toString()
-      }
-    });
-  }
+
 
   // Réserver un rendez-vous
   reserveAppointment(appointment: Appointment, idPatient:number , idProf:number): Observable<Appointment> {

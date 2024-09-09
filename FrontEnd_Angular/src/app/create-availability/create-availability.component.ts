@@ -26,7 +26,7 @@ export class CreateAvailabilityComponent {
   onSubmit() {
     if (this.availabilityForm.valid) {
       const formValue = this.availabilityForm.value;
-      const professionalId = 2; // Remplacez ceci par l'ID du professionnel de santé en fonction de votre logique
+      const professionalId = 2;
       this.availabilityService.createAvailability(formValue, professionalId)
         .subscribe(response => {
           console.log('Availability created successfully', response);
