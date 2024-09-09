@@ -22,9 +22,9 @@ export class AvailabilityCalendarComponent {
   generateWeek() {
     this.days = [];
     const startOfWeek = this.getStartOfWeek(this.currentDate);
-    const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+    const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi','dimanche'];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
       day.setDate(startOfWeek.getDate() + i);
       this.days.push({ name: dayNames[i], date: day });
