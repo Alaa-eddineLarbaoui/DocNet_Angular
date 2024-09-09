@@ -19,7 +19,7 @@ export class CreateAvailabilityComponent {
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      available: [true]
+      available: []
     });
   }
 
@@ -27,13 +27,22 @@ export class CreateAvailabilityComponent {
     if (this.availabilityForm.valid) {
       const formValue = this.availabilityForm.value;
       const professionalId = 2;
+
+      console.log(formValue+"jdddddddddddddddddddd")
+      console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl")
+      console.log(this.availabilityForm.value.available)
+
+
       this.availabilityService.createAvailability(formValue, professionalId)
+
         .subscribe(response => {
           console.log('Availability created successfully', response);
-          // Traitez la réponse comme vous le souhaitez
+         alert("Availability created successfully")
         }, error => {
           console.error('Error creating availability', error);
+          alert('Error creating availability')
         });
+
     }
   }
 }

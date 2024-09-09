@@ -1,0 +1,60 @@
+.week-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 42%;
+}
+
+.days {
+  display: flex;
+  /*justify-content: space-between; */
+  flex-grow: 1;
+  padding: 0 10px;
+}
+
+
+.day{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 0 10px; */
+  padding: 10px;
+  /* background-color: #f0f0f0; */
+  border-radius: 5px;
+}
+
+
+.day-date {
+  font-size: 14px;
+}
+
+.nav-button {
+  padding: 5px 10px;
+  background-color: #4d72d7;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: #3700b3;
+}
+
+
+.available-times{
+
+}
+
+.slot {
+  padding: 10px 15px;
+  background-color: #e0f7ff;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.slot:hover {
+  background-color: #b3e5fc;
+}

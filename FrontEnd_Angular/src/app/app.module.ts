@@ -9,13 +9,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppointmentsComponent } from './appointments/appointments.component';
 import {CommonModule, DatePipe} from "@angular/common";
 import { CreateAvailabilityComponent } from './create-availability/create-availability.component';
+import { TestComponent } from './test/test.component';
+import { AvailabilityCalendarComponent } from './availability-calendar/availability-calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     AppointmentsComponent,
-    CreateAvailabilityComponent
+    CreateAvailabilityComponent,
+    TestComponent,
+    TestComponent,
+    AvailabilityCalendarComponent
   ],
   imports: [
     BrowserModule,

@@ -40,6 +40,7 @@ export class AppointmentsComponent implements OnInit {
 
   getAvailableTimes(): void {
     const date = this.appointmentForm.get('date')?.value;
+    console.log(date)
     //const professionalId = this.appointmentForm.get('professionalId')?.value;
     const professionalId = 2;
 

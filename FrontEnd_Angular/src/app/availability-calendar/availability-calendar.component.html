@@ -1,0 +1,27 @@
+
+
+
+
+
+<div class="week-container">
+  <div class="days">
+    <button class="nav-button left" (click)="previousWeek()">&lt;</button> <!-- Bouton gauche -->
+
+    <div *ngFor="let day of days" class="day-container">
+
+      <div class="day">
+        <div class="day-name">{{ day.name }}</div>
+        <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
+
+        <div *ngIf="day.availableTimes && day.availableTimes.length > 0" class="available-times">
+          <div class="slot" *ngFor="let time of day.availableTimes">
+            {{ time }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="nav-button right" (click)="nextWeek()">&gt;</button> <!-- Bouton droit -->
+
+  </div>
+</div>
