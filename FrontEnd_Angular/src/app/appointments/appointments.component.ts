@@ -20,6 +20,7 @@ export class AppointmentsComponent implements OnInit {
   successMessage: string | null = null;
   idPatient: number = 1;
   idProfessional: number = 2;
+  minDate: string;
 
 
   constructor(
@@ -33,6 +34,8 @@ export class AppointmentsComponent implements OnInit {
       patientId: [1, Validators.required],
       professionalId: [2, Validators.required]
     });
+
+    this.minDate = new Date().toISOString().split('T')[0];
   }
 
 
