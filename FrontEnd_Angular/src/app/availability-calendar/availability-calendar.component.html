@@ -1,8 +1,5 @@
 
 
-
-
-
 <div class="week-container">
   <div class="days">
     <button class="nav-button left" (click)="previousWeek()">&lt;</button> <!-- Bouton gauche -->
@@ -18,6 +15,11 @@
             {{ time }}
           </div>
         </div>
+
+
+      </div>
+      <div *ngIf="!day.availableTimes || day.availableTimes.length === 0" class="no-available-times">
+        -
       </div>
 
     </div>
@@ -25,3 +27,6 @@
 
   </div>
 </div>
+
+
+

@@ -58,3 +58,11 @@
 .slot:hover {
   background-color: #b3e5fc;
 }
+
+.day-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
