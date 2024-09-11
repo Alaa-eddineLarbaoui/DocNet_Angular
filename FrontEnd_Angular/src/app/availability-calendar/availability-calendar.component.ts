@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AvailabilityService} from "../Service/availability.service";
 import {DatePipe} from "@angular/common";
 
@@ -7,7 +7,7 @@ import {DatePipe} from "@angular/common";
   templateUrl: './availability-calendar.component.html',
   styleUrls: ['./availability-calendar.component.css']
 })
-export class AvailabilityCalendarComponent {
+export class AvailabilityCalendarComponent implements OnInit{
 
   days: { name: string, date: Date, availableTimes?: string[] }[] = [];
   currentDate: Date = new Date();
@@ -65,4 +65,18 @@ export class AvailabilityCalendarComponent {
       }
     });
   }
+
+
+
+  // Get Doctors function :
+
+  // LoadDoctors(){
+  //   return
+  // }
+  // getpanne(): void {
+  //   this.panneService.get_pannes().subscribe((data: Panne[]) => {
+  //     this.listpanne = data;
+  //   });
+  // }
+
 }

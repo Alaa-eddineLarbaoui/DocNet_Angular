@@ -1,32 +1,25 @@
-
-
 <div class="week-container">
   <div class="days">
-    <button class="nav-button left" (click)="previousWeek()">&lt;</button> <!-- Bouton gauche -->
+
+    <button class="nav-button left" (click)="previousWeek()">&lt;</button>
+
+    <!-- Container for the next day -->
 
     <div *ngFor="let day of days" class="day-container">
-
       <div class="day">
         <div class="day-name">{{ day.name }}</div>
         <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
 
-        <div *ngIf="day.availableTimes && day.availableTimes.length > 0" class="available-times">
+        <!-- Displaying available time -->
+
+        <div *ngIf="day.availableTimes?.length > 0" class="available-times">
           <div class="slot" *ngFor="let time of day.availableTimes">
             {{ time }}
           </div>
         </div>
-
-
       </div>
-      <div *ngIf="!day.availableTimes || day.availableTimes.length === 0" class="no-available-times">
-        -
-      </div>
-
     </div>
-    <button class="nav-button right" (click)="nextWeek()">&gt;</button> <!-- Bouton droit -->
 
+    <button class="nav-button right" (click)="nextWeek()">&gt;</button>
   </div>
 </div>
-
-
-
