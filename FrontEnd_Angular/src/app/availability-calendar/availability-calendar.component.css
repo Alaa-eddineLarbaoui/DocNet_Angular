@@ -1,8 +1,175 @@
-.week-container {
+.appointment-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-profile {
   display: flex;
   align-items: center;
+  padding: 20px;
+  width: 300px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.doctor-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  margin-right: 20px;
+}
+
+.doctor-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.doctor-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555555;
+}
+
+.appointment-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.calendar {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.calendar-header {
+  display: flex;
   justify-content: space-between;
-  width: 42%;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.day {
+  text-align: center;
+  width: 100px;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #333333;
+}
+
+.day-date {
+  font-size: 12px;
+  color: #777777;
+}
+
+.slots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-slots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slot {
+  padding: 10px 15px;
+  background-color: #e0f7ff;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.slot:hover {
+  background-color: #b3e5fc;
+}
+
+.no-availability {
+  color: #cccccc;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.more-slots {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.more-slots a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.more-slots a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* ////////////////////////  */
+
+
+.container{
+ /* width:40%;
+  height:200px; */
+  display: flex;
+  justify-content:space-between;
+  background-color: red;
+}
+
+
+.div1{
+
+  width: 35%;
+  margin-right: 10px;
+  background-color: violet;
+
+}
+.week-container {
+   /*display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40% !important;
+  height:40%!important;  */
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+
 }
 
 .days {
@@ -10,6 +177,10 @@
   /*justify-content: space-between; */
   flex-grow: 1;
   padding: 0 10px;
+  
+  width: 70%;
+  padding-left: 20px;
+
 }
 
 
@@ -85,7 +256,7 @@
 }
 
 .no-available-times {
-  color: red; 
+  color: red;
   font-size: 14px;
   text-align: center;
   margin-top: 10px;

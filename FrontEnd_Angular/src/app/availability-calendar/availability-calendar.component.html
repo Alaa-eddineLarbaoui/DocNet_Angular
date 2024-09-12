@@ -1,34 +1,56 @@
-<div class="week-container">
-  <div class="days">
-    <!-- Navigation button to move to the previous week -->
-    <button class="nav-button left" (click)="previousWeek()">&lt;</button>
+<div class="container">
 
-    <!-- Container for each day -->
-    <div *ngFor="let day of days" class="day-container">
-      <div class="day">
-        <div class="day-name">{{ day.name }}</div>
-        <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
 
-        <!-- Available times for each day -->
-        <div class="available-times">
-          <ng-container *ngIf="day.availableTimes && day.availableTimes.length > 0; else noTimes">
-            <div class="slot" *ngFor="let time of day.availableTimes">
-              {{ time }}
-            </div>
-          </ng-container>
-          <!-- Message for no available times -->
+  <div class="week-container">
 
-         <!-- <div *ngIf="!day.availableTimes || day.availableTimes.length === 0" class="no-available-times">  -->
-          <ng-template #noTimes>
-            <div class="no-available-times">
-              -
-            </div>
-          </ng-template>
-        </div>
-      </div>
+    <div class="doctor-info">
+      <img src="doctor-image.jpg" alt="Doctor">
+      <h3>Dr. Catherine TOUCAS</h3>
+      <p>Médecin généraliste</p>
+      <p>6 Avenue de la Libération 63114 Coude</p>
+      <p>Conventionné secteur 1</p>
+      <button>Prendre Rendez-vous</button>
     </div>
 
-    <!-- Navigation button to move to the next week -->
-    <button class="nav-button right" (click)="nextWeek()">&gt;</button>
+    <div class="days">
+      
+      <!-- Navigation button to move to the previous week -->
+      <button class="nav-button left" (click)="previousWeek()">&lt;</button>
+
+      <!-- Container for each day -->
+      <div *ngFor="let day of days" class="day-container">
+        <div class="day">
+          <div class="day-name">{{ day.name }}</div>
+          <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
+
+          <!-- Available times for each day -->
+          <div class="available-times">
+            <ng-container *ngIf="day.availableTimes && day.availableTimes.length > 0; else noTimes">
+              <div class="slot" *ngFor="let time of day.availableTimes">
+                {{ time }}
+              </div>
+            </ng-container>
+            <!-- Message for no available times -->
+
+            <!-- <div *ngIf="!day.availableTimes || day.availableTimes.length === 0" class="no-available-times">  -->
+            <ng-template #noTimes>
+              <div class="no-available-times">
+                -
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation button to move to the next week -->
+      <button class="nav-button right" (click)="nextWeek()">&gt;</button>
+    </div>
   </div>
+
+
+
+  <div class="div1">
+    <p>hello hello hello</p>
+  </div>
+
 </div>
