@@ -50,90 +50,46 @@
   text-align: center;
 }
 
-.calendar {
-  flex-grow: 1;
-  padding: 20px;
-}
 
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
 
-.nav-button {
-  background: none;
-  border: none;
+.doctor-info {
+  width: 30%;
+  text-align: center;
+  padding-right: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+.doctor-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.doctor-info h3 {
+  margin: 10px 0 5px;
   color: #007bff;
-  font-size: 20px;
-  cursor: pointer;
 }
-
-.days {
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-
-.day {
-  text-align: center;
-  width: 100px;
-}
-
-.day-name {
-  font-weight: bold;
-  color: #333333;
-}
-
-.day-date {
-  font-size: 12px;
-  color: #777777;
-}
-
-.slots {
-  display: flex;
-  justify-content: space-between;
-}
-
-.day-slots {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slot {
-  padding: 10px 15px;
-  background-color: #e0f7ff;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.slot:hover {
-  background-color: #b3e5fc;
-}
-
-.no-availability {
-  color: #cccccc;
+.doctor-info p {
+  margin: 5px 0;
   font-size: 14px;
+  color: #555555;
+}
+.doctor-info button {
   margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.more-slots {
-  margin-top: 20px;
-  text-align: right;
-}
 
-.more-slots a {
-  color: #007bff;
-  text-decoration: none;
-}
+ 
+ 
+ 
 
-.more-slots a:hover {
-  text-decoration: underline;
-}
+ 
+ 
 
 
 
@@ -145,17 +101,11 @@
   height:200px; */
   display: flex;
   justify-content:space-between;
-  background-color: red;
+  background-color: black;
+  
 }
 
 
-.div1{
-
-  width: 35%;
-  margin-right: 10px;
-  background-color: violet;
-
-}
 .week-container {
    /*display: flex;
   align-items: center;
@@ -164,7 +114,7 @@
   height:40%!important;  */
   max-width: 800px;
   margin: 20px auto;
-  background-color: #ffffff;
+  background-color: #db1a1a;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -177,27 +127,36 @@
   /*justify-content: space-between; */
   flex-grow: 1;
   padding: 0 10px;
-  
+  background-color:rgb(222, 218, 17);
   width: 70%;
-  padding-left: 20px;
 
 }
 
 
+.div1{
+
+  width: 35%;
+  margin-right: 10px;
+  background-color: violet;
+
+}
 .day{
   display: flex;
   flex-direction: column;
   align-items: center;
   /* margin: 0 10px; */
-  padding: 10px;
+  padding: 10px 0px 0px 0px;
   /* background-color: #f0f0f0; */
   border-radius: 5px;
 }
 
-
-.day-date {
+.day-name{
   font-size: 14px;
 }
+.day-date {
+  font-size: 12px;
+}
+
 
 .nav-button {
   padding: 5px 10px;
@@ -214,7 +173,7 @@
 
 
 .available-times{
-
+background-color: black ;
 }
 
 /*slot {
@@ -233,7 +192,7 @@
   font-weight: 600;
   height: 34px;
   line-height: 34px;
-  margin: 10px 0;
+  margin: 9px  0;
   position: relative;
   text-align: center;
   transition: background-color .2s, color .2s;
@@ -253,6 +212,8 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  background-color: navajowhite;
+  max-width: 65px;
 }
 
 .no-available-times {
