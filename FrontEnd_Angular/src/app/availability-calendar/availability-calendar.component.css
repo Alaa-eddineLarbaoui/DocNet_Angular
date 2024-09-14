@@ -55,8 +55,11 @@
 .doctor-info {
   width: 30%;
   text-align: center;
-  padding-right: 20px;
+  padding-right: 0px;
   border-right: 1px solid #e0e0e0;
+  background-color: rgb(186, 164, 164);
+  border-radius: 0px;
+  align-content: center;
 }
 .doctor-info img {
   width: 80px;
@@ -112,13 +115,16 @@
   justify-content: space-between;
   width: 40% !important;
   height:40%!important;  */
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #db1a1a;
+  max-width: 742px;
+  /* margin: 21px auto; */
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 6px;
   display: flex;
+  margin-left: 10px;
+  margin-top: 15px;
+  height: 269px;
 
 }
 
@@ -126,9 +132,9 @@
   display: flex;
   /*justify-content: space-between; */
   flex-grow: 1;
-  padding: 0 10px;
-  background-color:rgb(222, 218, 17);
-  width: 70%;
+  background-color:rgb(164, 16, 205);
+  /*max-width: 500px;  */
+  width: 70;
 
 }
 
@@ -192,7 +198,7 @@ background-color: black ;
   font-weight: 600;
   height: 34px;
   line-height: 34px;
-  margin: 9px  0;
+  margin: 7px  0;
   position: relative;
   text-align: center;
   transition: background-color .2s, color .2s;
@@ -214,6 +220,8 @@ background-color: black ;
   padding: 10px;
   background-color: navajowhite;
   max-width: 65px;
+  
+
 }
 
 .no-available-times {
