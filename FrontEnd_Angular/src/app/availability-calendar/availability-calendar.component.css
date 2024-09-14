@@ -57,7 +57,6 @@
   text-align: center;
   padding-right: 0px;
   border-right: 1px solid #e0e0e0;
-  background-color: rgb(186, 164, 164);
   border-radius: 0px;
   align-content: center;
 }
@@ -115,16 +114,17 @@
   justify-content: space-between;
   width: 40% !important;
   height:40%!important;  */
-  max-width: 742px;
+  max-width: 815px;
   /* margin: 21px auto; */
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 6px;
   display: flex;
   margin-left: 10px;
   margin-top: 15px;
   height: 269px;
+  max-height:269px ;
+  padding: 6px;
 
 }
 
@@ -132,11 +132,12 @@
   display: flex;
   /*justify-content: space-between; */
   flex-grow: 1;
-  background-color:rgb(164, 16, 205);
+ /* background-color:rgb(164, 16, 205);*/
   /*max-width: 500px;  */
-  width: 70;
+  width: 70%;
 
 }
+
 
 
 .div1{
@@ -150,12 +151,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 0 10px; */
   padding: 10px 0px 0px 0px;
-  /* background-color: #f0f0f0; */
   border-radius: 5px;
+  /* margin: 0px 3px 0px 3px; */
+  max-width: 60px;
+  max-height: 60px;
+  width: 60px;
+  height: 30px;
 }
 
+
+  
 .day-name{
   font-size: 14px;
 }
@@ -177,9 +183,18 @@
   background-color: #3700b3;
 }
 
+.buttonWeek{
+  height: 5px;
+  width: 23px;
+  margin-top: 28px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
 
 .available-times{
-background-color: black ;
+
+/* background-color: black ;  */
 }
 
 /*slot {
@@ -218,9 +233,8 @@ background-color: black ;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  background-color: navajowhite;
-  max-width: 65px;
-  
+  /*background-color: navajowhite;   */
+  max-width: 76px;
 
 }
 
