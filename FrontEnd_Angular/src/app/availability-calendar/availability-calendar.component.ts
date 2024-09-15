@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AvailabilityService} from "../Service/availability.service";
 import {DatePipe} from "@angular/common";
+import {HealthProfessional} from "../Models/HealthProfessional";
+import {DoctorService} from "../Service/doctor.service";
 
 @Component({
   selector: 'app-availability-calendar',
@@ -12,8 +14,10 @@ export class AvailabilityCalendarComponent implements OnInit{
   days: { name: string, date: Date, availableTimes?: string[] }[] = [];
   currentDate: Date = new Date();
   selectedDate: Date | null = null;
+  ListDoctors: HealthProfessional[]=[];
 
-  constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe) {}
+
+  constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe ,private doctorService:DoctorService) {}
 
   ngOnInit(): void {
     this.generateWeek();
@@ -67,8 +71,15 @@ export class AvailabilityCalendarComponent implements OnInit{
   }
 
 
+  ////////////////////////////////////////////////
 
   // Get Doctors function :
+
+  LoadDoctors(){
+    this.doctorService.getAllHealthProfessionals().subscribe((data:HealthProfessional[])=>{
+      this.ListDoctors=data;
+    })
+  }
 
   // LoadDoctors(){
   //   return

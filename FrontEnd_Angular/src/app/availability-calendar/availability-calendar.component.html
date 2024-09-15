@@ -3,9 +3,12 @@
 
   <div class="week-container">
 
-    <div class="doctor-info">
-      <img src="doctor-image.jpg" alt="Doctor">
-      <h3>Dr. Catherine TOUCAS</h3>
+   <!-- <div class="doctor-info">  -->
+    <div *ngFor="let doctor of ListDoctors" class="doctor-info">
+
+      <img src="" alt="Doctor">
+      <h3>Dr. doctor.</h3>
+        <h1>{{doctor.username}}</h1>
       <p>Médecin généraliste</p>
       <p>6 Avenue de la Libération 63114 Coude</p>
       <p>Conventionné secteur 1</p>
@@ -13,6 +16,8 @@
     </div>
 
 
+
+    <!-- Navigation button to move to the previous week -->
     <button class="buttonWeek" style="height: 20px;" (click)="previousWeek()">
       <div class="dl-icon-wrapper dl-position-relative">
         <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
@@ -24,11 +29,6 @@
     </button>
     <div class="days">
 
-
-
-
-
-      <!-- Navigation button to move to the previous week -->
       <!--   <button class="nav-button left" (click)="previousWeek()">&lt;</button>   -->
 
       <!-- Container for each day -->
@@ -58,10 +58,10 @@
       </div>
 
 
-      <!-- Navigation button to move to the next week -->
       <!--  <button class="nav-button right" (click)="nextWeek()">&gt;</button>  -->
     </div>
 
+    <!-- Navigation button to move to the next week -->
     <button class="buttonWeek" style="height: 20px;" (click)="nextWeek()">
       <div class="dl-icon-wrapper dl-position-relative">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

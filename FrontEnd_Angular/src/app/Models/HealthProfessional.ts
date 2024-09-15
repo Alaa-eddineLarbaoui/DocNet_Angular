@@ -1,3 +1,7 @@
+import {Speciality} from "../Enums/Speciality";
+
+
+
 export interface HealthProfessional{
   id:number
   username:string
@@ -5,7 +9,7 @@ export interface HealthProfessional{
   email:string
   clinicAdress:string
   phoneNumber: string
-  specialty :string
+  specialty : Speciality
   registrationNumber:string
   latitude:number
   longitude:number
