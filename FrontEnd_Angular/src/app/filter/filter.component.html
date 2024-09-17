@@ -2,7 +2,11 @@
   <form [formGroup]="searchform" (ngSubmit)="searchDoctor()">
     <mat-form-field appearance="outline">
       <mat-label>Trouver une doctor </mat-label>
-      <input matInput id="specialty" formControlName="specialty" placeholder="rentrer la specialty ici ">
+      <!-- <input matInput id="specialty" formControlName="specialty" placeholder="rentrer la specialty ici ">
+      -->
+      <mat-select formControlName="specialty">
+        <mat-option *ngFor="let spc of specialite" [value]="spc">{{spc}}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -23,7 +27,7 @@
 <div *ngIf="listofdoctorFiltrer.length > 0">
   <ul>
     <li *ngFor="let doctor of listofdoctorFiltrer">
-      {{ doctor.username}} - {{ doctor.specialty }} - {{ doctor.clinicAdress }}
+      {{ doctor.username}} - {{ doctor.speciality }} - {{ doctor.clinicAddress }}
     </li>
   </ul>
 </div>

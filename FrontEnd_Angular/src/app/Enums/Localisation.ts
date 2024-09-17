@@ -1,7 +1,8 @@
 export enum Localisation {
   MARRAKECH = 'MARRAKECH',
   BENIMELLAL = 'BENIMELLAL',
-  CASABLANCA = 'CASABLANCA'
+  CASABLANCA = 'CASABLANCA',
+  taza='taza'
 }
 
 

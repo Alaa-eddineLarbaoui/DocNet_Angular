@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {HealthProfessional} from "../Models/HealthProfessional";
 import {Speciality} from "../Enums/Speciality";
+import {Localisation} from "../Enums/Localisation";
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,10 @@ export class DoctorService {
     return this.http.get<HealthProfessional[]>(`${this.apiUrl}/filter`);
   }
 
-  SearchDoctor(specialite: Speciality, clinicAdress: string ): Observable<HealthProfessional[]> {
+  SearchDoctor(speciality: Speciality, clinicAddress: Localisation ): Observable<HealthProfessional[]> {
     let params = new HttpParams();
-    if (specialite) params = params.set('specialite', specialite);
-    if (clinicAdress) params = params.set('clinicAdress', clinicAdress);
+    if (speciality) params = params.set('speciality', speciality);
+    if (clinicAddress) params = params.set('clinicAddress', clinicAddress);
 
     return  this.http.get<HealthProfessional[]>(this.apiUrl +'/filter', { params });
   }

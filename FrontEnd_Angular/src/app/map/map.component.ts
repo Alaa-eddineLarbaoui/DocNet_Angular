@@ -45,8 +45,8 @@ export class MapComponent implements AfterViewInit, OnInit {
                 <h3>${doctor.username}</h3>
                 <p><strong>Email:</strong> ${doctor.email}</p>
                 <p><strong>Phone:</strong> ${doctor.phoneNumber}</p>
-                <p><strong>Address:</strong> ${doctor.clinicAdress}</p>
-                <p><strong>Specialty:</strong> ${doctor.specialty}</p>
+                <p><strong>Address:</strong> ${doctor.clinicAddress}</p>
+                <p><strong>Specialty:</strong> ${doctor.speciality}</p>
                 <p><strong>Registration Number:</strong> ${doctor.registrationNumber}</p>
                 <p><strong>Coordinates:</strong> ${doctor.latitude}, ${doctor.longitude}</p>
               </div>
