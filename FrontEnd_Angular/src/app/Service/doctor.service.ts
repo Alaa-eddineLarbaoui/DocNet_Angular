@@ -16,6 +16,11 @@ export class DoctorService {
     return this.http.get<HealthProfessional[]>(`${this.apiUrl}/getAll`);
   }
 
+  filtreOfdoctor(): Observable<HealthProfessional[]> {
+    return this.http.get<HealthProfessional[]>(`${this.apiUrl}/filter`);
+  }
+
+
   getHealthProfById(idProf:number):Observable<HealthProfessional>{
     return this.http.get<HealthProfessional>(`${this.apiUrl}get/${idProf}`);
   }

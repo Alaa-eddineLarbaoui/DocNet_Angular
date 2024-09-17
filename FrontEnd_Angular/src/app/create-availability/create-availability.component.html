@@ -1,8 +1,8 @@
 <!-- create-availability.component.html -->
-<form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
+<form class="test" [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="date">Date:</label>
-    <input id="date" formControlName="date" type="date" />
+    <input id="date" formControlName="date" [min]="minDate" type="date" />
   </div>
   <div>
     <label for="startTime">Start Time:</label>

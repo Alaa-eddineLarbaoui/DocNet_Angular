@@ -1,0 +1,24 @@
+
+<form (ngSubmit)="onSubmit()">
+  <label for="speciality">Speciality:</label>
+  <select id="speciality" [(ngModel)]="speciality" name="speciality">
+    <option value="">Select Speciality</option>
+    <option *ngFor="let spec of specialities" [value]="spec">{{ spec }}</option>
+  </select>
+
+  <label for="clinicAddress">Clinic Address:</label>
+  <input type="text" id="clinicAddress" [(ngModel)]="clinicAddress" name="clinicAddress">
+
+  <button type="submit">Filter</button>
+</form>
+
+<div *ngIf="filteredHealthProfessionals">
+  <h3>Filtered Results:</h3>
+  <div *ngFor="let professional of filteredHealthProfessionals">
+    {{ professional.name }} - {{ professional.speciality }} - {{ professional.clinicAddress }}
+  </div>
+</div>
+
+
+
+

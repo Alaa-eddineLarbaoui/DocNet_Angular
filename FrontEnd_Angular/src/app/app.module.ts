@@ -10,6 +10,11 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import {CommonModule, DatePipe} from "@angular/common";
 import { CreateAvailabilityComponent } from './create-availability/create-availability.component';
 import { AvailabilityCalendarComponent } from './availability-calendar/availability-calendar.component';
+import { FilterComponent } from './filter/filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -17,7 +22,8 @@ import { AvailabilityCalendarComponent } from './availability-calendar/availabil
     MapComponent,
     AppointmentsComponent,
     CreateAvailabilityComponent,
-    AvailabilityCalendarComponent
+    AvailabilityCalendarComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,11 @@ import { AvailabilityCalendarComponent } from './availability-calendar/availabil
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule
   ],
 
   providers: [DatePipe],

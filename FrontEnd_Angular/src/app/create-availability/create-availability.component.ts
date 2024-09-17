@@ -10,6 +10,7 @@ import {AvailabilityService} from "../Service/availability.service";
 })
 export class CreateAvailabilityComponent {
   availabilityForm: FormGroup;
+  minDate: string;
 
   constructor(
     private fb: FormBuilder,
@@ -21,12 +22,14 @@ export class CreateAvailabilityComponent {
       endTime: ['', Validators.required],
       available: []
     });
+    this.minDate = new Date().toISOString().split('T')[0];
+
   }
 
   onSubmit() {
     if (this.availabilityForm.valid) {
       const formValue = this.availabilityForm.value;
-      const professionalId = 2;
+      const professionalId = 3;
 
       console.log(formValue+"jdddddddddddddddddddd")
       console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl")

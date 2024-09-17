@@ -1,7 +1,6 @@
 import {Speciality} from "../Enums/Speciality";
 
 
-
 export interface HealthProfessional{
   id:number
   username:string

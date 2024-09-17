@@ -21,6 +21,7 @@ export class AvailabilityCalendarComponent implements OnInit{
 
   ngOnInit(): void {
     this.generateWeek();
+    this.loadDoctors();
   }
 
   generateWeek() {
@@ -36,6 +37,7 @@ export class AvailabilityCalendarComponent implements OnInit{
 
 
     this.loadAvailableTimes();
+
   }
 
   getStartOfWeek(date: Date): Date {
@@ -57,7 +59,7 @@ export class AvailabilityCalendarComponent implements OnInit{
   }
 
   loadAvailableTimes() {
-    const professionalId = 2;
+    const professionalId = 3;
 
     this.days.forEach(day => {
       const formattedDate = this.datePipe.transform(day.date, 'yyyy-MM-dd');
@@ -75,19 +77,12 @@ export class AvailabilityCalendarComponent implements OnInit{
 
   // Get Doctors function :
 
-  LoadDoctors(){
+  loadDoctors(){
     this.doctorService.getAllHealthProfessionals().subscribe((data:HealthProfessional[])=>{
       this.ListDoctors=data;
     })
   }
 
-  // LoadDoctors(){
-  //   return
-  // }
-  // getpanne(): void {
-  //   this.panneService.get_pannes().subscribe((data: Panne[]) => {
-  //     this.listpanne = data;
-  //   });
-  // }
+
 
 }

@@ -1,0 +1,18 @@
+.search-and-filter{
+  display: flex;
+  margin-top: 3rem;
+  background-color:#D1E6FF ;
+  padding: 1.5rem ;
+  width: 80%;
+  align-content: center;
+  border-radius: 2rem;
+  position: relative;
+  justify-content: center;
+
+}
+.btn-search{
+
+  margin-left: 0.7rem;
+  width : 9rem;
+  height: 3.5rem;
+  border-radius: 5px;}
