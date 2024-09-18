@@ -86,12 +86,12 @@
 }
 
 
- 
- 
- 
 
- 
- 
+
+
+
+
+
 
 
 
@@ -104,7 +104,8 @@
   display: flex;
   justify-content:space-between;
   background-color: black;
-  
+  height: 1000px ;
+
 }
 
 
@@ -161,7 +162,7 @@
 }
 
 
-  
+
 .day-name{
   font-size: 14px;
 }

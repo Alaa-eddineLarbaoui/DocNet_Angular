@@ -1,12 +1,78 @@
+
+
+<div class="container">
+  <div *ngFor="let doctor of ListDoctors" class="week-container">
+    <div class="doctor-info">
+      <img src="" alt="Doctor">
+      <h3>Dr {{doctor.username}}</h3>
+      <p>{{doctor.speciality}}</p>
+      <p>6 Avenue de la Libération 63114 Coude</p>
+      <p>Conventionné secteur 1</p>
+      <button>Prendre Rendez-vous</button>
+    </div>
+
+    <!-- Navigation button to move to the previous week -->
+    <button class="buttonWeek" style="height: 20px;" (click)="previousWeek()">
+      <div class="dl-icon-wrapper dl-position-relative">
+        <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
+          <path d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
+          </path>
+        </svg>
+      </div>
+    </button>
+
+    <div class="days">
+      <!-- Container for each day -->
+      <div *ngFor="let day of days" class="day-container">
+        <div class="day">
+          <div class="day-name">{{ day.name }}</div>
+          <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
+          <!-- Available times for each day -->
+          <div class="available-times">
+            <ng-container *ngIf="day.availableTimes && day.availableTimes.length > 0; else noTimes">
+              <div class="slot" *ngFor="let time of day.availableTimes">
+                {{ time }}
+              </div>
+            </ng-container>
+            <ng-template #noTimes>
+              <div class="no-available-times">
+                -
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation button to move to the next week -->
+    <button class="buttonWeek" style="height: 20px;" (click)="nextWeek()">
+      <div class="dl-icon-wrapper dl-position-relative">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
+          <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+          </path>
+        </svg>
+      </div>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <div class="container">
 
 
   <div class="week-container">
 
-   <!-- <div class="doctor-info">  -->
+    &lt;!&ndash; <div class="doctor-info">  &ndash;&gt;
     <div *ngFor="let doctor of ListDoctors" class="doctor-info">
 
-      <img src="assets/" alt="Doctor">
+      <img src="./assets/img/icon_marker.png" alt="Doctor">
       <h3>Dr {{doctor.username}}</h3>
       <p>Médecin généraliste</p>
       <p>6 Avenue de la Libération 63114 Coude</p>
@@ -16,62 +82,3 @@
 
 
 
-    <!-- Navigation button to move to the previous week -->
-    <button class="buttonWeek" style="height: 20px;" (click)="previousWeek()">
-      <div class="dl-icon-wrapper dl-position-relative">
-        <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path
-            d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
-          </path>
-        </svg>
-      </div>
-    </button>
-    <div class="days">
-
-      <!--   <button class="nav-button left" (click)="previousWeek()">&lt;</button>   -->
-
-      <!-- Container for each day -->
-      <div *ngFor="let day of days" class="day-container">
-        <div class="day">
-          <div class="day-name">{{ day.name }}</div>
-          <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
-
-          <!-- Available times for each day -->
-          <div class="available-times">
-            <ng-container *ngIf="day.availableTimes && day.availableTimes.length > 0; else noTimes">
-              <div class="slot" *ngFor="let time of day.availableTimes">
-                {{ time }}
-              </div>
-            </ng-container>
-
-            <!-- Message for no available times -->
-
-            <!-- <div *ngIf="!day.availableTimes || day.availableTimes.length === 0" class="no-available-times">  -->
-            <ng-template #noTimes>
-              <div class="no-available-times">
-                -
-              </div>
-            </ng-template>
-          </div>
-        </div>
-      </div>
-
-
-      <!--  <button class="nav-button right" (click)="nextWeek()">&gt;</button>  -->
-    </div>
-
-    <!-- Navigation button to move to the next week -->
-    <button class="buttonWeek" style="height: 20px;" (click)="nextWeek()">
-      <div class="dl-icon-wrapper dl-position-relative">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path
-            d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
-          </path>
-        </svg>
-      </div>
-    </button>
-  </div>
-
-
-</div>

@@ -13,6 +13,7 @@ export class AvailabilityCalendarComponent implements OnInit{
 
   days: { name: string, date: Date, availableTimes?: string[] }[] = [];
   currentDate: Date = new Date();
+
   selectedDate: Date | null = null;
   ListDoctors: HealthProfessional[]=[];
 

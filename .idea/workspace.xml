@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b4331a1-8d62-4b06-a7ca-ebaf1ac2f4d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/appointments/appointments.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/appointments/appointments.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/appointments/appointments.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/appointments/appointments.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/filter/filter.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/filter/filter.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/filter/filter.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/filter/filter.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +88,7 @@
       <workItem from="1725490649128" duration="42000" />
       <workItem from="1725490728257" duration="156000" />
       <workItem from="1725984139569" duration="16000" />
+      <workItem from="1726699279750" duration="17000" />
     </task>
     <servers />
   </component>

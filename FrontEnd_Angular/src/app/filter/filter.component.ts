@@ -11,7 +11,7 @@ import {Speciality} from "../Enums/Speciality";
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit{
-  listofdoctorFiltrer :HealthProfessional[]=[]
+  listOfDoctorFiltrer :HealthProfessional[]=[]
   searchform!: FormGroup;
 
   localisation = Localisation;
@@ -48,7 +48,7 @@ export class FilterComponent implements OnInit{
       console.log("ville::::" + clinicAdress);
 
       this.doctorService.SearchDoctor(specialty, clinicAdress).subscribe(data => {
-        this.listofdoctorFiltrer = data;
+        this.listOfDoctorFiltrer = data;
         console.log(data);
       });
     } else {
