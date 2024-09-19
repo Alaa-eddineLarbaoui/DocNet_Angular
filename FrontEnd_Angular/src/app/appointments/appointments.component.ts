@@ -5,6 +5,7 @@ import {Appointment} from "../Models/Appointment";
 import {AppointmentStatus} from "../Enums/AppointmentStatus";
 import {AppointmentReason} from "../Enums/AppointmentReason";
 import {AvailabilityService} from "../Service/availability.service";
+import {Availability} from "../Models/Availability";
 
 @Component({
   selector: 'app-appointments',
@@ -14,7 +15,7 @@ import {AvailabilityService} from "../Service/availability.service";
 export class AppointmentsComponent implements OnInit {
 
 
-  availableTimes: string[] = [];
+  availableTimes: Availability[] = [];
   appointmentForm: FormGroup;
   submitted = false;
   successMessage: string | null = null;
@@ -41,7 +42,7 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getAvailableTimes(): void {
+/*  getAvailableTimes(): void {
     const date = this.appointmentForm.get('date')?.value;
     console.log(date)
     //const professionalId = this.appointmentForm.get('professionalId')?.value;
@@ -52,7 +53,7 @@ export class AppointmentsComponent implements OnInit {
         this.availableTimes = times;
       });
     }
-  }
+  }*/
 
 
   // Soumettre la réservation
