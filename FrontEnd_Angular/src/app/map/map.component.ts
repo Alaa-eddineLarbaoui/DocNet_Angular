@@ -20,7 +20,7 @@ export class MapComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.loadDoctors(); // Charger les médecins avant d'initialiser la carte
+    this.loadDoctors();
   }
 
   loadDoctors(): void {
@@ -28,7 +28,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       .subscribe(data => {
         console.log(data); // Vérifier les données reçues
         if (data.length > 0) {
-          // Initialiser la carte avec la localisation du premier médecin
+          // Initialize the map with the location of the first doctor
           this.initMap(data[0].latitude, data[0].longitude);
 
           this.clearMarkers();
@@ -58,7 +58,7 @@ export class MapComponent implements AfterViewInit, OnInit {
                 renderer: 'svg',
                 loop: true,
                 autoplay: true,
-                path: 'assets/img/Animation - 1725491917670.json'  // chemin vers le fichier local
+                path: 'assets/img/Animation - 1725491917670.json'
               });
             });
 
@@ -71,8 +71,8 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   initMap(latitude: number, longitude: number): void {
     this.map = L.map('map', {
-      center: [latitude, longitude], // Utiliser les coordonnées du premier médecin
-      zoom: 12 // Ajuster le zoom en fonction des besoins
+      center: [latitude, longitude], // Use the coordinates of the first doctor 
+      zoom: 12   // Adjust the zoom based on needs
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
