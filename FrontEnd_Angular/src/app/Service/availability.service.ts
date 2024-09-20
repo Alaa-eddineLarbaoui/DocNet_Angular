@@ -17,8 +17,8 @@ export class AvailabilityService {
     return this.http.post<Availability>(`${this.apiUrl}/create/${professionalId}`, availability);
   }
 
-  getAvailableTimes(date: string, professionalId: number ): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/available-times`, {
+  getTimes(date: string, professionalId: number ): Observable<Availability[]> {
+    return this.http.get<Availability[]>(`${this.apiUrl}/available-times`, {
       params: {
         date: date,
         professionalId: professionalId.toString()
