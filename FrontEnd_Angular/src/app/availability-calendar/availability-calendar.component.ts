@@ -1,4 +1,4 @@
-import {Component, numberAttribute, OnInit} from '@angular/core';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 import { AvailabilityService } from "../Service/availability.service";
 import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
@@ -24,11 +24,12 @@ export class AvailabilityCalendarComponent implements OnInit {
   totalDoctors !: number;
   totalPages: number = 0;
 
-  constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe, private doctorService: DoctorService) {}
+  constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe, private doctorService: DoctorService) { }
 
   ngOnInit(): void {
     this.loadInitialData(); // Load the initial data
   }
+
 
   async loadInitialData() {
     // Load doctors first before generating the week and availabilities
@@ -42,9 +43,9 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.doctorService.getAllHealthProfessionals().subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
         this.totalDoctors = this.ListDoctors.length;
-       const pageNumber= this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
+        const pageNumber = this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
 
-        console.log( "page :::: "+ pageNumber);
+        console.log("page :::: " + pageNumber);
 
         this.updatePaginatedDoctors();
         resolve(); // Resolve promise after loading doctors
@@ -52,30 +53,8 @@ export class AvailabilityCalendarComponent implements OnInit {
     });
   }
 
-  //
 
-  updatePaginatedDoctors(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex); // Show doctors for the current page
-  }
-
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.updatePaginatedDoctors(); // Update doctors for the new page
-    }
-    console.log("ddddddddddddd : "+this.currentPage)
-  }
-
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.updatePaginatedDoctors(); // Update doctors for the previous page
-    }
-  }
-
-//
+  // Logic to generate a calendar
 
   generateWeek() {
     this.days = [];
@@ -138,13 +117,38 @@ export class AvailabilityCalendarComponent implements OnInit {
 
     if (formattedDate && this.availabilities[doctorId]) {
       const result = this.availabilities[doctorId][formattedDate] || [];
-     // console.log('Available times for doctor', doctorId, 'on date', formattedDate, ':', result);
+      // console.log('Available times for doctor', doctorId, 'on date', formattedDate, ':', result);
       return result; // Return availabilities or an empty array
     }
 
     //console.log('No available times for doctor', doctorId, 'on date', formattedDate);
     return []; // Return an empty array if no availability found
   }
+
+
+
+  // Logic to create pagination for doctor cards
+  updatePaginatedDoctors(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex); // Show doctors for the current page
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePaginatedDoctors(); // Update doctors for the new page
+    }
+    console.log("ddddddddddddd : " + this.currentPage)
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedDoctors(); // Update doctors for the previous page
+    }
+  }
+
 
 
 
