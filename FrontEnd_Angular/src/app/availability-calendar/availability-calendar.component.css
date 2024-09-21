@@ -129,8 +129,15 @@
   height: 269px;
   max-height:269px ;
   padding: 6px;
+  border: 1.3px solid #8a65df; 
 
 }
+
+.week-container:hover {
+  border: 1.3px solid #8a65df;
+  box-shadow: 0 4px 6px rgba(138, 101, 223, 0.5);
+}
+
 
 .days {
   display: flex;
