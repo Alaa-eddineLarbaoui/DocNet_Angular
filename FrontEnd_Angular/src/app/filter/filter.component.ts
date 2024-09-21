@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DoctorService} from "../Service/doctor.service";
 import {HealthProfessional} from "../Models/HealthProfessional";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, RequiredValidator, Validators} from "@angular/forms";
 import {Localisation} from "../Enums/Localisation";
 import {Speciality} from "../Enums/Speciality";
 
@@ -16,7 +16,7 @@ export class FilterComponent implements OnInit{
 
   localisation = Localisation;
   speciality =Speciality;
-  keys!: string[];
+  local !: string[];
   specialite!: string[];
 
   constructor(
@@ -28,14 +28,14 @@ export class FilterComponent implements OnInit{
 
   ngOnInit(): void {
     this.initForm();
-    this.keys = Object.values(this.localisation).filter((value) => typeof value === 'string');
+    this.local = Object.values(this.localisation).filter((value) => typeof value === 'string');
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
-    console.log(this.keys);
+    console.log(this.local);
   }
 
   initForm() {
     this.searchform = this.fb.group({
-      specialty: new FormControl(''),
+      specialty: new FormControl('', Validators.required),
       clinicAdress: new FormControl('')
     });
   }

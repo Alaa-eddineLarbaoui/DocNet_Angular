@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, numberAttribute, OnInit} from '@angular/core';
 import { AvailabilityService } from "../Service/availability.service";
 import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
@@ -16,16 +16,22 @@ export class AvailabilityCalendarComponent implements OnInit {
   currentDate: Date = new Date();
   selectedDate: Date | null = null;
   ListDoctors: HealthProfessional[] = [];
+  paginatedDoctors: HealthProfessional[] = [];
   availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
+
+  currentPage: number = 1;
+  itemsPerPage: number = 3;
+  totalDoctors !: number;
+  totalPages: number = 0;
 
   constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe, private doctorService: DoctorService) {}
 
   ngOnInit(): void {
-    this.loadInitialData(); // Charger les données initiales
+    this.loadInitialData(); // Load the initial data
   }
 
   async loadInitialData() {
-    // Attendre que les médecins soient chargés avant de générer la semaine et les disponibilités
+    // Load doctors first before generating the week and availabilities
     await this.loadDoctors();
     this.generateWeek();
     this.loadAllAvailableTimes();
@@ -35,10 +41,41 @@ export class AvailabilityCalendarComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.doctorService.getAllHealthProfessionals().subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
-        resolve(); // Résoudre la promesse une fois les médecins chargés
+        this.totalDoctors = this.ListDoctors.length;
+       const pageNumber= this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
+
+        console.log( "page :::: "+ pageNumber);
+
+        this.updatePaginatedDoctors();
+        resolve(); // Resolve promise after loading doctors
       }, error => reject(error));
     });
   }
+
+  //
+
+  updatePaginatedDoctors(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex); // Show doctors for the current page
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePaginatedDoctors(); // Update doctors for the new page
+    }
+    console.log("ddddddddddddd : "+this.currentPage)
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedDoctors(); // Update doctors for the previous page
+    }
+  }
+
+//
 
   generateWeek() {
     this.days = [];
@@ -51,7 +88,7 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.days.push({ name: dayNames[i], date: day });
     }
 
-    // Charger les disponibilités après avoir généré la semaine
+    // Load availability after generating the week
     this.loadAllAvailableTimes();
   }
 
@@ -101,11 +138,16 @@ export class AvailabilityCalendarComponent implements OnInit {
 
     if (formattedDate && this.availabilities[doctorId]) {
       const result = this.availabilities[doctorId][formattedDate] || [];
-      console.log('Available times for doctor', doctorId, 'on date', formattedDate, ':', result);
-      return result; // Retourne les disponibilités ou un tableau vide
+     // console.log('Available times for doctor', doctorId, 'on date', formattedDate, ':', result);
+      return result; // Return availabilities or an empty array
     }
 
-    console.log('No available times for doctor', doctorId, 'on date', formattedDate);
-    return []; // Retourne un tableau vide si aucune disponibilité n'est trouvée
+    //console.log('No available times for doctor', doctorId, 'on date', formattedDate);
+    return []; // Return an empty array if no availability found
   }
+
+
+
+  protected readonly numberAttribute = numberAttribute;
+  protected readonly Number = Number;
 }

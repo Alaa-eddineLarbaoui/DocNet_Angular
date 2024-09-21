@@ -103,10 +103,12 @@
   height:200px; */
   display: flex;
   justify-content:space-between;
-  background-color: black;
-  height: 1000px ;
+  background-color: #ffffff;
   flex-direction : column;
+}
 
+.div2{
+  max-width: 815px;
 }
 
 
@@ -226,7 +228,7 @@
 
 
 .slot:hover {
-  background-color: #149ede;
+  background-color: #3fafe2;
 }
 
 .day-container {
