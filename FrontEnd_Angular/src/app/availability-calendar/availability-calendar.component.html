@@ -1,7 +1,5 @@
-
-
 <div class="container">
-  <div *ngFor="let doctor of ListDoctors" class="week-container">
+  <div *ngFor="let doctor of paginatedDoctors" class="week-container">
     <div class="doctor-info">
       <img src="" alt="Doctor">
       <h3>Dr {{doctor.username}}</h3>
@@ -15,7 +13,9 @@
     <button class="buttonWeek" style="height: 20px;" (click)="previousWeek()">
       <div class="dl-icon-wrapper dl-position-relative">
         <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z"></path>
+          <path
+            d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
+          </path>
         </svg>
       </div>
     </button>
@@ -29,14 +29,16 @@
           <!-- Available times for each day -->
           <div class="available-times">
             <ng-container *ngIf="getAvailableTimes(doctor.id, day.date).length > 0; else noTimes">
-              <ul>
-                <li *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
-                  {{ time }}
-                </li>
-              </ul>
+
+              <div class="slot" *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
+                {{ time }}
+              </div>
+
             </ng-container>
             <ng-template #noTimes>
-              <p>Aucun</p>
+              <div class="no-available-times">
+                -
+              </div>
             </ng-template>
           </div>
         </div>
@@ -47,10 +49,27 @@
     <button class="buttonWeek" style="height: 20px;" (click)="nextWeek()">
       <div class="dl-icon-wrapper dl-position-relative">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-             aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515"></path>
+          aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
+          <path
+            d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+          </path>
         </svg>
       </div>
     </button>
+  </div>
+
+
+
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
+    <span style="color: red">Page {{currentPage}}</span>
+    <p style="color: red">
+      {{ "number of pages :"+ totalPages}}
+
+      {{ "Number of doctor" +ListDoctors.length}}
+
+    </p>
+    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">Suivant</button>
   </div>
 </div>
