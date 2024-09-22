@@ -1,3 +1,4 @@
+
 .appointment-container {
   display: flex;
   justify-content: space-between;
@@ -117,11 +118,8 @@
 
 
 .container {
-  /* width:40%;
-  height:200px; */
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
   flex-direction: column;
 }
 
@@ -131,14 +129,8 @@
 
 
 .week-container {
-  /*display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 40% !important;
-  height:40%!important;  */
+
   max-width: 815px;
-  /* margin: 21px auto; */
-  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -164,6 +156,7 @@
   /* background-color:rgb(164, 16, 205);*/
   /*max-width: 500px;  */
   width: 70%;
+  /* overflow-x: auto !important; */
 
 }
 
@@ -278,3 +271,122 @@
   text-align: center;
   margin-top: 10px;
 }
+
+
+
+
+.d{
+  display:flex;
+  flex-direction: row;
+  background-color: wheat;
+}
+.section1{
+  width: 66%;
+  background-color: rgb(248, 248, 248);
+}
+.section2{
+   width: 34%;
+}
+
+
+
+
+
+
+/* Responsives : Media query   */
+
+
+/* Pour les grands écrans : afficher 6 jours */
+@media (max-width: 1200px) {
+  /* .days {
+    /* display: flex; */
+    /* width: 70%;
+
+  } */
+  .week-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .d{
+    display: flex;
+    flex-direction: column;
+  }
+ .section1{
+width: 100%;
+ }
+}
+
+/* Pour les écrans moyens : afficher 5 jours */
+@media (max-width: 992px) {
+  .days {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  .day-container {
+    display: none;
+  }
+  .day-container:nth-child(-n+5) {
+    display: flex; /* Show only 5 days */
+  }
+   /*  jjjjjjjjjjjjjjjjj */
+
+  .d{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+/* Pour les petits écrans : afficher 4 jours */
+@media (max-width: 768px) {
+  .days {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    overflow-x: auto; /* Enable scrolling on smaller screens */
+  }
+ 
+
+     /*  jjjjjjjjjjjjjjjjj */
+
+  .d{
+    display: flex;
+    flex-direction: column;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+
+
+/* Pour les très petits écrans : afficher 3 jours */
+@media (max-width: 576px) {
+  .days {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    overflow-x: auto; /* Enable scrolling on smaller screens */
+  }
+  .day-container {
+    display: none;
+  }
+  .day-container:nth-child(-n+3) {
+    display: flex; /* Show only 3 days */
+  }
+
+     /*  jjjjjjjjjjjjjjjjj */
+
+     .d{
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
