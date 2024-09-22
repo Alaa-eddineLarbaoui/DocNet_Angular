@@ -1,8 +1,15 @@
 <div class="container">
   <div *ngFor="let doctor of paginatedDoctors" class="week-container">
     <div class="doctor-info">
-      <img src="" alt="Doctor">
-      <h3>Dr {{doctor.username}}</h3>
+      <div class="profile">
+        <div>
+          <i class="fa-solid fa-user-doctor" style="color: #117aca; font-size: 30px;"></i>
+        </div>
+        <div>
+          <h3 class="h3">Dr {{doctor.username}}</h3>
+        </div>
+
+      </div>
       <p>{{doctor.speciality}}</p>
       <p>6 Avenue de la Libération 63114 Coude</p>
       <p>Conventionné secteur 1</p>

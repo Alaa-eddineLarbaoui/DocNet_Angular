@@ -26,17 +26,12 @@
   margin-right: 20px;
 }
 
-.doctor-info h3 {
-  margin: 0;
-  font-size: 18px;
-  color: #007bff;
+.h3 {
+  font-size: 17px;
+  color: #107aca;
+  margin: 10px 0 5px;
 }
 
-.doctor-info p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #555555;
-}
 
 .appointment-button {
   margin-top: 10px;
@@ -54,38 +49,59 @@
 
 .doctor-info {
   width: 30%;
-  text-align: center;
-  padding-right: 0px;
   border-right: 1px solid #e0e0e0;
-  border-radius: 0px;
-  align-content: center;
+  /* align-content: center; */
+
+  margin-top: 18px;
 }
+
 .doctor-info img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
-.doctor-info h3 {
-  margin: 10px 0 5px;
-  color: #007bff;
-}
+
 .doctor-info p {
-  margin: 5px 0;
+  margin: 5px 0px 5px 12px;
   font-size: 14px;
   color: #555555;
 }
+
 .doctor-info button {
   margin-top: 20px;
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #117aca;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+  font-weight: 700;
+  width: 208px;
+  border-radius: 7px;
+  margin-left: 4px;
+}
+
+.doctor-info button:hover {
+  background-color: #0170a4;
+
 }
 
 
+.profile {
+  display: flex;
+  gap: 12px;
+  background-color: rgb(253, 253, 253);
+  margin-left: 10px;
+  margin-bottom: 19px;
+  text-align: center;
+}
+
+.fa-user-doctor {
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  align-content: center;
+}
 
 
 
@@ -98,22 +114,24 @@
 /* ////////////////////////  */
 
 
-.container{
- /* width:40%;
+
+
+.container {
+  /* width:40%;
   height:200px; */
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   background-color: #ffffff;
-  flex-direction : column;
+  flex-direction: column;
 }
 
-.div2{
+.div2 {
   max-width: 815px;
 }
 
 
 .week-container {
-   /*display: flex;
+  /*display: flex;
   align-items: center;
   justify-content: space-between;
   width: 40% !important;
@@ -126,16 +144,16 @@
   display: flex;
   margin-left: 10px;
   margin-top: 15px;
-  height: 269px;
-  max-height:269px ;
+  height: 275px;
+  max-height: 275px;
   padding: 6px;
-  border: 1.3px solid #8a65df; 
+  border: 1.3px solid #8a65df;
 
 }
 
 .week-container:hover {
   border: 1.3px solid #8a65df;
-  box-shadow: 0 4px 6px rgba(138, 101, 223, 0.5);
+  box-shadow: 3px 3px 3px rgba(13, 101, 150, 0.5);
 }
 
 
@@ -143,7 +161,7 @@
   display: flex;
   /*justify-content: space-between; */
   flex-grow: 1;
- /* background-color:rgb(164, 16, 205);*/
+  /* background-color:rgb(164, 16, 205);*/
   /*max-width: 500px;  */
   width: 70%;
 
@@ -151,14 +169,15 @@
 
 
 
-.div1{
+.div1 {
 
   width: 35%;
   margin-right: 10px;
   background-color: violet;
 
 }
-.day{
+
+.day {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,9 +192,13 @@
 
 
 
-.day-name{
-  font-size: 14px;
+.day-name {
+  font-size: 14.5px;
+  font-weight: 500;
+  margin-bottom: 3.5px;
+
 }
+
 .day-date {
   font-size: 12px;
 }
@@ -194,7 +217,7 @@
   background-color: #3700b3;
 }
 
-.buttonWeek{
+.buttonWeek {
   height: 5px;
   width: 23px;
   margin-top: 28px;
@@ -203,9 +226,9 @@
   border: none;
 }
 
-.available-times{
+.available-times {
 
-/* background-color: black ;  */
+  /* background-color: black ;  */
 }
 
 /*slot {
@@ -221,10 +244,10 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   height: 34px;
   line-height: 34px;
-  margin: 7px  0;
+  margin: 7px 0;
   position: relative;
   text-align: center;
   transition: background-color .2s, color .2s;
