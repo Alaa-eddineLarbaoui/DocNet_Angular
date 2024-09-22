@@ -273,10 +273,11 @@
 }
 
 .no-available-times {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
+  background-color: #2b466033;
+  border-radius: 1px;
+  height: 2px;
+  width: 12px;
+  margin-top: 22px;
 }
 
 
@@ -534,3 +535,5 @@ width: 100%;
     width: 100%;
   }
 }
+
+

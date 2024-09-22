@@ -1,9 +1,10 @@
-import { Component, numberAttribute, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AvailabilityService } from "../Service/availability.service";
 import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { DoctorService } from "../Service/doctor.service";
 import { Availability } from "../Models/Availability";
+import { ActivatedRoute } from '@angular/router'; // Importer ActivatedRoute
 
 @Component({
   selector: 'app-availability-calendar',
@@ -11,45 +12,47 @@ import { Availability } from "../Models/Availability";
   styleUrls: ['./availability-calendar.component.css']
 })
 export class AvailabilityCalendarComponent implements OnInit {
-
   days: { name: string, date: Date, availableTimes?: string[] }[] = [];
   currentDate: Date = new Date();
-  selectedDate: Date | null = null;
   ListDoctors: HealthProfessional[] = [];
   paginatedDoctors: HealthProfessional[] = [];
   availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
 
   currentPage: number = 1;
   itemsPerPage: number = 3;
-  totalDoctors !: number;
+  totalDoctors!: number;
   totalPages: number = 0;
 
-  constructor(private availabilityService: AvailabilityService, private datePipe: DatePipe, private doctorService: DoctorService) { }
+  constructor(
+    private availabilityService: AvailabilityService,
+    private datePipe: DatePipe,
+    private doctorService: DoctorService,
+    private route: ActivatedRoute // Injecter ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loadInitialData(); // Load the initial data
   }
 
-
   async loadInitialData() {
-    // Load doctors first before generating the week and availabilities
     await this.loadDoctors();
     this.generateWeek();
     this.loadAllAvailableTimes();
   }
 
   async loadDoctors() {
-    return new Promise<void>((resolve, reject) => {
-      this.doctorService.getAllHealthProfessionals().subscribe((data: HealthProfessional[]) => {
+    // Récupérer les paramètres de la route
+    this.route.queryParams.subscribe(params => {
+      const specialty = params['specialty'];
+      const clinicAdress = params['clinicAdress'];
+
+      // Appeler le service pour récupérer les docteurs en fonction des paramètres
+      this.doctorService.SearchDoctor(specialty, clinicAdress).subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
         this.totalDoctors = this.ListDoctors.length;
-        const pageNumber = this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
-
-        console.log("page :::: " + pageNumber);
-
+        this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
         this.updatePaginatedDoctors();
-        resolve(); // Resolve promise after loading doctors
-      }, error => reject(error));
+      });
     });
   }
 
@@ -152,6 +155,6 @@ export class AvailabilityCalendarComponent implements OnInit {
 
 
 
-  protected readonly numberAttribute = numberAttribute;
-  protected readonly Number = Number;
+  /*protected readonly numberAttribute = numberAttribute;
+  protected readonly Number = Number;*/
 }

@@ -14,7 +14,7 @@
 
           </div>
           <p>{{doctor.speciality}}</p>
-          <p>6 Avenue de la Libération 63114 Coude</p>
+          <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
           <button>Prendre Rendez-vous</button>
         </div>
@@ -47,7 +47,7 @@
                 </ng-container>
                 <ng-template #noTimes>
                   <div class="no-available-times">
-                    -
+                    <div class="availabilities-empty-slot-dash" ></div>
                   </div>
                 </ng-template>
               </div>

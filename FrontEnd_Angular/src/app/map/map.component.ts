@@ -30,7 +30,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   loadDoctors(): void {
     this.doctorService.getAllHealthProfessionals().subscribe(data => {
-      console.log(data); // Vérifier les données reçues
+      console.log(data);  // list of doctor
       if (data.length > 0) {
         this.initMap(data[0].latitude, data[0].longitude);
         this.clearMarkers();
