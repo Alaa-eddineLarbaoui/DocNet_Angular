@@ -209,7 +209,15 @@
   background-color: #3700b3;
 }
 
-.buttonWeek {
+.buttonWeek1 {
+  height: 5px;
+  width: 23px;
+  margin-top: 28px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+.buttonWeek2 {
   height: 5px;
   width: 23px;
   margin-top: 28px;

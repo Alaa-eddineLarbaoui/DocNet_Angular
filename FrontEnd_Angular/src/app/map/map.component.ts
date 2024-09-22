@@ -4,7 +4,7 @@ import * as L from 'leaflet';
 import { DoctorService } from "../Service/doctor.service";
 import { GeocodingService } from "../Service/geocoding.service";
 import lottie from 'lottie-web';
-import {addAriaReferencedId} from "@angular/cdk/a11y";
+import { addAriaReferencedId } from "@angular/cdk/a11y";
 
 @Component({
   selector: 'app-map',
@@ -20,9 +20,9 @@ export class MapComponent implements AfterViewInit, OnInit {
   constructor(
     private doctorService: DoctorService,
     private geocodingService: GeocodingService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     this.loadDoctors();
@@ -44,7 +44,7 @@ export class MapComponent implements AfterViewInit, OnInit {
           });
 
           const docMarker = marker([doctor.latitude, doctor.longitude], { icon: lottieDiv });
-          console.log(doctor.latitude  , "+", doctor.id)
+          console.log(doctor.latitude, "+", doctor.id)
           this.geocodingService.reverseGeocode(doctor.latitude, doctor.longitude)
             .subscribe(address => {
               docMarker.bindPopup(`

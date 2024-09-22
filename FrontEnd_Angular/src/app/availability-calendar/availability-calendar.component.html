@@ -1,108 +1,108 @@
 <section class="d">
-<section class="section1">
+  <section class="section1">
 
-<div class="container">
-  <div *ngFor="let doctor of paginatedDoctors" class="week-container">
-    <div class="doctor-info">
-      <div class="profile">
-        <div>
-          <i class="fa-solid fa-user-doctor" style="color: #117aca; font-size: 30px;"></i>
+    <div class="container">
+      <div *ngFor="let doctor of paginatedDoctors" class="week-container">
+        <div class="doctor-info">
+          <div class="profile">
+            <div>
+              <i class="fa-solid fa-user-doctor" style="color: #117aca; font-size: 30px;"></i>
+            </div>
+            <div>
+              <h3 class="h3">Dr {{doctor.username}}</h3>
+            </div>
+
+          </div>
+          <p>{{doctor.speciality}}</p>
+          <p>6 Avenue de la Libération 63114 Coude</p>
+          <p>Conventionné secteur 1</p>
+          <button>Prendre Rendez-vous</button>
         </div>
-        <div>
-          <h3 class="h3">Dr {{doctor.username}}</h3>
-        </div>
 
-      </div>
-      <p>{{doctor.speciality}}</p>
-      <p>6 Avenue de la Libération 63114 Coude</p>
-      <p>Conventionné secteur 1</p>
-      <button>Prendre Rendez-vous</button>
-    </div>
+        <!-- Navigation button to move to the previous week -->
+        <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek()">
+          <div class="dl-icon-wrapper dl-position-relative">
+            <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
+              <path
+                d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
+              </path>
+            </svg>
+          </div>
+        </button>
 
-    <!-- Navigation button to move to the previous week -->
-    <button class="buttonWeek" style="height: 20px;" (click)="previousWeek()">
-      <div class="dl-icon-wrapper dl-position-relative">
-        <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path
-            d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
-          </path>
-        </svg>
-      </div>
-    </button>
+        <div class="days">
+          <!-- Container for each day -->
+          <div *ngFor="let day of days" class="day-container">
+            <div class="day">
+              <div class="day-name">{{ day.name }}</div>
+              <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
+              <!-- Available times for each day -->
+              <div class="available-times">
+                <ng-container *ngIf="getAvailableTimes(doctor.id, day.date).length > 0; else noTimes">
 
-    <div class="days">
-      <!-- Container for each day -->
-      <div *ngFor="let day of days" class="day-container">
-        <div class="day">
-          <div class="day-name">{{ day.name }}</div>
-          <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
-          <!-- Available times for each day -->
-          <div class="available-times">
-            <ng-container *ngIf="getAvailableTimes(doctor.id, day.date).length > 0; else noTimes">
+                  <div class="slot" *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
+                    {{ time }}
+                  </div>
 
-              <div class="slot" *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
-                {{ time }}
+                </ng-container>
+                <ng-template #noTimes>
+                  <div class="no-available-times">
+                    -
+                  </div>
+                </ng-template>
               </div>
-
-            </ng-container>
-            <ng-template #noTimes>
-              <div class="no-available-times">
-                -
-              </div>
-            </ng-template>
+            </div>
           </div>
         </div>
+
+        <!-- Navigation button to move to the next week -->
+        <button class="buttonWeek2" style="height: 20px;" (click)="nextWeek()">
+          <div class="dl-icon-wrapper dl-position-relative">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
+              <path
+                d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+              </path>
+            </svg>
+          </div>
+        </button>
       </div>
+
+
+
+
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
+        <span style="color: red">Page {{currentPage}}</span>
+        <p style="color: red">
+          {{ "number of pages :"+ totalPages}}
+
+          {{ "Number of doctor" +ListDoctors.length}}
+
+        </p>
+        <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">Suivant</button>
+      </div>
+
     </div>
-
-    <!-- Navigation button to move to the next week -->
-    <button class="buttonWeek" style="height: 20px;" (click)="nextWeek()">
-      <div class="dl-icon-wrapper dl-position-relative">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
-          <path
-            d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
-          </path>
-        </svg>
-      </div>
-    </button>
-  </div>
+  </section>
 
 
-
-
-  <div class="pagination">
-    <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
-    <span style="color: red">Page {{currentPage}}</span>
-    <p style="color: red">
-      {{ "number of pages :"+ totalPages}}
-
-      {{ "Number of doctor" +ListDoctors.length}}
-
-    </p>
-    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">Suivant</button>
-  </div>
-
-</div>
-</section>
-
-
-<section class="section2">
-  <div>
-    <app-map></app-map>
-  </div>
-</section>
+  <section class="section2">
+    <div>
+      <app-map></app-map>
+    </div>
+  </section>
 </section>
 
 <footer>
 
   <p>hffffffffffffffn</p>
-  
+
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
-  
-  </footer>
+
+</footer>
