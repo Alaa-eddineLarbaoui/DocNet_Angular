@@ -1,4 +1,3 @@
-
 .appointment-container {
   display: flex;
   justify-content: space-between;
@@ -275,17 +274,19 @@
 
 
 
-.d{
-  display:flex;
+.d {
+  display: flex;
   flex-direction: row;
   background-color: wheat;
 }
-.section1{
+
+.section1 {
   width: 66%;
   background-color: rgb(248, 248, 248);
 }
-.section2{
-   width: 34%;
+
+.section2 {
+  width: 34%;
 }
 
 
@@ -295,14 +296,15 @@
 
 /* Responsives : Media query   */
 
+/*
 
-/* Pour les grands écrans : afficher 6 jours */
+!* Pour les grands écrans : afficher 6 jours *!
 @media (max-width: 1200px) {
-  /* .days {
-    /* display: flex; */
-    /* width: 70%;
+  !* .days {
+    !* display: flex; *!
+    !* width: 70%;
 
-  } */
+  } *!
   .week-container{
     display: flex;
     flex-direction: column;
@@ -317,7 +319,7 @@ width: 100%;
  }
 }
 
-/* Pour les écrans moyens : afficher 5 jours */
+!* Pour les écrans moyens : afficher 5 jours *!
 @media (max-width: 992px) {
   .days {
     flex-wrap: nowrap;
@@ -327,9 +329,9 @@ width: 100%;
     display: none;
   }
   .day-container:nth-child(-n+5) {
-    display: flex; /* Show only 5 days */
+    display: flex; !* Show only 5 days *!
   }
-   /*  jjjjjjjjjjjjjjjjj */
+   !*  jjjjjjjjjjjjjjjjj *!
 
   .d{
     display: flex;
@@ -338,16 +340,16 @@ width: 100%;
 
 }
 
-/* Pour les petits écrans : afficher 4 jours */
+!* Pour les petits écrans : afficher 4 jours *!
 @media (max-width: 768px) {
   .days {
     flex-wrap: nowrap;
     justify-content: space-around;
-    overflow-x: auto; /* Enable scrolling on smaller screens */
+    overflow-x: auto; !* Enable scrolling on smaller screens *!
   }
- 
 
-     /*  jjjjjjjjjjjjjjjjj */
+
+     !*  jjjjjjjjjjjjjjjjj *!
 
   .d{
     display: flex;
@@ -362,26 +364,85 @@ width: 100%;
 
 
 
-/* Pour les très petits écrans : afficher 3 jours */
+!* Pour les très petits écrans : afficher 3 jours *!
 @media (max-width: 576px) {
   .days {
     flex-wrap: nowrap;
     justify-content: space-around;
-    overflow-x: auto; /* Enable scrolling on smaller screens */
+    overflow-x: auto; !* Enable scrolling on smaller screens *!
   }
   .day-container {
     display: none;
   }
   .day-container:nth-child(-n+3) {
-    display: flex; /* Show only 3 days */
+    display: flex; !* Show only 3 days *!
   }
 
-     /*  jjjjjjjjjjjjjjjjj */
+     !*  jjjjjjjjjjjjjjjjj *!
 
      .d{
       display: flex;
       flex-direction: column;
     }
+}
+*/
+
+
+
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .week-container {
+    display: flex;
+    flex-direction: column;
+
+    height: 525px;
+    max-height: 527px;
+  }
+
+  .doctor-info {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .days {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .d {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section1 {
+    width: 100%;
+  }
+
+  .section2 {
+    width: 100%;
+  }
+
+  .day {
+
+    width: 53px;
+    height: 100%;
+  }
+
+  .day-container {
+    width: 68px;
+    height: 264px;
+  }
+
+
+
+
 }
 
 
@@ -389,4 +450,23 @@ width: 100%;
 
 
 
+/* Pour les très petits écrans (mobile) : plus de flexibilité */
+@media (max-width: 576px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .week-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .doctor-info {
+    width: 100%;
+  }
+
+  .days {
+    width: 100%;
+  }
+}
