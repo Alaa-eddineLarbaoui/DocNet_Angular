@@ -387,10 +387,63 @@ width: 100%;
 }
 */
 
+/* /////////////////////////////////////////////////// */
+
+
+@media (max-width: 1048px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .week-container {
+    display: flex;
+    flex-direction: column;
+
+    height: 525px;
+    max-height: 527px;
+  }
+
+  .doctor-info {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .days {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .section1 {
+    width: 66%;
+  }
+
+  .section2 {
+    width: 34%;
+  }
+
+  .day {
+    width: 53px;
+    height: 100%;
+  }
+
+  .day-container {
+    width: 68px;
+    height: 264px;
+  }
+
+}
 
 
 
-@media (max-width: 768px) {
+
+
+
+
+
+@media (max-width: 740px) {
   .container {
     display: flex;
     flex-direction: column;
@@ -419,6 +472,7 @@ width: 100%;
   .d {
     display: flex;
     flex-direction: column;
+
   }
 
   .section1 {
@@ -427,6 +481,7 @@ width: 100%;
 
   .section2 {
     width: 100%;
+    background-color: black;
   }
 
   .day {
@@ -464,6 +519,7 @@ width: 100%;
 
   .doctor-info {
     width: 100%;
+    justify-content: center;
   }
 
   .days {
