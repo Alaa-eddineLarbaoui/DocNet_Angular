@@ -4,7 +4,9 @@ import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { DoctorService } from "../Service/doctor.service";
 import { Availability } from "../Models/Availability";
-import { ActivatedRoute } from '@angular/router'; // Importer ActivatedRoute
+import {ActivatedRoute, Router} from '@angular/router';
+import {NotFoundComponent} from "../not-found/not-found.component";
+import {MatDialog} from "@angular/material/dialog"; // Importer ActivatedRoute
 
 @Component({
   selector: 'app-availability-calendar',
@@ -23,11 +25,16 @@ export class AvailabilityCalendarComponent implements OnInit {
   totalDoctors!: number;
   totalPages: number = 0;
 
+  showPopUp: boolean = false;
+
   constructor(
     private availabilityService: AvailabilityService,
     private datePipe: DatePipe,
     private doctorService: DoctorService,
-    private route: ActivatedRoute // Injecter ActivatedRoute
+    private route: ActivatedRoute ,
+    private router: Router,
+    private dialog: MatDialog
+
   ) {}
 
   ngOnInit(): void {
@@ -42,8 +49,6 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   async loadDoctors() {
     // Récupérer les paramètres de la route
-    console.log("dddddddddddddddddddddddddd")
-
     this.route.queryParams.subscribe(params => {
       const specialty = params['specialty'];
       const clinicAdress = params['clinicAdress'];
@@ -51,12 +56,25 @@ export class AvailabilityCalendarComponent implements OnInit {
       // Appeler le service pour récupérer les docteurs en fonction des paramètres
       this.doctorService.SearchDoctor(specialty, clinicAdress).subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
-        this.totalDoctors = this.ListDoctors.length;
-        this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage); // Calculate total pages based on number of doctors
-        this.updatePaginatedDoctors();
+        console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
+        console.log(data)
+
+        if (this.ListDoctors.length === 0) {
+          this.dialog.open(NotFoundComponent);
+
+          //this.showPopUp = true;
+
+        } else {
+
+          this.totalDoctors = this.ListDoctors.length;
+          this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage);
+          this.updatePaginatedDoctors();
+        }
       });
     });
   }
+
 
 
   // Logic to generate a calendar

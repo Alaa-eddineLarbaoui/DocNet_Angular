@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import { NotFoundComponent } from './not-found/not-found.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {MatButtonModule} from "@angular/material/button";
     AppointmentsComponent,
     CreateAvailabilityComponent,
     AvailabilityCalendarComponent,
-    FilterComponent
+    FilterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
 
   providers: [DatePipe],
