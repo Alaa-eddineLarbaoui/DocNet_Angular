@@ -42,18 +42,18 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-/*  getAvailableTimes(): void {
+  getAvailableTimes(): void {
     const date = this.appointmentForm.get('date')?.value;
     console.log(date)
     //const professionalId = this.appointmentForm.get('professionalId')?.value;
     const professionalId = 2;
 
     if (date && professionalId) {
-      this.availabilityService.getAvailableTimes(date, professionalId).subscribe(times => {
+      this.availabilityService.getTimes(date, professionalId).subscribe(times => {
         this.availableTimes = times;
       });
     }
-  }*/
+  }
 
 
   // Soumettre la réservation

@@ -33,7 +33,7 @@ export class FilterComponent implements OnInit {
 
   initForm() {
     this.searchform = this.fb.group({
-      specialty: new FormControl('', Validators.required),
+      specialty: new FormControl(''),
       clinicAdress: new FormControl('')
     });
   }
