@@ -42,6 +42,8 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   async loadDoctors() {
     // Récupérer les paramètres de la route
+    console.log("dddddddddddddddddddddddddd")
+
     this.route.queryParams.subscribe(params => {
       const specialty = params['specialty'];
       const clinicAdress = params['clinicAdress'];

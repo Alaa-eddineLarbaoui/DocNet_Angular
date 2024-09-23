@@ -39,11 +39,13 @@ export class FilterComponent implements OnInit {
   }
 
   searchDoctor(): void {
+    console.log("eeeeeeeeeeeee")
+
     if (this.searchform.valid) {
       const { specialty, clinicAdress } = this.searchform.value;
 
       // Rediriger vers le composant AvailabilityCalendar avec les paramètres
-      this.router.navigate(['/availability-calendar'], {
+      this.router.navigate(['/calendar'], {
         queryParams: { specialty, clinicAdress }
       });
     } else {
