@@ -1,6 +1,6 @@
 <app-filter></app-filter>
 
-<section class="d">
+<section class="d" *ngIf="!isNotDataFound">
   <section class="section1">
 
     <div class="container">
@@ -95,9 +95,11 @@
     </div>
   </section>
 </section>
-<div *ngIf="showPopUp">
-  <p>not found</p>
-</div>
+
+<section *ngIf="isNotDataFound" class="dataNotFound">
+ <app-not-found></app-not-found>
+</section>
+
 
 <footer>
 

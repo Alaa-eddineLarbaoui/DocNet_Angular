@@ -24,6 +24,7 @@ export class AvailabilityCalendarComponent implements OnInit {
   itemsPerPage: number = 3;
   totalDoctors!: number;
   totalPages: number = 0;
+  isNotDataFound: boolean = false;
 
   showPopUp: boolean = false;
 
@@ -61,11 +62,13 @@ export class AvailabilityCalendarComponent implements OnInit {
         console.log(data)
 
         if (this.ListDoctors.length === 0) {
-          this.dialog.open(NotFoundComponent);
+            this.isNotDataFound=true;
+         // this.dialog.open(NotFoundComponent);
 
           //this.showPopUp = true;
 
         } else {
+          this.isNotDataFound=false;
 
           this.totalDoctors = this.ListDoctors.length;
           this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage);
