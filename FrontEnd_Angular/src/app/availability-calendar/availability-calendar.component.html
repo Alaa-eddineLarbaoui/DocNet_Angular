@@ -2,6 +2,11 @@
 
 <section class="d" *ngIf="!isNotDataFound">
   <section class="section1">
+    {{ ListDoctors.length + " " + "results" }}
+    <div  class="resultsNumber">
+    <!-- {{"Find a"+" "+ specialty+" "+ "in" +" "+ doctor.clinicAddress}}*/ -->
+      <p>  find {{ specialty}}</p>
+    </div>
 
     <div class="container">
       <div *ngFor="let doctor of paginatedDoctors" class="week-container">
@@ -15,7 +20,7 @@
             </div>
 
           </div>
-          <p>{{doctor.speciality}}</p>
+          <p>{{doctor.specialty}}</p>
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
           <button>Prendre Rendez-vous</button>
@@ -78,9 +83,6 @@
         <span style="color: red">Page {{currentPage}}</span>
         <p style="color: red">
           {{ "number of pages :"+ totalPages}}
-
-          {{ "Number of doctor" +ListDoctors.length}}
-
         </p>
         <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">Suivant</button>
       </div>

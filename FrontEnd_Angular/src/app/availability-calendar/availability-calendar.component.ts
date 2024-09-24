@@ -6,7 +6,10 @@ import { DoctorService } from "../Service/doctor.service";
 import { Availability } from "../Models/Availability";
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotFoundComponent} from "../not-found/not-found.component";
-import {MatDialog} from "@angular/material/dialog"; // Importer ActivatedRoute
+import {MatDialog} from "@angular/material/dialog";
+import {flatMap} from "rxjs";
+import {Speciality} from "../Enums/Speciality";
+import {Localisation} from "../Enums/Localisation"; // Importer ActivatedRoute
 
 @Component({
   selector: 'app-availability-calendar',
@@ -25,6 +28,9 @@ export class AvailabilityCalendarComponent implements OnInit {
   totalDoctors!: number;
   totalPages: number = 0;
   isNotDataFound: boolean = false;
+
+   specialty!:Speciality ;
+  clinicAdress!:Localisation;
 
   showPopUp: boolean = false;
 
@@ -51,15 +57,17 @@ export class AvailabilityCalendarComponent implements OnInit {
   async loadDoctors() {
     // Récupérer les paramètres de la route
     this.route.queryParams.subscribe(params => {
-      const specialty = params['specialty'];
-      const clinicAdress = params['clinicAdress'];
+      this.specialty= params['specialty'];
+      this.clinicAdress = params['clinicAdress'];
 
       // Appeler le service pour récupérer les docteurs en fonction des paramètres
-      this.doctorService.SearchDoctor(specialty, clinicAdress).subscribe((data: HealthProfessional[]) => {
+      this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
         console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
 
         console.log(data)
+        this.ListDoctors.forEach(doc => console.log(doc.username));
+
 
         if (this.ListDoctors.length === 0) {
             this.isNotDataFound=true;
@@ -180,4 +188,5 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   /*protected readonly numberAttribute = numberAttribute;
   protected readonly Number = Number;*/
+  protected readonly Speciality = Speciality;
 }

@@ -8,7 +8,7 @@ export interface HealthProfessional{
   email:string
   clinicAddress:string
   phoneNumber: string
-  speciality : Speciality
+  specialty : Speciality
   registrationNumber:string
   latitude:number
   longitude:number
