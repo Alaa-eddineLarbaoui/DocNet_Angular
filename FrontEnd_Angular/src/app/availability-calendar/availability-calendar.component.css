@@ -217,6 +217,7 @@
   background-color: white;
   border: none;
 }
+
 .buttonWeek2 {
   height: 5px;
   width: 23px;
@@ -302,7 +303,7 @@
 /* ********************** Data Not Found*********************/
 /************************************************************/
 
-.resultsNumber { 
+.resultsNumber {
   color: #333;
   background-color: rgb(248, 248, 248);
   font-size: 14.5px;
@@ -327,12 +328,13 @@
 } */
 .pagination {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
 }
 
-.BtnPrev, .BtnNext {
+.BtnPrev,
+.BtnNext {
   color: #007BFF;
   font-weight: 700;
   border: none;
@@ -341,23 +343,27 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
-.BtnPrev svg, .BtnNext svg {
-  margin-right: 8px; 
+.BtnPrev svg,
+.BtnNext svg {
+  margin-right: 8px;
 }
 
-.BtnPrev:hover, .BtnNext:hover {
-   color: #0056b3; 
+.BtnPrev:hover,
+.BtnNext:hover {
+  color: #0056b3;
 }
 
-.BtnPrev[disabled], .BtnNext[disabled] {
+.BtnPrev[disabled],
+.BtnNext[disabled] {
   color: #ccc;
   cursor: not-allowed;
 }
 
-.BtnPrev[disabled] svg, .BtnNext[disabled] svg {
+.BtnPrev[disabled] svg,
+.BtnNext[disabled] svg {
   fill: #ccc;
 }
 
@@ -371,13 +377,13 @@
 .currentPage {
   font-weight: bold;
   font-size: 18px;
-  color: #0056b3; 
+  color: #0056b3;
   margin: 0 10px;
 }
 
 .icon {
   fill: #007BFF;
-  font-weight: 400; 
+  font-weight: 400;
 }
 
 
@@ -620,5 +626,3 @@ width: 100%;
     width: 100%;
   }
 }
-
-
