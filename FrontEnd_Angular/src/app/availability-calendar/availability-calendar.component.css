@@ -117,9 +117,12 @@
 
 
 .container {
+  flex: 1;
+  /* Cette ligne garantit que la container prend tout l'espace disponible */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  max-width: 1000px
 }
 
 .div2 {
@@ -297,6 +300,28 @@
 
 .section2 {
   width: 34%;
+  max-height: 1308px;
+  margin-top: 44px;
+  margin-right: 9px;
+  margin-left: 9px;
+  position: sticky;
+  top: 0;
+
+
+
+}
+
+.map-container {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
 }
 
 /************************************************************/
@@ -324,7 +349,7 @@
 .BtnPrev
 
 .BtnNext{
-  
+
 } */
 .pagination {
   display: flex;
@@ -522,6 +547,7 @@ width: 100%;
 
   .section2 {
     width: 34%;
+
   }
 
   .day {

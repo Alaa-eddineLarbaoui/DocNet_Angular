@@ -24,7 +24,7 @@ export class AvailabilityCalendarComponent implements OnInit {
   availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
 
   currentPage: number = 1;
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 2;
   totalDoctors!: number;
   totalPages: number = 0;
   isNotDataFound: boolean = false;
