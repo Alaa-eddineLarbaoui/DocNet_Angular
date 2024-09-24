@@ -1,12 +1,17 @@
 <app-filter></app-filter>
 
 <section class="d" *ngIf="!isNotDataFound">
+
+
+
   <section class="section1">
-    {{ ListDoctors.length + " " + "results" }}
+
+
     <div  class="resultsNumber">
-    <!-- {{"Find a"+" "+ specialty+" "+ "in" +" "+ doctor.clinicAddress}}*/ -->
-      <p>  find {{ specialty}}</p>
+      {{ ListDoctors.length + " " + "results of your doctor search "}}
+      <!--  {{"Find a"+" "+ specialty+" "+ "in" +" "+ clinicAdress} -->
     </div>
+
 
     <div class="container">
       <div *ngFor="let doctor of paginatedDoctors" class="week-container">

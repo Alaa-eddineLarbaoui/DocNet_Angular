@@ -60,13 +60,16 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.specialty= params['specialty'];
       this.clinicAdress = params['clinicAdress'];
 
+      console.log("ALaaaaaaaaaaaaallll")
+      console.log(this.specialty);
+      console.log(this.clinicAdress);
+
       // Appeler le service pour récupérer les docteurs en fonction des paramètres
       this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
-        console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
 
+        console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
         console.log(data)
-        this.ListDoctors.forEach(doc => console.log(doc.username));
 
 
         if (this.ListDoctors.length === 0) {
