@@ -298,7 +298,10 @@
   width: 34%;
 }
 
+/************************************************************/
 /* ********************** Data Not Found*********************/
+/************************************************************/
+
 .resultsNumber { 
   color: #333;
   background-color: rgb(248, 248, 248);
@@ -306,6 +309,81 @@
   font-weight: 500;
   margin: 15px 0px 8px 21px;
 }
+
+
+
+/************************************************************/
+/*********************** Pagination   ***********************/
+/************************************************************/
+
+/* .pagination{
+  display: flex;
+  align-content: center;
+}
+.BtnPrev
+
+.BtnNext{
+  
+} */
+.pagination {
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+  margin: 20px 0;
+}
+
+.BtnPrev, .BtnNext {
+  color: #007BFF;
+  font-weight: 700;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: transparent; 
+}
+
+.BtnPrev svg, .BtnNext svg {
+  margin-right: 8px; 
+}
+
+.BtnPrev:hover, .BtnNext:hover {
+   color: #0056b3; 
+}
+
+.BtnPrev[disabled], .BtnNext[disabled] {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.BtnPrev[disabled] svg, .BtnNext[disabled] svg {
+  fill: #ccc;
+}
+
+
+.numberOfPage {
+  font-size: 14px;
+  color: #666;
+  margin: 0 10px;
+}
+
+.currentPage {
+  font-weight: bold;
+  font-size: 18px;
+  color: #0056b3; 
+  margin: 0 10px;
+}
+
+.icon {
+  fill: #007BFF;
+  font-weight: 400; 
+}
+
+
+
+
+
 
 
 

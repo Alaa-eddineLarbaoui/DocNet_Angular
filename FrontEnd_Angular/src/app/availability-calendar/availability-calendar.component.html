@@ -81,16 +81,28 @@
       </div>
 
 
-
-
       <div class="pagination">
-        <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
-        <span style="color: red">Page {{currentPage}}</span>
-        <p style="color: red">
-          {{ "number of pages :"+ totalPages}}
-        </p>
-        <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">Suivant</button>
+        <button class="BtnPrev" (click)="previousPage()" [disabled]="currentPage === 1">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" focusable="false" class="icon">
+            <path d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z">
+            </path>
+          </svg>
+          Précédent
+        </button>
+
+        <span class="currentPage">Page {{currentPage}} of {{totalPages}}</span>
+
+        <button class="BtnNext" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">
+          Suivant
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" focusable="false" class="icon">
+            <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+            </path>
+          </svg>
+        </button>
       </div>
+
 
     </div>
   </section>
