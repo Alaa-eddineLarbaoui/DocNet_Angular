@@ -1,0 +1,19 @@
+.message {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+
+}
+
+.h2 {
+    margin-bottom: 15px;
+    font-size: 35px;
+}
+
+.p {
+    margin: 0px;
+    font-size: 16px;
+
+}
