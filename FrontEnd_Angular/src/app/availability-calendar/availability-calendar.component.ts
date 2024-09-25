@@ -9,7 +9,8 @@ import {NotFoundComponent} from "../not-found/not-found.component";
 import {MatDialog} from "@angular/material/dialog";
 import {flatMap} from "rxjs";
 import {Speciality} from "../Enums/Speciality";
-import {Localisation} from "../Enums/Localisation"; // Importer ActivatedRoute
+import {Localisation} from "../Enums/Localisation";
+import {DoctorSharedService} from "../Service/doctor-shared.service"; // Importer ActivatedRoute
 
 @Component({
   selector: 'app-availability-calendar',
@@ -24,7 +25,7 @@ export class AvailabilityCalendarComponent implements OnInit {
   availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
 
   currentPage: number = 1;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 3;
   totalDoctors!: number;
   totalPages: number = 0;
   isNotDataFound: boolean = false;
@@ -36,11 +37,12 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   constructor(
     private availabilityService: AvailabilityService,
-    private datePipe: DatePipe,
     private doctorService: DoctorService,
+    private doctorSharedService:DoctorSharedService,
+    private datePipe: DatePipe,
     private route: ActivatedRoute ,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
 
   ) {}
 
@@ -67,6 +69,10 @@ export class AvailabilityCalendarComponent implements OnInit {
       // Appeler le service pour récupérer les docteurs en fonction des paramètres
       this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe((data: HealthProfessional[]) => {
         this.ListDoctors = data;
+
+        // Envoyer les docteurs filtrés au service partagé
+        this.doctorSharedService.setFilteredDoctors(this.ListDoctors);
+
 
         console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
         console.log(data)

@@ -5,6 +5,7 @@ import { DoctorService } from "../Service/doctor.service";
 import { GeocodingService } from "../Service/geocoding.service";
 import lottie from 'lottie-web';
 import { addAriaReferencedId } from "@angular/cdk/a11y";
+import {DoctorSharedService} from "../Service/doctor-shared.service";
 
 @Component({
   selector: 'app-map',
@@ -19,7 +20,8 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   constructor(
     private doctorService: DoctorService,
-    private geocodingService: GeocodingService
+    private geocodingService: GeocodingService,
+    private doctorSharedService:DoctorSharedService
   ) { }
 
   ngOnInit(): void { }
@@ -29,8 +31,11 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   loadDoctors(): void {
-    this.doctorService.getAllHealthProfessionals().subscribe(data => {
-      console.log(data);  // list of doctor
+    this.doctorSharedService.filteredDoctors$.subscribe(data => {
+
+      console.log("data sharedddddd ::::")
+      console.log(data);  // list of doctor filtre
+
       if (data.length > 0) {
         this.initMap(data[0].latitude, data[0].longitude);
         this.clearMarkers();
