@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {LoginService} from "../Services/login.service";
 import {Erole} from "../Enums/Erole";
+import {LoginRequest} from "../Models/LoginRequest";
+import {LoginService} from "../Service/login.service";
 import {jwtDecode} from "jwt-decode";
 
-import {LoginRequest} from "./app.login";
+
 
 
 
