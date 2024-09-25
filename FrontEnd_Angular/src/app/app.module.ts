@@ -18,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { NotFoundComponent } from './not-found/not-found.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { LoginComponent } from './login/login.component';
+import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     AvailabilityCalendarComponent,
     FilterComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    DoctorDetailsComponent
   ],
   imports: [
     BrowserModule,
