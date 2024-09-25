@@ -14,7 +14,7 @@ import {jwtDecode} from "jwt-decode";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl:'./login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit{
           console.log(decodedToken)
           console.log(roleMap)
           if (decodedToken.role.includes(Erole.ADMIN)) {
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/calendar']);
           }else if (decodedToken.role.includes(Erole.DOCTOR)) {
-            this.router.navigate(['/doctor']);
+            this.router.navigate(['/notFound']);
           }
           else if (decodedToken.role.includes(Erole.PATIENT)){
             console.log("patienttt")
-            this.router.navigate(['/patient']);
+            this.router.navigate(['/filter']);
           }
         },
         error: (err) => {
