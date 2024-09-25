@@ -24,7 +24,9 @@ export class MapComponent implements AfterViewInit, OnInit {
     private doctorSharedService:DoctorSharedService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit(): void {
     this.loadDoctors();
@@ -37,8 +39,16 @@ export class MapComponent implements AfterViewInit, OnInit {
       console.log(data);  // list of doctor filtre
 
       if (data.length > 0) {
-        this.initMap(data[0].latitude, data[0].longitude);
+        // Effacer les marqueurs actuels avant d'ajouter les nouveaux
         this.clearMarkers();
+
+        // Réinitialiser la carte avec la nouvelle localisation du premier docteur
+        this.initMap(data[0].latitude, data[0].longitude);
+
+
+
+
+
 
         this.markers = data.map(doctor => {
           const lottieDiv = divIcon({
@@ -85,20 +95,28 @@ export class MapComponent implements AfterViewInit, OnInit {
     });
   }
 
+
   initMap(latitude: number, longitude: number): void {
-    this.map = L.map('map', {
-      center: [latitude, longitude],
-      zoom: 1  // Ajusté pour un meilleur aperçu initial
-    });
+    // Ne créez la carte que si elle n'a pas encore été initialisée
+    if (!this.map) {
+      this.map = L.map('map', {
+        center: [latitude, longitude],
+        zoom: 10  // Ajusté pour un meilleur aperçu initial
+      });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+      const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        minZoom: 3,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      });
 
-    tiles.addTo(this.map);
+      tiles.addTo(this.map);
+    } else {
+      // Si la carte existe déjà, recentrez-la simplement sur la nouvelle position
+      this.map.setView([latitude, longitude], 10);
+    }
   }
+
 
   addMarkersToMap(): void {
     this.markers.forEach(marker => marker.addTo(this.map));
