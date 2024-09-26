@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'notFound' , component:NotFoundComponent }
 */
 
-
 ];
 
 @NgModule({

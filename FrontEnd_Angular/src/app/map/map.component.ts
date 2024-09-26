@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { icon, marker, Marker, Map, divIcon } from 'leaflet';
 import * as L from 'leaflet';
-import { DoctorService } from "../Service/doctor.service";
-import { GeocodingService } from "../Service/geocoding.service";
+import { DoctorService } from '../Service/doctor.service';
+import { GeocodingService } from '../Service/geocoding.service';
 import lottie from 'lottie-web';
-import { addAriaReferencedId } from "@angular/cdk/a11y";
-import {DoctorSharedService} from "../Service/doctor-shared.service";
+import { DoctorSharedService } from '../Service/doctor-shared.service';
 
 @Component({
   selector: 'app-map',
@@ -21,33 +20,29 @@ export class MapComponent implements AfterViewInit, OnInit {
   constructor(
     private doctorService: DoctorService,
     private geocodingService: GeocodingService,
-    private doctorSharedService:DoctorSharedService
-  ) { }
+    private doctorSharedService: DoctorSharedService
+  ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.loadDoctors();
   }
 
   loadDoctors(): void {
-    this.doctorService.getAllHealthProfessionals().subscribe(data => {
-
-      console.log("data sharedddddd ::::")
-      console.log(data);  // list of doctor filtre  //
+    this.doctorSharedService.filteredDoctors$.subscribe((data) => {
+      console.log('data received:');
+      console.log(data); // Liste des docteurs filtrés
 
       if (data.length > 0) {
-        //delete the markers
+        // Efface les anciens marqueurs
         this.clearMarkers();
 
-        // New location of premeir doctor
+        // Nouvelle position du premier docteur
         this.initMap(data[0].latitude, data[0].longitude);
 
-
-
-        this.markers = data.map(doctor => {
+        // Création des marqueurs pour chaque docteur
+        this.markers = data.map((doctor) => {
           const lottieDiv = divIcon({
             className: '',
             html: `<div id="lottie-marker-${doctor.id}" style="width: 45px; height: 45px;"></div>`,
@@ -55,50 +50,49 @@ export class MapComponent implements AfterViewInit, OnInit {
             iconAnchor: [25, 25]
           });
 
-          const docMarker = marker([doctor.latitude, doctor.longitude], { icon: lottieDiv });
-          console.log(doctor.latitude, "+", doctor.id)
-          this.geocodingService.reverseGeocode(doctor.latitude, doctor.longitude)
-            .subscribe(address => {
-              docMarker.bindPopup(`
-                <div class="popup-card">
-                  <h3>${doctor.username}</h3>
-                  <p><strong>Email:</strong> ${doctor.email}</p>
-                  <p><strong>Phone:</strong> ${doctor.phoneNumber}</p>
-                  <p><strong>Address:</strong> ${address}</p>
-                  <p><strong>Specialty:</strong> ${doctor.specialty}</p>
-                  <p><strong>Registration Number:</strong> ${doctor.registrationNumber}</p>
-                  <p><strong>Coordinates:</strong> ${doctor.latitude}, ${doctor.longitude}</p>
-                </div>
-              `);
-              console.log("dreeeeeeeeeeeeeeeeeeeeeeeeeeeessssssssss : ")
-              console.log(address)
-            });
+          const docMarker = marker([doctor.latitude, doctor.longitude], {
+            icon: lottieDiv
+          });
 
+          // Liaison d'une popup aux marqueurs
+          docMarker.bindPopup(`
+            <div class="popup-card">
+              <h3>${doctor.username}</h3>
+              <p><strong>Email:</strong> ${doctor.email}</p>
+              <p><strong>Phone:</strong> ${doctor.phoneNumber}</p>
+              <p><strong>Address:</strong> ${doctor.clinicAddress}</p>
+              <p><strong>Specialty:</strong> ${doctor.specialty}</p>
+              <p><strong>Registration Number:</strong> ${doctor.registrationNumber}</p>
+              <p><strong>Coordinates:</strong> ${doctor.latitude}, ${doctor.longitude}</p>
+            </div>
+          `);
+
+          // Charger l'animation Lottie lorsque le marqueur est ajouté à la carte
           docMarker.on('add', () => {
             lottie.loadAnimation({
               container: document.getElementById(`lottie-marker-${doctor.id}`) as Element,
               renderer: 'svg',
               loop: true,
               autoplay: true,
-              path: 'assets/img/Animation - 1725491917670.json'
+              path: 'assets/img/Animation - 1725491917670.json' // Chemin correct de l'animation Lottie
             });
           });
 
           return docMarker;
         });
 
+        // Ajout des marqueurs à la carte
         this.addMarkersToMap();
       }
     });
   }
 
-
   initMap(latitude: number, longitude: number): void {
-    // Ne créez la carte que si elle n'a pas encore été initialisée
+    // Initialisation de la carte si elle n'existe pas encore
     if (!this.map) {
       this.map = L.map('map', {
         center: [latitude, longitude],
-        zoom: 10  // Ajusté pour un meilleur aperçu initial
+        zoom: 10 // Zoom initial ajusté
       });
 
       const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -109,18 +103,19 @@ export class MapComponent implements AfterViewInit, OnInit {
 
       tiles.addTo(this.map);
     } else {
-      // Si la carte existe déjà, recentrez-la simplement sur la nouvelle position
+      // Recentrer la carte si elle est déjà initialisée
       this.map.setView([latitude, longitude], 10);
     }
   }
 
-
   addMarkersToMap(): void {
-    this.markers.forEach(marker => marker.addTo(this.map));
+    // Ajouter chaque marqueur à la carte
+    this.markers.forEach((marker) => marker.addTo(this.map));
   }
 
   private clearMarkers(): void {
-    this.markers.forEach(marker => this.map.removeLayer(marker));
+    // Efface tous les anciens marqueurs de la carte
+    this.markers.forEach((marker) => this.map.removeLayer(marker));
     this.markers = [];
   }
 }

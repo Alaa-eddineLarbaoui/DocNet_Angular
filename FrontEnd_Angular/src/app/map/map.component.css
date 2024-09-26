@@ -47,27 +47,21 @@
 
 
 
-/*.map-container {
+.map-container {
   position: sticky;
   top: 0;
-  !* Ajustez cette valeur selon vos besoins *!
+  /* Ajustez cette valeur selon vos besoins */
   z-index: 10;
   min-width: 300px;
-  !* S'assurer que la carte a une largeur minimale *!
+  /* S'assurer que la carte a une largeur minimale */
   height: 850px;
-  !* Hauteur de la carte *!
+  /* Hauteur de la carte */
 
-}*/
+}
 
 #map {
 
   height: 100%;
   width: 100%;
-}
-.map-container {
- flex:1;
-  min-width: 300px;
-  height: 300px;
-
-
+  border-radius: 20px;
 }

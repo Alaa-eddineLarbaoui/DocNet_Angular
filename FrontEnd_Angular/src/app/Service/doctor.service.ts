@@ -31,7 +31,7 @@ export class DoctorService {
   }
 
   getHealthProfById(idProf:number):Observable<HealthProfessional>{
-    return this.http.get<HealthProfessional>(`${this.apiUrl}get/${idProf}`);
+    return this.http.get<HealthProfessional>(`${this.apiUrl}/get/${idProf}`);
   }
   deleteHealthProf(id:number) :Observable<any>{
     return this.http.delete(`${this.apiUrl}delete/${id}`)
