@@ -28,7 +28,7 @@
           <p>{{doctor.specialty}}</p>
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
-          <button>Prendre Rendez-vous</button>
+          <a [routerLink]="['doctor', doctor.id]">Prendre Rendez-vous</a>
         </div>
 
         <!-- Navigation button to move to the previous week -->
@@ -95,7 +95,7 @@
         <span class="currentPage">Page {{currentPage}} of {{totalPages}}</span>
 
         <button class="BtnNext" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">
-          NEXT 
+          NEXT
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true" focusable="false" class="icon">
             <path

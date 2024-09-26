@@ -4,6 +4,7 @@ import { DoctorService } from '../Service/doctor.service';
 import lottie from 'lottie-web';
 import * as L from 'leaflet';
 import { HealthProfessional } from "../Models/HealthProfessional";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-map-doctor',
@@ -15,13 +16,14 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
   markers: Marker[] = [];
   latitude!: number;
   longitude!: number;
-  idProf: number = 7;  // Health professional's ID
+  idProf!: number;  // Health professional ID
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(private doctorService: DoctorService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.idProf = +this.route.snapshot.paramMap.get('id')!;
     this.loadDoctor();
   }
 
