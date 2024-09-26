@@ -3,7 +3,7 @@ import { divIcon, Map, marker, Marker } from 'leaflet';
 import { DoctorService } from '../Service/doctor.service';
 import lottie from 'lottie-web';
 import * as L from 'leaflet';
-import {HealthProfessional} from "../Models/HealthProfessional";
+import { HealthProfessional } from "../Models/HealthProfessional";
 
 @Component({
   selector: 'app-map-doctor',
@@ -15,7 +15,7 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
   markers: Marker[] = [];
   latitude!: number;
   longitude!: number;
-  idProf: number = 7;  // ID du professionnel de santé
+  idProf: number = 7;  // Health professional's ID
 
   constructor(private doctorService: DoctorService) {}
 
@@ -30,13 +30,13 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
       console.log('Doctor data received:', doctor);
 
       if (doctor) {
-        // Supprimer les anciens marqueurs avant d'en ajouter de nouveaux
+
         this.clearMarkers();
 
-        // Initialiser la carte avec la position du docteur
-        this.initMap(doctor.latitude, doctor.longitude);
+        this.initMapp
+        (doctor.latitude, doctor.longitude);
 
-        // Créer le marqueur pour le docteur
+        // Create the marker for the doctor
         const lottieDiv = divIcon({
           className: '',
           html: `<div id="lottie-marker-${doctor.id}" style="width: 45px; height: 45px;"></div>`,
@@ -48,7 +48,7 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
           icon: lottieDiv
         });
 
-        // Liaison d'une popup aux marqueurs
+        // Bind a popup to the markers
         docMarker.bindPopup(`
           <div class="popup-card">
             <h3>${doctor.username}</h3>
@@ -61,53 +61,53 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
           </div>
         `);
 
-        // Charger l'animation Lottie lorsque le marqueur est ajouté à la carte
+        // Load the Lottie animation when the marker is added to the map
         docMarker.on('add', () => {
           lottie.loadAnimation({
             container: document.getElementById(`lottie-marker-${doctor.id}`) as Element,
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'assets/img/Animation - 1725491917670.json' // Assurez-vous que le chemin vers l'animation est correct
+            path: 'assets/img/Animation - 1725491917670.json' // Make sure the animation path is correct
           });
         });
 
-        // Ajouter le marqueur à la carte
+        // Add the marker to the map
         docMarker.addTo(this.map);
 
-        // Ajouter ce marqueur à la liste des marqueurs pour un éventuel nettoyage
+        // Add this marker to the marker list for possible cleanup later
         this.markers.push(docMarker);
       }
     });
   }
 
-  initMap(latitude: number, longitude: number): void {
-    // Initialisation de la carte si elle n'existe pas encore
+  initMapp(latitude: number, longitude: number): void {
+    // Initialize the map if it doesn't exist yet
     if (!this.map) {
       this.map = L.map('map', {
         center: [latitude, longitude],
-        zoom: 10 // Zoom initial ajusté
+        zoom: 16 // Adjusted initial zoom
       });
 
       const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         minZoom: 3,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       });
 
       tiles.addTo(this.map);
     } else {
-      // Si la carte existe déjà, recentrer la vue
+      // If the map already exists, recenter the view
       this.map.setView([latitude, longitude], 10);
     }
   }
 
-  // Ajouter tous les marqueurs à la carte
+  // Add all markers to the map
   addMarkersToMap(): void {
     this.markers.forEach(marker => marker.addTo(this.map));
   }
 
-  // Effacer tous les marqueurs de la carte
+  // Clear all markers from the map
   private clearMarkers(): void {
     this.markers.forEach(marker => this.map.removeLayer(marker));
     this.markers = [];
