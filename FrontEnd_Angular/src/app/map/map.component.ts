@@ -33,20 +33,17 @@ export class MapComponent implements AfterViewInit, OnInit {
   }
 
   loadDoctors(): void {
-    this.doctorSharedService.filteredDoctors$.subscribe(data => {
+    this.doctorService.getAllHealthProfessionals().subscribe(data => {
 
       console.log("data sharedddddd ::::")
-      console.log(data);  // list of doctor filtre
+      console.log(data);  // list of doctor filtre  //
 
       if (data.length > 0) {
-        // Effacer les marqueurs actuels avant d'ajouter les nouveaux
+        //delete the markers
         this.clearMarkers();
 
-        // Réinitialiser la carte avec la nouvelle localisation du premier docteur
+        // New location of premeir doctor
         this.initMap(data[0].latitude, data[0].longitude);
-
-
-
 
 
 
