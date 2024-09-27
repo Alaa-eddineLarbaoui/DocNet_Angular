@@ -6,6 +6,8 @@ import {AppointmentStatus} from "../Enums/AppointmentStatus";
 import {AppointmentReason} from "../Enums/AppointmentReason";
 import {AvailabilityService} from "../Service/availability.service";
 import {Availability} from "../Models/Availability";
+import {JwtDto} from "../Models/JwtDto";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-appointments',
@@ -19,13 +21,16 @@ export class AppointmentsComponent implements OnInit {
   appointmentForm: FormGroup;
   submitted = false;
   successMessage: string | null = null;
-  idPatient: number = 1;
-  idProfessional: number = 2;
+  idPatient!: number;
+  idProfessional!: number;
   minDate: string;
 
 
   constructor(
-    private appointmentService: AppointmentService, private availabilityService:AvailabilityService  ,private fb: FormBuilder
+    private appointmentService: AppointmentService,
+    private availabilityService:AvailabilityService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) {
     this.appointmentForm = this.fb.group({
       date: ['', Validators.required],
@@ -40,16 +45,18 @@ export class AppointmentsComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.idProfessional = +this.route.snapshot.paramMap.get('id')!;
+    this.getIdPersonFromJwt();
+  }
 
   getAvailableTimes(): void {
     const date = this.appointmentForm.get('date')?.value;
     console.log(date)
     //const professionalId = this.appointmentForm.get('professionalId')?.value;
-    const professionalId = 2;
 
-    if (date && professionalId) {
-      this.availabilityService.getTimes(date, professionalId).subscribe(times => {
+    if (date && this.idProfessional) {
+      this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
         this.availableTimes = times;
       });
     }
@@ -75,6 +82,20 @@ export class AppointmentsComponent implements OnInit {
           },
           error: err => console.error('Erreur lors de la réservation', err)
         });
+    }
+  }
+
+
+
+  // Function to retrieve the user's ID
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.user_id);
+      this.idPatient = jwtData.user_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
 
