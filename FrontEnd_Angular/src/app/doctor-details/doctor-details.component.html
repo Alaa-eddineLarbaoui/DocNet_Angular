@@ -36,67 +36,60 @@
 
 
 
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
-
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <section>
-<!-- Barre de navigation avec Bootstrap -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Doctolib</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <!-- Barre de navigation avec Bootstrap -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Doctolib</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Centre d'aide</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mes messages</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mes rendez-vous</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mes documents</a>
-      </li>
-    </ul>
-    <div class="user-profile d-flex align-items-center">
-      <span>alaa edd</span>
-      <div class="notification-bubble ml-2">1</div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Centre d'aide</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mes messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mes rendez-vous</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mes documents</a>
+        </li>
+      </ul>
+      <div class="user-profile d-flex align-items-center">
+        <span>alaa edd</span>
+        <div class="notification-bubble ml-2">1</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Doctor Profile Section -->
+  <div class="profile-container">
+    <img src="https://via.placeholder.com/150" alt="Doctor Profile Picture" class="profile-pic">
+    <div class="profile-details">
+      <h1>Dr Audrey PIOLLET</h1>
+      <p>Médecin généraliste</p>
     </div>
   </div>
-</nav>
 
-<!-- Doctor Profile Section -->
-<div class="profile-container">
-  <img src="https://via.placeholder.com/150" alt="Doctor Profile Picture" class="profile-pic">
-  <div class="profile-details">
-    <h1>Dr Audrey PIOLLET</h1>
-    <p>Médecin généraliste</p>
+  <!-- Navigation Links -->
+  <div class="tabs-container">
+    <a href="#" class="tab active">L'essentiel</a>
+    <a href="#" class="tab">Carte</a>
+    <a href="#" class="tab">Présentation</a>
+    <a href="#" class="tab">Horaires</a>
   </div>
-</div>
-
-<!-- Navigation Links -->
-<div class="tabs-container">
-  <a href="#" class="tab active">L'essentiel</a>
-  <a href="#" class="tab">Carte</a>
-  <a href="#" class="tab">Présentation</a>
-  <a href="#" class="tab">Horaires</a>
-</div>
 
 </section>
 <section>
 
   <app-map-doctor></app-map-doctor>
 </section>
-
-
-
