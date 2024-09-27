@@ -6,17 +6,22 @@ import {NotFoundComponent} from "./not-found/not-found.component";
 import {LoginComponent} from "./login/login.component";
 import {MapDoctorComponent} from "./map-doctor/map-doctor.component";
 import {DoctorDetailsComponent} from "./doctor-details/doctor-details.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
 
   { path: 'filter', component: FilterComponent },
   { path: 'calendar', component: AvailabilityCalendarComponent },
-   { path: '', redirectTo: '/filter', pathMatch: 'full' },
+  { path: '', redirectTo: '/filter', pathMatch: 'full' },
   //{  path:'',component:LoginComponent},
   { path: 'notFound' , component:NotFoundComponent },
+   //{ path: 'admin', component: CalendarComponent, canActivate: [AuthGuard] },  // Accessible seulement pour Admin */
+  { path: 'doctor', component: NotFoundComponent, canActivate: [AuthGuard] }, // Accessible seulement pour Doctor
+ { path: 'patient', component: FilterComponent, canActivate: [AuthGuard] },   // Accessible seulement pour Patient
+  {path:'calendar/doctor/:id' , component : DoctorDetailsComponent},
 
+  { path: '**' , component:NotFoundComponent },
 
-  {path:'calendar/doctor/:id' , component : DoctorDetailsComponent}
 
 ];
 
