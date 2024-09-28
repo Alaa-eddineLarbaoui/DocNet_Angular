@@ -30,6 +30,7 @@
               "node_modules/leaflet/dist/leaflet.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css"
 
+
             ],
             "scripts": [
 
