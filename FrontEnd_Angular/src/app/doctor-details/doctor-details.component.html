@@ -37,6 +37,8 @@
 
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
 <section>
   <!-- Barre de navigation avec Bootstrap -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -88,16 +90,47 @@
     <a href="#" class="tab">Horaires</a>
   </div>
 
-</section>
-<section>
-<div>
-  <app-map-doctor></app-map-doctor>
 
 
-</div>
-<div>
-  <a [routerLink]="['/appointment', idProf]">Prendre Rendez-vous</a>
 
-</div>
 
 </section>
+
+
+
+<section class="detail-Section">
+
+  <section  class="detail-body">
+
+    <div>
+      <app-map-doctor></app-map-doctor>
+  
+  
+    </div>
+  
+
+  </section>
+
+
+
+
+  <section class="div-appointment">
+ 
+    <div class="appointment-container">
+      <h2>Réserver un rendez-vous</h2>
+      <button type="submit" class="btn btn-primary">Réserver</button>
+    </div>
+
+    
+  </section>
+
+
+
+</section>
+
+
+
+
+
+
+

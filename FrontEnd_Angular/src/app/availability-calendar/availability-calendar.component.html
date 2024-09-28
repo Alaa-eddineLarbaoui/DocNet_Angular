@@ -6,7 +6,6 @@
 
   <section class="section1">
 
-
     <div class="resultsNumber">
       {{ ListDoctors.length + " " + "results of your doctor search "}}
       <!--  {{"Find a"+" "+ specialty+" "+ "in" +" "+ clinicAdress} -->
@@ -28,7 +27,10 @@
           <p>{{doctor.specialty}}</p>
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
-          <a [routerLink]="['doctor', doctor.id]">Prendre Rendez-vous</a>
+
+          <button class="appointment-button" [routerLink]="['doctor', doctor.id]">
+            Book an appointment </button>
+
         </div>
 
         <!-- Navigation button to move to the previous week -->
@@ -89,7 +91,7 @@
               d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z">
             </path>
           </svg>
-           PREVIOUS
+          PREVIOUS
         </button>
 
         <span class="currentPage">Page {{currentPage}} of {{totalPages}}</span>

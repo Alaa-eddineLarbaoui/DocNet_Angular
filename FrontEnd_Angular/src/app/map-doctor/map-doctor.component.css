@@ -40,11 +40,11 @@
   border: 1px solid #ddd;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 53%;
   height: 300px;
   border-radius: 15px;
   margin-top: 20px;
   margin-left: 20px;
+  
   background-color:red;
 }
 

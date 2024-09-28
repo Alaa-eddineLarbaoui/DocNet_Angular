@@ -28,7 +28,12 @@ const routes: Routes = [
 
 ];
 
-@NgModule({imports: [RouterModule.forRoot(routes)],
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled', // Cette option permet de restaurer la position de défilement
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
