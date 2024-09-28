@@ -33,12 +33,12 @@ export class AppointmentsComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.appointmentForm = this.fb.group({
-      date: ['', Validators.required],
-      time: ['', Validators.required],
-      reason: ['', Validators.required],
+      date: [{ value: '', disabled: false }, Validators.required],
+      time: [{ value: '', disabled: false }, Validators.required],
+      appointment_reason: ['', Validators.required],
       note: [''],
-      patientId: [1, Validators.required],
-      professionalId: [2, Validators.required]
+      patientId: [this.idPatient],
+      professionalId: [this.idProfessional]
     });
 
     this.minDate = new Date().toISOString().split('T')[0];
@@ -46,8 +46,15 @@ export class AppointmentsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // for get the id of doctor from the path
     this.idProfessional = +this.route.snapshot.paramMap.get('id')!;
     this.getIdPersonFromJwt();
+
+    // Updates the form with the patient ID and the professional ID.
+    this.appointmentForm.patchValue({
+      patientId: this.idPatient,
+      professionalId: this.idProfessional
+    });
   }
 
   getAvailableTimes(): void {
@@ -55,15 +62,33 @@ export class AppointmentsComponent implements OnInit {
     console.log(date)
     //const professionalId = this.appointmentForm.get('professionalId')?.value;
 
-    if (date && this.idProfessional) {
-      this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
-        this.availableTimes = times;
-      });
-    }
-  }
+
+        if (date && this.idProfessional) {
+          this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
+            this.availableTimes = times;
+
+            // Disable or enable the 'time' field based on the availability of slots.
+
+            if (this.availableTimes.length === 0) {
+              this.appointmentForm.get('time')?.disable();
+
+              alert("choose another day")
+              this.appointmentForm.patchValue({
+                date: ''
+
+              });
 
 
-  // Soumettre la réservation
+            } else {
+              this.appointmentForm.get('time')?.enable();
+            }
+          });
+        }
+      };
+
+
+
+  // Submit the booking
   onSubmit(): void {
     this.submitted = true;
 
@@ -73,15 +98,22 @@ export class AppointmentsComponent implements OnInit {
         status: AppointmentStatus.RESERVED
       };
 
+      console.log('Sending appointment:', appointment);
+
       this.appointmentService.reserveAppointment(appointment, this.idPatient, this.idProfessional)
         .subscribe({
           next: () => {
-            this.successMessage = 'Rendez-vous réservé avec succès !';
+            this.successMessage = 'Appointment successfully booked!';
             this.appointmentForm.reset();
             this.submitted = false;
           },
-          error: err => console.error('Erreur lors de la réservation', err)
+          error: err => {
+            console.error('Erreur lors de la réservation', err);
+            console.log('Détails de lerreur:', err);
+          }
         });
+    } else {
+      console.log('Formulaire invalide:', this.appointmentForm.value);
     }
   }
 
@@ -98,6 +130,9 @@ export class AppointmentsComponent implements OnInit {
       console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
+
+
+
 
   protected readonly AppointmentReason = AppointmentReason;
 }

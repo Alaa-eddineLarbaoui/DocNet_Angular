@@ -14,7 +14,8 @@ export class CreateAvailabilityComponent {
   constructor(
     private fb: FormBuilder,
     private availabilityService: AvailabilityService
-  ) {
+  )
+  {
     this.availabilityForm = this.fb.group({
       date: ['', Validators.required],
       startTime: ['', Validators.required],
@@ -28,7 +29,7 @@ export class CreateAvailabilityComponent {
   onSubmit() {
     if (this.availabilityForm.valid) {
       const formValue = this.availabilityForm.value;
-      const professionalId = 3;
+      const professionalId = 7;
 
       console.log(formValue+"jdddddddddddddddddddd")
       console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl")

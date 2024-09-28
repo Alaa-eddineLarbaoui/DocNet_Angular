@@ -6,7 +6,7 @@ export interface Appointment {
   date: string; // Format: "yyyy-MM-dd"
   time: string; // Format: "HH:mm:ss"
   status: AppointmentStatus;
-  appointmentReason: AppointmentReason;
+  appointment_Reason: AppointmentReason;
   note: string;
   patientId: number;
   professionalId: number;

@@ -4,13 +4,11 @@ import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { DoctorService } from "../Service/doctor.service";
 import { Availability } from "../Models/Availability";
-import {ActivatedRoute, Router} from '@angular/router';
-import {NotFoundComponent} from "../not-found/not-found.component";
-import {MatDialog} from "@angular/material/dialog";
-import {flatMap} from "rxjs";
-import {Speciality} from "../Enums/Speciality";
-import {Localisation} from "../Enums/Localisation";
-import {DoctorSharedService} from "../Service/doctor-shared.service"; // Importer ActivatedRoute
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from "@angular/material/dialog";
+import { Speciality } from "../Enums/Speciality";
+import { Localisation } from "../Enums/Localisation";
+import { DoctorSharedService } from "../Service/doctor-shared.service";
 
 @Component({
   selector: 'app-availability-calendar',
@@ -30,75 +28,63 @@ export class AvailabilityCalendarComponent implements OnInit {
   totalPages: number = 0;
   isNotDataFound: boolean = false;
 
-   specialty!:Speciality ;
-  clinicAdress!:Localisation;
-
+  specialty!: Speciality;
+  clinicAdress!: Localisation;
   showPopUp: boolean = false;
 
   constructor(
     private availabilityService: AvailabilityService,
     private doctorService: DoctorService,
-    private doctorSharedService:DoctorSharedService,
+    private doctorSharedService: DoctorSharedService,
     private datePipe: DatePipe,
-    private route: ActivatedRoute ,
+    private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog,
-
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.loadInitialData(); // Load the initial data
   }
 
+  // Charger les données initiales
   async loadInitialData() {
     await this.loadDoctors();
     this.generateWeek();
-    this.loadAllAvailableTimes();
   }
 
-  async loadDoctors() {
-    // Récupérer les paramètres de la route
-    this.route.queryParams.subscribe(params => {
-      this.specialty= params['specialty'];
-      this.clinicAdress = params['clinicAdress'];
+  // Charger les docteurs avec une promesse pour utiliser async/await
+  loadDoctors(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.route.queryParams.subscribe(params => {
+        this.specialty = params['specialty'];
+        this.clinicAdress = params['clinicAdress'];
 
-      console.log("ALaaaaaaaaaaaaallll")
-      console.log(this.specialty);
-      console.log(this.clinicAdress);
+        // Appeler le service pour récupérer les docteurs en fonction des paramètres
+        this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe(
+          (data: HealthProfessional[]) => {
+            this.ListDoctors = data;
 
-      // Appeler le service pour récupérer les docteurs en fonction des paramètres
-      this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe((data: HealthProfessional[]) => {
-        this.ListDoctors = data;
+            // Envoyer les docteurs filtrés au service partagé
+            this.doctorSharedService.setFilteredDoctors(this.ListDoctors);
 
-        // Envoyer les docteurs filtrés au service partagé
-        this.doctorSharedService.setFilteredDoctors(this.ListDoctors);
+            if (this.ListDoctors.length === 0) {
+              this.isNotDataFound = true;
+            } else {
+              this.isNotDataFound = false;
+              this.totalDoctors = this.ListDoctors.length;
+              this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage);
+              this.updatePaginatedDoctors();
+            }
 
-
-        console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
-        console.log(data)
-
-
-        if (this.ListDoctors.length === 0) {
-            this.isNotDataFound=true;
-         // this.dialog.open(NotFoundComponent);
-
-          //this.showPopUp = true;
-
-        } else {
-          this.isNotDataFound=false;
-
-          this.totalDoctors = this.ListDoctors.length;
-          this.totalPages = Math.ceil(this.totalDoctors / this.itemsPerPage);
-          this.updatePaginatedDoctors();
-        }
+            resolve(); // Appel réussi, on résout la promesse
+          },
+          error => reject(error) // En cas d'erreur, on rejette la promesse
+        );
       });
     });
   }
 
-
-
-  // Logic to generate a calendar
-
+  // Générer la semaine et charger les disponibilités
   generateWeek() {
     this.days = [];
     const startOfWeek = this.getStartOfWeek(this.currentDate);
@@ -110,10 +96,11 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.days.push({ name: dayNames[i], date: day });
     }
 
-    // Load availability after generating the week
+    // Charger les disponibilités après la génération de la semaine
     this.loadAllAvailableTimes();
   }
 
+  // Récupérer le début de la semaine
   getStartOfWeek(date: Date): Date {
     const start = new Date(date);
     const day = start.getDay();
@@ -122,16 +109,19 @@ export class AvailabilityCalendarComponent implements OnInit {
     return start;
   }
 
+  // Passer à la semaine précédente
   previousWeek() {
     this.currentDate.setDate(this.currentDate.getDate() - 7);
     this.generateWeek();
   }
 
+  // Passer à la semaine suivante
   nextWeek() {
     this.currentDate.setDate(this.currentDate.getDate() + 7);
     this.generateWeek();
   }
 
+  // Charger toutes les disponibilités
   loadAllAvailableTimes() {
     this.ListDoctors.forEach(doctor => {
       this.days.forEach(day => {
@@ -140,6 +130,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     });
   }
 
+  // Charger les disponibilités pour un médecin donné et une date donnée
   loadAvailableTimes(doctorId: number, date: Date) {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate) {
@@ -155,47 +146,35 @@ export class AvailabilityCalendarComponent implements OnInit {
     }
   }
 
+  // Récupérer les disponibilités pour un médecin donné et une date donnée
   getAvailableTimes(doctorId: number, date: Date): Availability[] {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
-
     if (formattedDate && this.availabilities[doctorId]) {
-      const result = this.availabilities[doctorId][formattedDate] || [];
-      // console.log('Available times for doctor', doctorId, 'on date', formattedDate, ':', result);
-      return result; // Return availabilities or an empty array
+      return this.availabilities[doctorId][formattedDate] || [];
     }
-
-    //console.log('No available times for doctor', doctorId, 'on date', formattedDate);
-    return []; // Return an empty array if no availability found
+    return [];
   }
 
-
-
-  // Logic to create pagination for doctor cards
+  // Mettre à jour les docteurs paginés pour l'affichage
   updatePaginatedDoctors(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex); // Show doctors for the current page
+    this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex);
   }
 
+  // Aller à la page suivante
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.updatePaginatedDoctors(); // Update doctors for the new page
+      this.updatePaginatedDoctors();
     }
-    console.log("ddddddddddddd : " + this.currentPage)
   }
 
+  // Retourner à la page précédente
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.updatePaginatedDoctors(); // Update doctors for the previous page
+      this.updatePaginatedDoctors();
     }
   }
-
-
-
-
-  /*protected readonly numberAttribute = numberAttribute;
-  protected readonly Number = Number;*/
-  protected readonly Speciality = Speciality;
 }
