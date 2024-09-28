@@ -99,7 +99,7 @@
 
 <section class="detail-Section">
 
-  <section  class="detail-body">
+  <section class="detail-body">
 
     <div>
       <app-map-doctor></app-map-doctor>
@@ -115,22 +115,38 @@
 
   <section class="div-appointment">
 
-    <div class="appointment-container">
-      <h2>Réserver un rendez-vous</h2>
-      <button type="submit" class="btn btn-primary">Réserver</button>
+    <!--   card of appointment    -->
+
+
+    <div class="card">
+      <h2>En résumé</h2>
+      <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+        Accepte les nouveaux patients sur Doctolib
+      </div>
+      <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+        416 Boulevard National, 13003 Marseille
+      </div>
+      <button class="buttonAppointment">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+          style="fill: white; vertical-align: middle; margin-right: 5px;">
+          <path
+            d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
+        </svg>
+        Prendre rendez-vous
+      </button>
     </div>
-    <h1>{{doctorGet.email}}
-    </h1>
+
 
   </section>
 
 
 
 </section>
-
-
-
-
-
-
-
