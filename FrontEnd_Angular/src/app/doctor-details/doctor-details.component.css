@@ -212,12 +212,12 @@ header {
 }
 
 .detail-body {
-  width: 61%;
-  background-color: #2a3b5e;
+  width: 67%;
+  background-color: #f0f4f8;
 }
 
 .div-appointment {
-  width: 39%;
+  width: 33%;
   background-color: red;
   font-family: Arial, sans-serif;
   background-color: #f0f4f8;
@@ -241,6 +241,7 @@ header {
   padding: 20px;
   width: 300px;
   height: 236px;
+  margin-top: 29px;
 }
 
 .card h2 {
