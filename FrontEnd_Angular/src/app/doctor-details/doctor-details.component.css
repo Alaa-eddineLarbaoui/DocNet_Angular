@@ -213,14 +213,14 @@ header {
 
 .detail-body {
   width: 67%;
-  background-color: #f0f4f8;
+  background-color: #e4edf6;
 }
 
 .div-appointment {
   width: 33%;
-  background-color: red;
+  background-color: rgb(248, 248, 248)  ;
   font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
+  background-color: #e4edf6;
   display: flex;
   justify-content: center;
   margin: 0;
@@ -235,7 +235,7 @@ header {
 
 
 .card {
-  background-color: white;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -279,9 +279,30 @@ header {
 }
 
 
+/************************************************************/
+/********************* Legal information ********************/
+/************************************************************/
+.container{
+  padding: 0px;
+}
+.info-box {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 9px;
+  padding: 1rem;
+  margin-left: 50px;
+  margin-top: 17px;
 
-
-
+}
+.info-box h5 {
+  font-weight: bold;
+}
+.info-box .info-item {
+  margin-bottom: 0.5rem;
+}
+.info-box .info-item:last-child {
+  margin-bottom: 0;
+}
 
 /************************************************************/
 /*********************** Media Query  ***********************/
