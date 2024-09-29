@@ -39,6 +39,8 @@
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45zSRtKlVEQzoywRWBUApte9Wh2Avm" crossorigin="anonymous"></script>
 <section>
   <!-- Barre de navigation avec Bootstrap -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -99,44 +101,6 @@
 
 <section class="detail-Section">
 
-  <section class="detail-body">
-
-    <div>
-      <app-map-doctor></app-map-doctor>
-    </div>
-
-
-    <!--   card of Legal information    -->
-
-    <div class="container">
-
-      <div class="info-box">
-        <div class="d-flex align-items-center mb-3">
-          <i class="fas fa-info-circle me-2"></i>
-          <h5>Informations légales</h5>
-        </div>
-        <div class="row">
-          <div class="col-md-6 info-item">
-            <p class="mb-0"><strong>Numéro RPPS</strong></p>
-            <p class="mb-0">10005154710</p>
-          </div>
-          <div class="col-md-6 info-item">
-            <p class="mb-0"><strong>Numéro ADELI</strong></p>
-            <p class="mb-0">751939703</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-  </section>
-
-
-
 
   <section class="div-appointment">
 
@@ -169,10 +133,69 @@
       </button>
     </div>
 
+  </section>
 
 
 
+  <section class="detail-body">
 
+    <div>
+      <app-map-doctor></app-map-doctor>
+    </div>
+
+
+    <!--   card of Legal information    -->
+
+    <div class="container">
+
+      <div class="info-box">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <h5>Informations légales</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-6 info-item">
+            <p class="mb-0"><strong>Numéro RPPS</strong></p>
+            <p class="mb-0">10005154710</p>
+          </div>
+          <div class="col-md-6 info-item">
+            <p class="mb-0"><strong>Numéro ADELI</strong></p>
+            <p class="mb-0">751939703</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--   card of bio and formation   -->
+
+    <div style="margin-top: 17px;" class="container mt-17 ">
+      <div class="cardBio">
+        <div id="bio" class="card-header d-flex align-items-center">
+          <i class="fas fa-align-left icon"></i>
+          <h5 class="mb-0">Présentation</h5>
+        </div>
+        <div class="card-body">
+          <p>Le docteur Damien FOUCAULT vous accueille dans son cabinet au sein du Centre Médical Villaroy à Guyancourt.
+            Le médecin générale.</p>
+        </div>
+      </div>
+      <div class="cardFormation">
+        <div id="formation" class="card-header d-flex align-items-center">
+          <i class="fas fa-graduation-cap icon"></i>
+          <h5 class="mb-0">Formations</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-2">
+            <strong>1985</strong> Docteur en Médecine - Spécialisé en Médecine Générale - Faculté de médecine de
+            Montpellier
+          </div>
+          <div>
+            <strong>1985</strong> D.U Echographie - Faculté de médecine de Montpellier
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -181,6 +204,9 @@
 
 
   </section>
+
+
+
 
 
 
