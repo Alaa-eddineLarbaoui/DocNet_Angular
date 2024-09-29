@@ -80,9 +80,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 15px;
 }
+
 
 body {
   background-color: #f9f9f9;
@@ -299,6 +300,7 @@ header {
 
 .info-box h5 {
   font-weight: bold;
+  margin-left: 10px
 }
 
 .info-box .info-item {
@@ -344,23 +346,38 @@ header {
 
 .card-body {
   border-radius: 9px;
+  padding-top: 0px;
 }
 .card-header:first-child{
   border-radius: 0px;
  
 }
-#bio{
+#bio_header{
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
-  color :red;
-  font-size: 13px;
+  padding-bottom: 0px;
+  margin-bottom: 12px;
 }
-#formation{
-  border-top:1px solid red;
-  color :red
+#formation_header{
+  border-top:1.5px solid #e4edf6;
+  color :red;
+  padding-bottom: 0px;
+  margin-bottom: 12px;
+
+}
+
+#title_biographie{
+  color :red;
+  font-size: 15px;
+  font-weight: bold;
+}
+#title_formation{
+  color :red;
+  font-size: 15px;
+  font-weight: bold;
 }
 .icon {
-  color: #007bff;
+  color: #4b739b;
   margin-right: 0.5rem;
 
 }
