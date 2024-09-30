@@ -528,9 +528,7 @@ mat-tab-group {
   font-weight: bold;
 
 }
-mat-tap-group:hover{
-  background-color: red;
-}
+
 
 mat-tab {
   padding: 10px;
@@ -543,6 +541,9 @@ mat-tab {
 }
 
 .mat-tab-label-active {
-  color: #ff9800; /* Orange compatible avec ton choix de bouton */
+  color: #ff9800;
 }
-
+.btnmap:hover{
+  background-color: #fffffffe
+;
+}
