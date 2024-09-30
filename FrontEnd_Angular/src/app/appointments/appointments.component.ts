@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AppointmentService} from "../Service/AppointmentService";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Appointment} from "../Models/Appointment";
@@ -8,6 +8,7 @@ import {AvailabilityService} from "../Service/availability.service";
 import {Availability} from "../Models/Availability";
 import {JwtDto} from "../Models/JwtDto";
 import {ActivatedRoute} from "@angular/router";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-appointments',
@@ -27,10 +28,13 @@ export class AppointmentsComponent implements OnInit {
 
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,  // Injection des données du dialog
+
     private appointmentService: AppointmentService,
     private availabilityService:AvailabilityService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+
   ) {
     this.appointmentForm = this.fb.group({
       date: [{ value: '', disabled: false }, Validators.required],
@@ -48,7 +52,8 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit(): void {
 
     // for get the id of doctor from the path
-    this.idProfessional = +this.route.snapshot.paramMap.get('id')!;
+    //this.idProfessional = +this.route.snapshot.paramMap.get('id')!;
+    this.idProfessional=this.data.idProfessional; // Technique used to retrieve the ID from shared data
     this.getIdPersonFromJwt();
 
     // Updates the form with the patient ID and the professional ID.
@@ -65,7 +70,6 @@ export class AppointmentsComponent implements OnInit {
 
 
         if (date && this.idProfessional) {
-          console.log( "hhhh" +this.idProfessional)
 
           this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
             this.availableTimes = times;

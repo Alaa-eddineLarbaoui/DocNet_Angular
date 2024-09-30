@@ -100,7 +100,7 @@ export class DoctorDetailsComponent implements OnInit {
   openAppointmentDialog(): void {
     const dialogRef = this.dialog.open(AppointmentsComponent, {
       width: '600px',
-      data: {}  // Vous pouvez transmettre des données au composant ici si nécessaire
+      data: { idProfessional: this.idProf }
     });
 
     dialogRef.afterClosed().subscribe(result => {
