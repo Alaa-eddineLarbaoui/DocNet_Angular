@@ -340,6 +340,7 @@ header {
 
 
 }
+
 .cardFormation {
   border: none;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -349,14 +350,15 @@ header {
   background-color: #fff;
   border-bottom: 1px solid rgb(211, 211, 213);
   border-left: 1px solid rgb(211, 211, 213);
-  border-right: 1px solid rgb(211, 211, 213);}
+  border-right: 1px solid rgb(211, 211, 213);
+}
 
 
 
 .card-header {
   /* border-bottom: 1px solid #e9ecef; */
   border: none;
-  background-color:#fff;
+  background-color: #fff;
 
 }
 
@@ -364,34 +366,39 @@ header {
   border-radius: 9px;
   padding-top: 0px;
 }
-.card-header:first-child{
+
+.card-header:first-child {
   border-radius: 0px;
 
 }
-#bio_header{
+
+#bio_header {
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
   padding-bottom: 0px;
   margin-bottom: 12px;
 }
-#formation_header{
-  border-top:1.5px solid #e4edf6;
-  color :red;
+
+#formation_header {
+  border-top: 1.5px solid #e4edf6;
+  color: red;
   padding-bottom: 0px;
   margin-bottom: 12px;
 
 }
 
-#title_biographie{
-  color :red;
+#title_biographie {
+  color: red;
   font-size: 15px;
   font-weight: bold;
 }
-#title_formation{
-  color :red;
+
+#title_formation {
+  color: red;
   font-size: 15px;
   font-weight: bold;
 }
+
 .icon {
   color: #4b739b;
   margin-right: 0.5rem;
@@ -409,15 +416,17 @@ header {
   background-color: #fff;
   margin-top: 17px;
 }
+
 .card-Header {
   background-color: #fff;
   border-bottom: none;
   padding: 0px;
 }
+
 .section-title {
   display: flex;
   align-items: center;
-  color :black;
+  color: black;
   font-size: 15px;
   font-weight: bold;
 }
@@ -426,6 +435,7 @@ header {
   margin-right: 0.5rem;
   color: #7d6c6c;
 }
+
 .rate-item {
   display: flex;
   justify-content: space-between;
@@ -433,9 +443,11 @@ header {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e9ecef;
 }
+
 .rate-item:last-child {
   border-bottom: none;
 }
+
 .rate-description {
   font-size: 0.875rem;
   color: #6c757d;
@@ -524,7 +536,7 @@ header {
 /*//////////////////////////////////*/
 mat-tab-group {
   width: 750px;
-  color :#0086ff;
+  color: #0086ff;
   font-weight: bold;
 
 }
@@ -543,11 +555,13 @@ mat-tab {
 .mat-tab-label-active {
   color: #ff9800;
 }
+
 .btnmap:hover {
   background-color: #fffffffe;
 }
-.btnmap{
-  color :#0086ff;
+
+.btnmap {
+  color: #0086ff;
   font-weight: bold;
 }
 
@@ -563,17 +577,19 @@ mat-tab {
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-.section{
+.section {
   margin-top: 0px;
   top: 0px;
 }
-.sticky_Appointement{
-  top:70px;
+
+.sticky_Appointement {
+  top: 70px;
 }
-.sticky_detail{
+
+.sticky_detail {
   margin-top: 0px;
 }

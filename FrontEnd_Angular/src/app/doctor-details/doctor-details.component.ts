@@ -12,7 +12,7 @@ import { ViewportScroller } from "@angular/common";
 export class DoctorDetailsComponent implements OnInit {
   idProf!: number;
   doctorGet!: HealthProfessional;
-  
+
   @ViewChild('stickyDiv') stickyDiv!: ElementRef;
   @ViewChild('section') section!: ElementRef;
   @ViewChild('Appointement') Appointement!: ElementRef;
@@ -25,7 +25,7 @@ export class DoctorDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private doctorService: DoctorService,
     private viewportScroller: ViewportScroller
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.idProf = +this.route.snapshot.paramMap.get('id')!;
@@ -40,12 +40,12 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   scrollToSection(section: string): void {
-    const yOffset = -100;  
+    const yOffset = -100;
     const element = document.getElementById(section);
-  
+
     if (element) {
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
 
