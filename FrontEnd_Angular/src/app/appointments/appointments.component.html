@@ -26,7 +26,7 @@
     <div class="form-group">
       <label for="time">Créneau Horaire Disponible</label>
       <select id="time" formControlName="time" class="form-control" required>
-        <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+        <option *ngFor="let times of availableTimes" [value]="times">{{ times }}</option>
       </select>
     </div>
 

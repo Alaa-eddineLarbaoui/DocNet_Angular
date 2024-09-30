@@ -65,6 +65,7 @@ export class AppointmentsComponent implements OnInit {
 
 
         if (date && this.idProfessional) {
+          console.log( "hhhh" +this.idProfessional)
 
           this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
             this.availableTimes = times;
