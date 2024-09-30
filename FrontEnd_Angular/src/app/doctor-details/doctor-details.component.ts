@@ -1,11 +1,12 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { DoctorService } from "../Service/doctor.service";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { ViewportScroller } from "@angular/common";
-import {JwtDto} from "../Models/JwtDto";
-import {AppointmentsComponent} from "../appointments/appointments.component";
+import { JwtDto } from "../Models/JwtDto";
+import { AppointmentsComponent } from "../appointments/appointments.component";
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -24,13 +25,16 @@ export class DoctorDetailsComponent implements OnInit {
 
   elementPosition: number = 0;
   sticky: boolean = false;
-  idPatient!:number;
+  idPatient!: number;
 
   constructor(
     private route: ActivatedRoute,
     private doctorService: DoctorService,
-    private viewportScroller: ViewportScroller
-  ) { }
+    private viewportScroller: ViewportScroller,
+    private dialog: MatDialog , // Ajout du MatDialog pour gérer la popup
+    private snackBar: MatSnackBar  // Injection de MatSnackBar
+
+) {}
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
@@ -39,7 +43,7 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // Utilisation de setTimeout pour attendre que la vue soit complètement chargée
+    // Utilisation de setTimeout pour s'assurer que la vue est complètement chargée
     setTimeout(() => {
       this.elementPosition = this.stickyDiv.nativeElement.offsetTop;
     }, 0);
@@ -51,7 +55,7 @@ export class DoctorDetailsComponent implements OnInit {
 
     if (element) {
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({top: y, behavior: 'smooth'});
     }
   }
 
@@ -80,26 +84,31 @@ export class DoctorDetailsComponent implements OnInit {
     }
   }
 
-
-  // Function to retrieve the user's ID
-  getIdPersonFromJwt(){
+  // Récupérer l'ID de l'utilisateur à partir du JWT
+  getIdPersonFromJwt() {
     const storedJwtData = localStorage.getItem('jwtData');
     if (storedJwtData) {
-      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      const jwtData: JwtDto = JSON.parse(storedJwtData);
       console.log('JWT Data:', jwtData.user_id);
       this.idPatient = jwtData.user_id;
     } else {
       console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
+
+  // Ouvrir le formulaire de rendez-vous dans une popup
   openAppointmentDialog(): void {
     const dialogRef = this.dialog.open(AppointmentsComponent, {
       width: '600px',
-      data: {}  // Vous pouvez transmettre des données au composant ici si besoin
+      data: {}  // Vous pouvez transmettre des données au composant ici si nécessaire
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Le dialog a été fermé', result);
-      // Traitez les résultats ici si nécessaire
+      this.snackBar.open('Le popup est fermé, action réussie !', 'Fermer', {
+        duration: 3000
+      });
     });
+  }
 }
+

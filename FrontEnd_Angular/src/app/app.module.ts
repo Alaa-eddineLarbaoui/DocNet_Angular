@@ -24,6 +24,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatToolbarModule,
     MatIconModule,
     MatBadgeModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSnackBarModule
   ],
 
   providers: [DatePipe],

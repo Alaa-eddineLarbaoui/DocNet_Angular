@@ -46,6 +46,7 @@ export class AppointmentsComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     // for get the id of doctor from the path
     this.idProfessional = +this.route.snapshot.paramMap.get('id')!;
     this.getIdPersonFromJwt();
@@ -64,8 +65,10 @@ export class AppointmentsComponent implements OnInit {
 
 
         if (date && this.idProfessional) {
+
           this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
             this.availableTimes = times;
+            console.log(times)
 
             // Disable or enable the 'time' field based on the availability of slots.
 
