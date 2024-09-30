@@ -87,49 +87,39 @@
     </div>
   </div>
 
-  <!-- Navigation Links -->
-  <mat-tab-group id="container">
-
-    <mat-tab>
-      <ng-template id="bt" mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('map')">
-          Map
-        </button>
-      </ng-template>
-      <!-- <div>*****************</div> -->
-
-    </mat-tab>
 
 
-    <mat-tab>
-      <ng-template id="bt" mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('map')">
-          Biographie
-        </button>
-      </ng-template>
-      <!-- <div>*****************</div> -->
 
-    </mat-tab>
 
-    <mat-tab>
-      <ng-template id="bt" mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('map')">
-          Legal information
-        </button>
-      </ng-template>
-      <!-- <div>*****************</div> -->
 
-    </mat-tab>
-    <mat-tab>
-      <ng-template id="bt" mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('map')">
-          Rates
-        </button>
-      </ng-template>
-      <!-- <div>*****************</div> -->
+  <div #stickyDiv class="navv">
+    <!-- Navigation Links -->
+    <mat-tab-group id="container">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('map')">Map</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('biographie')">Biographie</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('legal')">Legal information</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('rates')">Rates</button>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 
-    </mat-tab>
-  </mat-tab-group>
+
+
 
 
 
@@ -137,7 +127,7 @@
 </section>
 
 
-<section class="detail-Section">
+<section id="section" class="detail-Section">
 
 
   <section class="div-appointment">
@@ -145,7 +135,7 @@
     <!--   card of appointment    -->
 
 
-    <div class="card">
+    <div #Appointement class="card">
       <h2>En résumé</h2>
       <div class="info">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -175,7 +165,7 @@
 
 
 
-  <section class="detail-body">
+  <section #detail class="detail-body">
 
     <div>
       <app-map-doctor></app-map-doctor>
@@ -185,7 +175,7 @@
 
     <!--   card of bio and formation   -->
 
-    <div style="margin-top: 17px;" class="container mt-17 ">
+    <div id="biographie" style="margin-top: 17px;" class="container mt-17 ">
       <div class="cardBio">
         <div id="bio_header" class="card-header d-flex align-items-center">
           <i class="fas fa-align-left icon"></i>
@@ -218,7 +208,7 @@
 
     <!--   card of Legal information    -->
 
-    <div class="container">
+    <div id="legal" #section class="container">
 
       <div class="info-box">
         <div class="d-flex align-items-center mb-3">
@@ -265,163 +255,62 @@
 
 
 
-    <div>
-
-      fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br> fdjfzd<br>
-
-
-      dhhfh <br>
-
-
-      fhdh <br>
-    </div>
-
-
-
+    
 
   </section>
 
 
 
 
-
-
 </section>
+
+
+<div>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+  dhdhd <br>
+
+</div>
