@@ -167,6 +167,8 @@ header {
 
 .profile-details h1 {
   margin-bottom: 5px;
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 .profile-details p {
@@ -226,6 +228,8 @@ header {
   display: flex;
   justify-content: center;
   margin: 0;
+  position: sticky;
+  top: 0;
 }
 
 
@@ -244,6 +248,9 @@ header {
   width: 300px;
   height: 236px;
   margin-top: 29px;
+  position: sticky;
+  top: 23px;
+  z-index: 19;
 }
 
 .card h2 {
@@ -287,6 +294,7 @@ header {
 .container {
   padding: 0px;
   max-width: 1140px;
+  border-radius: 9px;
 }
 
 .info-box {
@@ -358,7 +366,7 @@ header {
 }
 .card-header:first-child{
   border-radius: 0px;
- 
+
 }
 #bio_header{
   border-top-left-radius: 9px;
@@ -394,7 +402,6 @@ header {
 /********************* Rate (traif)      ********************/
 /************************************************************/
 .card_Rates {
-  width: 94.1%;
   margin-left: 50px;
   border: 1px solid rgb(211, 211, 213);
   padding: 20px;
@@ -510,3 +517,32 @@ header {
     font-size: 14px;
   }
 }
+
+
+
+
+/*//////////////////////////////////*/
+mat-tab-group {
+  width: 750px;
+  color :#0086ff;
+  font-weight: bold;
+
+}
+mat-tap-group:hover{
+  background-color: red;
+}
+
+mat-tab {
+  padding: 10px;
+  background-color: red;
+}
+
+.mat-tab-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mat-tab-label-active {
+  color: #ff9800; /* Orange compatible avec ton choix de bouton */
+}
+

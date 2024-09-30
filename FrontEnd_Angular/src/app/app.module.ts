@@ -20,6 +20,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { LoginComponent } from './login/login.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { MapDoctorComponent } from './map-doctor/map-doctor.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { MapDoctorComponent } from './map-doctor/map-doctor.component';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatTabsModule
   ],
 
   providers: [DatePipe],
