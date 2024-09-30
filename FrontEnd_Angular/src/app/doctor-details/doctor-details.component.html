@@ -88,12 +88,8 @@
   </div>
 
 
-
-
-
-
+  <!-- Navigation Links -->
   <div #stickyDiv class="navv">
-    <!-- Navigation Links -->
     <mat-tab-group id="container">
       <mat-tab>
         <ng-template mat-tab-label>
@@ -117,12 +113,6 @@
       </mat-tab>
     </mat-tab-group>
   </div>
-
-
-
-
-
-
 
 </section>
 
@@ -151,7 +141,7 @@
         </svg>
         416 Boulevard National, 13003 Marseille
       </div>
-      <button class="buttonAppointment">
+      <button class="buttonAppointment" [routerLink]="['/appointment', idPatient]" >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
           style="fill: white; vertical-align: middle; margin-right: 5px;">
           <path
@@ -159,6 +149,7 @@
         </svg>
         Prendre rendez-vous
       </button>
+
     </div>
 
   </section>
@@ -271,6 +262,6 @@
   dhdhd <br>
   dhdhd <br>
   dhdhd <br>
- 
+
 
 </div>

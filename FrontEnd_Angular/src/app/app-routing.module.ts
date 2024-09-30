@@ -23,6 +23,8 @@ const routes: Routes = [
   { path: 'appointment/:id' , component:AppointmentsComponent },
 
 
+
+
   { path: '**' , component:NotFoundComponent },
 
 

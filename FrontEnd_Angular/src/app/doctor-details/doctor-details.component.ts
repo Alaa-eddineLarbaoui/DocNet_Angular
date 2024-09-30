@@ -3,6 +3,10 @@ import { ActivatedRoute } from "@angular/router";
 import { DoctorService } from "../Service/doctor.service";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { ViewportScroller } from "@angular/common";
+import {JwtDto} from "../Models/JwtDto";
+import {AppointmentsComponent} from "../appointments/appointments.component";
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-doctor-details',
@@ -20,6 +24,7 @@ export class DoctorDetailsComponent implements OnInit {
 
   elementPosition: number = 0;
   sticky: boolean = false;
+  idPatient!:number;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +33,7 @@ export class DoctorDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
     this.idProf = +this.route.snapshot.paramMap.get('id')!;
     this.getDoctor();
   }
@@ -73,4 +79,27 @@ export class DoctorDetailsComponent implements OnInit {
       this.detail.nativeElement.classList.remove("sticky_detail");
     }
   }
+
+
+  // Function to retrieve the user's ID
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.user_id);
+      this.idPatient = jwtData.user_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
+  }
+  openAppointmentDialog(): void {
+    const dialogRef = this.dialog.open(AppointmentsComponent, {
+      width: '600px',
+      data: {}  // Vous pouvez transmettre des données au composant ici si besoin
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Le dialog a été fermé', result);
+      // Traitez les résultats ici si nécessaire
+    });
 }
