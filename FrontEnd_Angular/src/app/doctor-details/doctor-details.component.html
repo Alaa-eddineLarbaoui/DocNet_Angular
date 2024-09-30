@@ -88,21 +88,42 @@
   </div>
 
   <!-- Navigation Links -->
-
   <mat-tab-group id="container">
-    <mat-tab label="Map">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a (click)="scrollToSection('map')">Map</a>
+      </ng-template>
+      <!-- <div id="map">
+      Contenu de la section Map
+      </div>  -->
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a (click)="scrollToSection('biography')">Biographie</a>
+      </ng-template>
+
+      <!-- <div>*****************</div> -->
 
     </mat-tab>
 
-    <mat-tab label="Biographie">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a (click)="scrollToSection('rate')">Rate</a>
+      </ng-template>
+      <div id="rate">
+        <!-- Contenu de la section Rate -->
+      </div>
     </mat-tab>
 
-    <mat-tab label="Rate">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a (click)="scrollToSection('legal')">Legal information</a>
+      </ng-template>
+      <div id="legal">
+        <!-- Contenu de la section Legal information -->
+      </div>
     </mat-tab>
-
-    <mat-tab label="Legal information">
-    </mat-tab>
-
   </mat-tab-group>
 
 
@@ -119,7 +140,7 @@
     <!--   card of appointment    -->
 
 
-    <div class="card">
+    <div  class="card">
       <h2>En résumé</h2>
       <div class="info">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
