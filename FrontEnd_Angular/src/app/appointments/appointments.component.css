@@ -4,3 +4,21 @@
   justify-content: space-around;
 
 }
+
+.card {
+  border: none;
+  border-radius: 15px;
+}
+.card-title {
+  color: #007bff;
+}
+.form-control {
+  border-radius: 20px;
+}
+.btn-primary {
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+.alert {
+  border-radius: 10px;
+}

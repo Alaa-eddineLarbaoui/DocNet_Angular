@@ -453,6 +453,70 @@ header {
   color: #6c757d;
 }
 
+/************************************************************/
+/*********************** nav: fixed  ************************/
+/************************************************************/
+
+mat-tab-group {
+  width: 750px;
+  color: #0086ff;
+  font-weight: bold;
+
+}
+
+
+mat-tab {
+  padding: 10px;
+  background-color: red;
+}
+
+.mat-tab-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mat-tab-label-active {
+  color: #ff9800;
+}
+
+.btnmap:hover {
+  background-color: #fffffffe;
+}
+
+.btnmap {
+  color: #0086ff;
+  font-weight: bold;
+}
+
+.navv {
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  transition: all 1ms ease;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-top: 0px;
+  top: 0px;
+}
+
+.sticky_Appointement {
+  top: 70px;
+}
+
+.sticky_detail {
+  margin-top: 0px;
+}
+
 
 
 
@@ -528,68 +592,4 @@ header {
   .tab {
     font-size: 14px;
   }
-}
-
-
-
-
-/*//////////////////////////////////*/
-mat-tab-group {
-  width: 750px;
-  color: #0086ff;
-  font-weight: bold;
-
-}
-
-
-mat-tab {
-  padding: 10px;
-  background-color: red;
-}
-
-.mat-tab-label {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.mat-tab-label-active {
-  color: #ff9800;
-}
-
-.btnmap:hover {
-  background-color: #fffffffe;
-}
-
-.btnmap {
-  color: #0086ff;
-  font-weight: bold;
-}
-
-.navv {
-  width: 100%;
-  background-color: white;
-  z-index: 1000;
-  transition: all 1ms ease;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.section {
-  margin-top: 0px;
-  top: 0px;
-}
-
-.sticky_Appointement {
-  top: 70px;
-}
-
-.sticky_detail {
-  margin-top: 0px;
 }

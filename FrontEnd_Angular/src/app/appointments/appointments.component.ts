@@ -38,7 +38,7 @@ export class AppointmentsComponent implements OnInit {
   ) {
     this.appointmentForm = this.fb.group({
       date: [{ value: '', disabled: false }, Validators.required],
-      time: [{ value: '', disabled: false }, Validators.required],
+      time: [{ value: '', disabled: true }, Validators.required],
       appointment_reason: ['', Validators.required],
       note: [''],
       patientId: [this.idPatient],

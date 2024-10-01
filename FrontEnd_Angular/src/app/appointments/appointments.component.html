@@ -1,55 +1,59 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<div class="container">
-  <h2>Réserver un Rendez-vous</h2>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Réserver un Rendez-vous</h2>
 
-  <div *ngIf="successMessage" class="alert alert-success" role="alert">
-    {{ successMessage }}
+          <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle mr-2"></i>{{ successMessage }}
+          </div>
+
+          <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="date"><i class="far fa-calendar-alt mr-2"></i>Date</label>
+                  <input type="date" id="date" formControlName="date" [min]="minDate" (change)="getAvailableTimes()"
+                    class="form-control" required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="time"><i class="far fa-clock mr-2"></i>Créneau Horaire</label>
+                  <select id="time" formControlName="time" class="form-control" required>
+                    <option value="" disabled selected>Choisissez un horaire</option>
+                    <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="appointment_reason"><i class="fas fa-clipboard-list mr-2"></i>Raison du Rendez-vous</label>
+              <select id="appointment_reason" formControlName="appointment_reason" class="form-control" required>
+                <option value="" disabled selected>Sélectionnez une raison</option>
+                <option [value]="AppointmentReason.CONSULTATION">Consultation</option>
+                <option [value]="AppointmentReason.CHECKUP">Contrôle</option>
+                <option [value]="AppointmentReason.SURGERY">Chirurgie</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="note"><i class="fas fa-comment-medical mr-2"></i>Note</label>
+              <textarea id="note" formControlName="note" class="form-control" rows="3"
+                placeholder="Ajoutez des détails supplémentaires si nécessaire"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!appointmentForm.valid || submitted">
+              <i class="fas fa-calendar-check mr-2"></i>Réserver
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-
-
-  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-<div class="DateTime">
-    <div class="form-group">
-      <label for="date">Date</label>
-      <input
-        type="date"
-        id="date"
-        formControlName="date"
-        [min]="minDate"
-        (change)="getAvailableTimes()"
-        class="form-control"
-        required />
-    </div>
-
-    <div class="form-group">
-      <label for="time">Créneau Horaire Disponible</label>
-      <select id="time" formControlName="time" class="form-control" required>
-        <option *ngFor="let times of availableTimes" [value]="times">{{ times }}</option>
-      </select>
-    </div>
-
 </div>
-
-    <div class="form-group">
-      <label for="appointment_reason">Raison du Rendez-vous</label>
-      <select id="appointment_reason" formControlName="appointment_reason" class="form-control" required>
-        <option [value]="AppointmentReason.CONSULTATION">Consultation</option>
-        <option [value]="AppointmentReason.CHECKUP">Contrôle</option>
-        <option [value]="AppointmentReason.SURGERY">Chirurgie</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="note">Note</label>
-      <textarea id="note" formControlName="note" class="form-control"></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!appointmentForm.valid || submitted">Réserver</button>
-  </form>
-
-  <!--  <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>  -->
-</div>
-
-

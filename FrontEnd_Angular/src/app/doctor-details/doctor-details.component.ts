@@ -99,13 +99,13 @@ export class DoctorDetailsComponent implements OnInit {
   // Ouvrir le formulaire de rendez-vous dans une popup
   openAppointmentDialog(): void {
     const dialogRef = this.dialog.open(AppointmentsComponent, {
-      width: '600px',
+      width: '100%',
       data: { idProfessional: this.idProf }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Le dialog a été fermé', result);
-      this.snackBar.open('Le popup est fermé, action réussie !', 'Fermer', {
+      this.snackBar.open('The popup is closed, action successful!', 'Close', {
         duration: 3000
       });
     });
