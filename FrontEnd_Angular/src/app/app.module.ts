@@ -25,6 +25,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     NotFoundComponent,
     LoginComponent,
     DoctorDetailsComponent,
-    MapDoctorComponent
+    MapDoctorComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
