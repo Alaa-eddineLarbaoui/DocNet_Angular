@@ -151,9 +151,7 @@ color: #0071DC;
 		transform: translateY(-10px);
 	}
 }
-.why-us-container-img {
-	animation:jump alternate infinite 1s;
-}
+
 .title-block {
     display: flex;
     flex-direction: column;
@@ -161,7 +159,7 @@ color: #0071DC;
 }
 .title-block h2 {
 	font-weight: 700;
-	font-size: 44px;
+	font-size: 43px;
 	margin-bottom: 25px;
 }
 .title-block p {
@@ -172,6 +170,10 @@ color: #0071DC;
 .title-block h2:nth-child(2) {
 	color: #0071DC;
 }
+
+
+/*//////////////////*/
+
 .locations-search .input-group-text {
     background-color: #fff;
 	border: 1px solid #C4C4C4;
@@ -209,47 +211,21 @@ color: #0071DC;
 
 
 
-
-.make-appointment-btn:hover{
-  color :red;
-}
-
 .make-appointment-btn button {
   background-color: #0071DC;
   padding: 13px 25px;
-  color: #fff; /* Couleur initiale pour le texte et l'icône */
+  color: #fff;
   font-weight: 700;
   font-size: 18px;
   border-radius: 4px;
   border: 1px solid #0071DC;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s ease; /* Transition pour le texte et l'icône */
-}
-
-.make-appointment-btn button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: #020202;
-  transition: left 0.4s ease; /* Animation de glissement */
-  z-index: 0; /* Derrière le texte et l'icône */
-}
-
-.make-appointment-btn button:hover::before {
-  left: 0; /* Déplacement de l'effet de glissement vers la droite */
+  transition: background-color 0.4s ease, color 0.4s ease;
+  cursor: pointer;
 }
 
 .make-appointment-btn button:hover {
-  color: #0071DC; /* Applique la couleur à la fois au texte et à l'icône */
-}
-
-.make-appointment-btn button > * {
-  position: relative;
-  z-index: 1; /* Place le contenu (texte et icônes) au-dessus de l'effet */
+  background-color: #fff;
+  color: #0071DC;
 }
 
 .make-appointment-btn {
@@ -258,40 +234,15 @@ color: #0071DC;
 }
 
 .make-appointment-btn i {
-  margin-left: 10px; /* Espace entre le texte et l'icône */
+  margin-left: 10px;
 }
 
 
 
-
-
-
-
-
-
-
-
-.home-fifteen-looking-section {
-	padding: 80px 0px;
-}
-.looking-for-box {
-    display: flex;
-	position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-	background-color: #F9FAFE;
-	background-repeat: no-repeat;
-	background-position: top left;
-	border: 1px solid #E5F1FB;
-	border-radius: 8px;
-	transition: all 0.5s;
-}
 
 /*///////////*/
 
 .h2{
-  background-color: red;
+  margin: 0px;
 }
 

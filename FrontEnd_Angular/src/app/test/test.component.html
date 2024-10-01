@@ -7,6 +7,16 @@
 <!-- Lien pour AOS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+
+
+
+
+
+
+<section style="background-color: black;">
+<div style="height: 90px;">hehhezhzeh</div>
+</section>
+
 <!-- Section du contenu -->
 <section class="section_global">
 
@@ -26,29 +36,39 @@
         <p>Discover the best doctors, clinic & hospital the city nearest to you.</p>
       </div>
 
-      <div class="search-container">
-        <div class="search-box">
-          <i class="fas fa-map-marker-alt"></i>
-          <input type="text" placeholder="Search location">
-          <div class="search-hint">Based on your Location</div>
-        </div>
 
-        <div class="search-box">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search Doctors, Clinics, Hospitals, Diseases">
-          <div class="search-hint">Ex : Dental or Sugar Check up etc</div>
+
+      <div class="locations-search aos" data-aos="fade-up" data-aos-delay="300">
+        <div class="row">
+          <div class="col-lg-4 col-md-4">
+            <div class="input-group mb-2">
+              <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-location-dot"></i></span>
+              <input type="text" class="form-control placeholder-css" placeholder="Search location"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+            <p>Based on your Location</p>
+          </div>
+          <div class="col-lg-8 col-md-8">
+            <div class="input-group mb-2">
+              <span class="input-group-text" id="basic-addon3"><i class="fa-solid fa-magnifying-glass"></i></span>
+              <input type="text" class="form-control placeholder-css"
+                placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc" aria-label="Recipient's username"
+                aria-describedby="basic-addon3">
+            </div>
+            <p>Ex : Dental or Sugar Check up etc</p>
+          </div>
         </div>
       </div>
 
+
+      
 
 
       <div class="make-appointment-btn " data-aos="fad-up" data-aos-delay="500">
         <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
       </div>
 
-      <div class="make-appointment-btn aos" data-aos="fade-up" data-aos-delay="500">
-        <a href="search.html">Make Appointment <i class="fa-solid fa-handshake"></i> </a>
-      </div>
+   
 
     </div>
   </section>
