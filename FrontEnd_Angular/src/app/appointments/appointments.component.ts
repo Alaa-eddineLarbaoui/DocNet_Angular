@@ -132,8 +132,8 @@ export class AppointmentsComponent implements OnInit {
     const storedJwtData = localStorage.getItem('jwtData');
     if (storedJwtData) {
       const jwtData : JwtDto = JSON.parse(storedJwtData);
-      console.log('JWT Data:', jwtData.user_id);
-      this.idPatient = jwtData.user_id;
+      console.log('JWT Data:', jwtData.userId);
+      this.idPatient = jwtData.userId;
     } else {
       console.log('Aucun JWT trouvé dans le localStorage');
     }

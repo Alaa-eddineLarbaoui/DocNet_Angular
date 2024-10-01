@@ -8,12 +8,14 @@ import {Availability} from "../Models/Availability";
   providedIn: 'root'
 })
 export class AvailabilityService {
-  private apiUrl = 'http://localhost:8090/api/availabilities';
+   apiUrl = 'http://localhost:8090/api/availabilities';
 
-  constructor(private http: HttpClient , ) {
+  constructor(private http: HttpClient  ) {
   }
 
+
   createAvailability(availability: Availability, professionalId: number): Observable<Availability> {
+
     return this.http.post<Availability>(`${this.apiUrl}/create/${professionalId}`, availability);
   }
 
