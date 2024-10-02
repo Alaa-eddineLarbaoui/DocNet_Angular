@@ -40,6 +40,11 @@ export class DoctorDetailsComponent implements OnInit {
     this.getIdPersonFromJwt();
     this.idProf = +this.route.snapshot.paramMap.get('id')!;
     this.getDoctor();
+
+    this.sticky = false;
+    if (this.stickyDiv) {
+      this.stickyDiv.nativeElement.classList.remove("sticky");
+    }
   }
 
   ngAfterViewInit() {
@@ -68,21 +73,28 @@ export class DoctorDetailsComponent implements OnInit {
   @HostListener('window:scroll', [])
   handleScroll() {
     const windowScroll = window.pageYOffset;
+    const seuil = 180;
 
-    if (windowScroll >= this.elementPosition) {
-      this.sticky = true;
-      this.stickyDiv.nativeElement.classList.add("sticky");
-      this.section.nativeElement.classList.add("section");
-      this.Appointement.nativeElement.classList.add("sticky_Appointement");
-      this.detail.nativeElement.classList.add("sticky_detail");
+
+    if (windowScroll > seuil) {
+      if (!this.sticky) {
+        this.sticky = true;
+        this.stickyDiv.nativeElement.classList.add("sticky");
+        this.section.nativeElement.classList.add("section");
+        this.Appointement.nativeElement.classList.add("sticky_Appointement");
+        this.detail.nativeElement.classList.add("sticky_detail");
+      }
     } else {
-      this.sticky = false;
-      this.stickyDiv.nativeElement.classList.remove("sticky");
-      this.section.nativeElement.classList.remove("section");
-      this.Appointement.nativeElement.classList.remove("sticky_Appointement");
-      this.detail.nativeElement.classList.remove("sticky_detail");
+      if (this.sticky) {
+        this.sticky = false;
+        this.stickyDiv.nativeElement.classList.remove("sticky");
+        this.section.nativeElement.classList.remove("section");
+        this.Appointement.nativeElement.classList.remove("sticky_Appointement");
+        this.detail.nativeElement.classList.remove("sticky_detail");
+      }
     }
   }
+
 
   // Récupérer l'ID de l'utilisateur à partir du JWT
   getIdPersonFromJwt() {

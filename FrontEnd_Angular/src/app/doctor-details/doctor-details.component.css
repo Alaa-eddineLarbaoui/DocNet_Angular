@@ -493,6 +493,7 @@ mat-tab {
   background-color: white;
   z-index: 1000;
   transition: all 1ms ease;
+  position: relative;
 }
 
 .sticky {

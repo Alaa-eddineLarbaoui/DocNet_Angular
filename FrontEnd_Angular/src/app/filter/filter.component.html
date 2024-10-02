@@ -1,4 +1,78 @@
 <div class="search-container">
+  <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search-form">
+    <div class="search-fields">
+
+
+      <div class="search-field">
+        <!-- <label for="specialty">Spécialité</label> -->
+        <div class="input-wrapper">
+          <i class="fas fa-stethoscope"></i>
+          <select id="specialty" formControlName="specialty" class="form-control" >
+            <option value="" disabled selected>Choisissez une spécialité</option>
+            <option *ngFor="let spc of specialite" [value]="spc">{{spc}}</option>
+          </select>
+        </div>
+        <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
+      </div>
+
+      <!-- Clinic Address field -->
+
+      <div class="search-field">
+        <!-- <label for="clinicAddess">Adresse de la clinique</label> -->
+        <div class="input-wrapper">
+          <i class="fas fa-map-marker-alt"></i>
+          <select id="clinicAddress" formControlName="clinicAdress">
+            <option value="" disabled selected>Where ? </option>
+            <option *ngFor="let item of local" [value]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="search-hint">Basé sur votre localisation</div>
+      </div>
+
+      <!--    button button -->
+     
+    </div>
+    <button type="submit" class="btn-search">
+      <i class="fas fa-search"></i> Rechercher
+    </button>
+
+
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div *ngIf="listOfDoctorFiltrer.length > 0">
+  <ul>
+    <li *ngFor="let doctor of listOfDoctorFiltrer">
+      {{ doctor.username}} - {{ doctor.speciality }} - {{ doctor.clinicAddress }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="listOfDoctorFiltrer.length === 0">
+  Aucun médecin trouvé.
+</div>
+-->
+
+
+
+
+<!--
+<div class="search-container">
   <h1>Trouvez un rendez-vous avec une médecin généraliste</h1>
   <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search-form">
     <div class="input-group">
@@ -22,24 +96,7 @@
     </button>
   </form>
 </div>
-
-
-
-
-<!--
-
-<div *ngIf="listOfDoctorFiltrer.length > 0">
-  <ul>
-    <li *ngFor="let doctor of listOfDoctorFiltrer">
-      {{ doctor.username}} - {{ doctor.speciality }} - {{ doctor.clinicAddress }}
-    </li>
-  </ul>
-</div>
-<div *ngIf="listOfDoctorFiltrer.length === 0">
-  Aucun médecin trouvé.
-</div>
 -->
-
 
 
 
