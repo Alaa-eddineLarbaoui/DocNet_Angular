@@ -111,7 +111,7 @@ export class DoctorDetailsComponent implements OnInit {
   // Ouvrir le formulaire de rendez-vous dans une popup
   openAppointmentDialog(): void {
     const dialogRef = this.dialog.open(AppointmentsComponent, {
-      width: '100%',
+      width: '55%',
       data: { idProfessional: this.idProf }
     });
 
