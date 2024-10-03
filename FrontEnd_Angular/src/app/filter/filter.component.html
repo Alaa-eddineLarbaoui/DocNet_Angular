@@ -1,41 +1,42 @@
 <div class="search-container">
   <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search-form">
     <div class="search-fields">
-
-
+      <!-- Specialty field -->
       <div class="search-field">
-        <!-- <label for="specialty">Spécialité</label> -->
         <div class="input-wrapper">
           <i class="fas fa-stethoscope"></i>
-          <select id="specialty" formControlName="specialty" class="form-control" >
-            <option value="" disabled selected>Choisissez une spécialité</option>
-            <option *ngFor="let spc of specialite" [value]="spc">{{spc}}</option>
-          </select>
+          <input type="text" id="specialty" formControlName="specialty" class="form-control" placeholder="Spécialité médicale" list="speciality-list">
+          <datalist id="speciality-list">
+            <option *ngFor="let spc of specialite" [value]="spc">{{ spc }}</option>
+          </datalist>
         </div>
         <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
       </div>
 
       <!-- Clinic Address field -->
-
       <div class="search-field">
-        <!-- <label for="clinicAddess">Adresse de la clinique</label> -->
         <div class="input-wrapper">
           <i class="fas fa-map-marker-alt"></i>
-          <select id="clinicAddress" formControlName="clinicAdress">
-            <option value="" disabled selected>Where ? </option>
-            <option *ngFor="let item of local" [value]="item">{{item}}</option>
-          </select>
+          <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control" placeholder="Adresse de la clinique" list="location-list">
+          <datalist id="location-list">
+            <option *ngFor="let item of clinicAdress" [value]="item">{{ item }}</option>
+          </datalist>
         </div>
         <div class="search-hint">Basé sur votre localisation</div>
       </div>
 
-      <!--    button button -->
-     
     </div>
-    <button type="submit" class="btn-search">
-      <i class="fas fa-search"></i> Rechercher
-    </button>
 
+    <!-- Submit button -->
+    <div class="make-appointment-btn " type="submit">
+      <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
+    </div>
+
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <i class="fas fa-exclamation-circle"></i>
+      {{ errorMessage }}
+    </div>
 
   </form>
 </div>

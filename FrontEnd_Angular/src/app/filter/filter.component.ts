@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from "../Service/doctor.service";
-import { HealthProfessional } from "../Models/HealthProfessional";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Localisation } from "../Enums/Localisation";
 import { Speciality } from "../Enums/Speciality";
-import { Router } from '@angular/router'; // Importer Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter',
@@ -16,19 +15,28 @@ export class FilterComponent implements OnInit {
 
   localisation = Localisation;
   speciality = Speciality;
-  local!: string[];
+  clinicAdress!: string[];
   specialite!: string[];
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
     private doctorService: DoctorService,
-    private router: Router // Injecter Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    this.local = Object.values(this.localisation).filter((value) => typeof value === 'string');
+    this.clinicAdress = Object.values(this.localisation).filter((value) => typeof value === 'string');
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
+
+    // Ajouter des écouteurs pour effacer le message d'erreur
+    this.searchform.get('specialty')?.valueChanges.subscribe(() => {
+      this.errorMessage = '';
+    });
+    this.searchform.get('clinicAdress')?.valueChanges.subscribe(() => {
+      this.errorMessage = '';
+    });
   }
 
   initForm() {
@@ -38,17 +46,40 @@ export class FilterComponent implements OnInit {
     });
   }
 
+  validateInputs(specialty: string, clinicAdress: string): boolean {
+    const isSpecialtyValid = specialty === '' || this.specialite.includes(specialty);
+    const isClinicAddressValid = clinicAdress === '' || this.clinicAdress.includes(clinicAdress);
+
+    if (!isSpecialtyValid) {
+      this.errorMessage = 'Veuillez entrer une spécialité valide ou laisser le champ vide.';
+      return false;
+    }
+
+    if (!isClinicAddressValid) {
+      this.errorMessage = 'Veuillez entrer une adresse de clinique valide.';
+      return false;
+    }
+
+    this.errorMessage = '';
+    return true;
+  }
+
+
+
   searchDoctor(): void {
-    console.log("eeeeeeeeeeeee")
+    console.log("Recherche de médecin...");
 
     if (this.searchform.valid) {
       const { specialty, clinicAdress } = this.searchform.value;
 
-
-      this.router.navigate(['/calendar'], {
-        queryParams: { specialty, clinicAdress }
-      });
+      if (this.validateInputs(specialty, clinicAdress)) {
+        this.errorMessage = '';
+        this.router.navigate(['/calendar'], {
+          queryParams: { specialty, clinicAdress }
+        });
+      }
     } else {
+      this.errorMessage = "Veuillez remplir tous les champs correctement.";
       console.log("Le formulaire est invalide");
     }
   }

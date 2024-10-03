@@ -46,29 +46,30 @@ export class AvailabilityCalendarComponent implements OnInit {
     this.loadInitialData(); // Load the initial data
   }
 
-  // Charger les données initiales
+  // Load the initial data
   async loadInitialData() {
     await this.loadDoctors();
     this.generateWeek();
   }
 
-  // Charger les docteurs avec une promesse pour utiliser async/await
+  // Load the doctors with a promise to use async/await
   loadDoctors(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.route.queryParams.subscribe(params => {
         this.specialty = params['specialty'];
         this.clinicAdress = params['clinicAdress'];
 
-        // Appeler le service pour récupérer les docteurs en fonction des paramètres
+        // Call the service to retrieve doctors based on the parameters
         this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe(
           (data: HealthProfessional[]) => {
             this.ListDoctors = data;
 
-            // Envoyer les docteurs filtrés au service partagé
+            // Send the filtered doctors to the shared service
             this.doctorSharedService.setFilteredDoctors(this.ListDoctors);
 
             if (this.ListDoctors.length === 0) {
               this.isNotDataFound = true;
+
             } else {
               this.isNotDataFound = false;
               this.totalDoctors = this.ListDoctors.length;
@@ -76,19 +77,19 @@ export class AvailabilityCalendarComponent implements OnInit {
               this.updatePaginatedDoctors();
             }
 
-            resolve(); // Appel réussi, on résout la promesse
+            resolve();
           },
-          error => reject(error) // En cas d'erreur, on rejette la promesse
+          error => reject(error)
         );
       });
     });
   }
 
-  // Générer la semaine et charger les disponibilités
+  // Generate the week and load the availabilities
   generateWeek() {
     this.days = [];
     const startOfWeek = this.getStartOfWeek(this.currentDate);
-    const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
@@ -96,11 +97,11 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.days.push({ name: dayNames[i], date: day });
     }
 
-    // Charger les disponibilités après la génération de la semaine
+    // Load the availabilities after generating the week
     this.loadAllAvailableTimes();
   }
 
-  // Récupérer le début de la semaine
+  // Get the start of the week
   getStartOfWeek(date: Date): Date {
     const start = new Date(date);
     const day = start.getDay();
@@ -109,19 +110,19 @@ export class AvailabilityCalendarComponent implements OnInit {
     return start;
   }
 
-  // Passer à la semaine précédente
+  // Go to the previous week
   previousWeek() {
     this.currentDate.setDate(this.currentDate.getDate() - 7);
     this.generateWeek();
   }
 
-  // Passer à la semaine suivante
+  // Go to the next week
   nextWeek() {
     this.currentDate.setDate(this.currentDate.getDate() + 7);
     this.generateWeek();
   }
 
-  // Charger toutes les disponibilités
+  // Load all availabilities
   loadAllAvailableTimes() {
     this.ListDoctors.forEach(doctor => {
       this.days.forEach(day => {
@@ -130,7 +131,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     });
   }
 
-  // Charger les disponibilités pour un médecin donné et une date donnée
+  // Load availabilities for a given doctor and a given date
   loadAvailableTimes(doctorId: number, date: Date) {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate) {
@@ -141,12 +142,12 @@ export class AvailabilityCalendarComponent implements OnInit {
           }
           this.availabilities[doctorId][formattedDate] = availabilities;
         },
-        error => console.error('Erreur lors du chargement des disponibilités', error)
+        error => console.error('Error loading availabilities', error)
       );
     }
   }
 
-  // Récupérer les disponibilités pour un médecin donné et une date donnée
+  // Retrieve availabilities for a given doctor and a given date
   getAvailableTimes(doctorId: number, date: Date): Availability[] {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate && this.availabilities[doctorId]) {
@@ -155,14 +156,14 @@ export class AvailabilityCalendarComponent implements OnInit {
     return [];
   }
 
-  // Mettre à jour les docteurs paginés pour l'affichage
+  // Update the paginated doctors for display
   updatePaginatedDoctors(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex);
   }
 
-  // Aller à la page suivante
+  // Go to the next page
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -170,7 +171,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     }
   }
 
-  // Retourner à la page précédente
+  // Go back to the previous page
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
