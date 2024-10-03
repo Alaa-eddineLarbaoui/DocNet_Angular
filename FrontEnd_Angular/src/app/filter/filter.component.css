@@ -59,6 +59,56 @@ mat-form-field {
 } */
 
 
+.search-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-fields {
+  display: flex;
+  flex-direction: row; /* Affichez les champs en ligne par défaut */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-field {
+  flex: 1; /* Chaque champ prend une largeur égale */
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d6efd;
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 789px) {
+  .search-fields {
+    flex-direction: column; /* Changez en colonne pour les petits écrans */
+  }
+}
+
+/* Autres styles existants */
 
 
 
@@ -77,10 +127,7 @@ mat-form-field {
   }
 
 
-  .search-form {
-    display: flex;
-    flex-direction: column;
-  }
+
 
   .search-fields {
     display: flex;
@@ -166,11 +213,15 @@ mat-form-field {
   padding: 20px;
 }
 
-.search-form {
+.search_form {
   background-color: #f8f9fa;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  /* margin: 2rem auto; */
+
 }
 
 .search-fields {
@@ -274,4 +325,5 @@ mat-form-field {
 .make-appointment-btn i {
   margin-left: 10px;
 }
+
 

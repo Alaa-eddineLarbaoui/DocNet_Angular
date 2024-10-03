@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { DoctorService } from "../Service/doctor.service";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Localisation } from "../Enums/Localisation";
@@ -11,11 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  searchform!: FormGroup;
+  @Input() search_form: string = '#f8f9fa';
 
+  searchform!: FormGroup;
   localisation = Localisation;
   speciality = Speciality;
-  clinicAdress!: string[];
+  local!: string[];
   specialite!: string[];
   errorMessage: string = '';
 
@@ -27,7 +28,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.clinicAdress = Object.values(this.localisation).filter((value) => typeof value === 'string');
+    this.local = Object.values(this.localisation).filter((value) => typeof value === 'string');
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
 
     // Ajouter des écouteurs pour effacer le message d'erreur
@@ -48,10 +49,10 @@ export class FilterComponent implements OnInit {
 
   validateInputs(specialty: string, clinicAdress: string): boolean {
     const isSpecialtyValid = specialty === '' || this.specialite.includes(specialty);
-    const isClinicAddressValid = clinicAdress === '' || this.clinicAdress.includes(clinicAdress);
+    const isClinicAddressValid = clinicAdress === '' ||  this.local.includes(clinicAdress);
 
     if (!isSpecialtyValid) {
-      this.errorMessage = 'Veuillez entrer une spécialité valide ou laisser le champ vide.';
+      this.errorMessage = 'Veuillez entrer une spécialité valide.';
       return false;
     }
 

@@ -115,25 +115,8 @@ color: #0071DC;
 
 
 
-.nav-bg-fifteen .main-nav .has-submenu> a{
-	position: relative;
-}
-.nav-bg-fifteen .main-nav .has-submenu.menu-effect > a::after {
-	content: "";
-	height: 2px;
-	width: 0px;
-	background-color: #0071DC;
-	position: absolute;
-	bottom: 23px;
-    left: 0;
-	transition: all 0.5s;
-}
-.nav-bg-fifteen .main-nav .has-submenu.menu-effect:hover > a::after {
-	width: 20px;
-}
-.nav-bg-fifteen .main-nav .has-submenu.active > a::after {
-	width: 20px;
-}
+
+
 .home-section-fifteen {
     background-size: cover;
     background-repeat: no-repeat;
@@ -317,4 +300,8 @@ display: flex;
   position: absolute;
   top: 0;
   z-index: 4;
+}
+
+.filter{
+  background: chocolate !important;
 }

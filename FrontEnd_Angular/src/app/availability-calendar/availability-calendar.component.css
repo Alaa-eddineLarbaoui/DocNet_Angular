@@ -412,6 +412,23 @@ margin-left: 8px;
 
 
 
+.filter-background {
+  border: 1px solid red;
+  background-color: red;
+  margin-top: 10px;
+  padding: 15px;
+  border-bottom-left-radius:60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to bottom, #f7f7f7, #ffffff);
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: red;
+}
+
+
+
 
 
 /* Responsives : Media query   */

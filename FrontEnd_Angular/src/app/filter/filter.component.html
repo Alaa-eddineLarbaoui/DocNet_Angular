@@ -1,5 +1,5 @@
-<div class="search-container">
-  <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search-form">
+
+  <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search_form">
     <div class="search-fields">
       <!-- Specialty field -->
       <div class="search-field">
@@ -7,7 +7,7 @@
           <i class="fas fa-stethoscope"></i>
           <input type="text" id="specialty" formControlName="specialty" class="form-control" placeholder="Spécialité médicale" list="speciality-list">
           <datalist id="speciality-list">
-            <option *ngFor="let spc of specialite" [value]="spc">{{ spc }}</option>
+            <option *ngFor="let spc of specialite  | slice:0:5" [value]="spc">{{ spc }}</option>
           </datalist>
         </div>
         <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
@@ -19,7 +19,7 @@
           <i class="fas fa-map-marker-alt"></i>
           <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control" placeholder="Adresse de la clinique" list="location-list">
           <datalist id="location-list">
-            <option *ngFor="let item of clinicAdress" [value]="item">{{ item }}</option>
+            <option *ngFor="let item of local | slice:0:5" [value]="item">{{ item }}</option>
           </datalist>
         </div>
         <div class="search-hint">Basé sur votre localisation</div>
@@ -39,7 +39,6 @@
     </div>
 
   </form>
-</div>
 
 
 
