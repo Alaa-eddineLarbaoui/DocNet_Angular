@@ -1,0 +1,102 @@
+
+<form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search_form">
+    <div class="search-fields">
+      <!-- Specialty field -->
+      <div class="search-field">
+        <div class="input-wrapper">
+          <i class="fas fa-stethoscope"></i>
+          <input type="text" id="specialty" formControlName="specialty" class="form-control" placeholder="Spécialité médicale" list="speciality-list">
+          <datalist id="speciality-list">
+            <option *ngFor="let spc of specialite  | slice:0:5" [value]="spc">{{ spc }}</option>
+          </datalist>
+        </div>
+        <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
+      </div>
+
+      <!-- Clinic Address field -->
+      <div class="search-field">
+        <div class="input-wrapper">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control" placeholder="Adresse de la clinique" list="location-list">
+          <datalist id="location-list">
+            <option *ngFor="let item of local | slice:0:5" [value]="item">{{ item }}</option>
+          </datalist>
+        </div>
+        <div class="search-hint">Basé sur votre localisation</div>
+      </div>
+
+    </div>
+
+    <!-- Submit button -->
+    <div class="make-appointment-btn " type="submit">
+      <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
+    </div>
+
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <i class="fas fa-exclamation-circle"></i>
+      {{ errorMessage }}
+    </div>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div *ngIf="listOfDoctorFiltrer.length > 0">
+  <ul>
+    <li *ngFor="let doctor of listOfDoctorFiltrer">
+      {{ doctor.username}} - {{ doctor.speciality }} - {{ doctor.clinicAddress }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="listOfDoctorFiltrer.length === 0">
+  Aucun médecin trouvé.
+</div>
+-->
+
+
+
+
+<!--
+<div class="search-container">
+  <h1>Trouvez un rendez-vous avec une médecin généraliste</h1>
+  <form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search-form">
+    <div class="input-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Nom, spécialité, établissement...</mat-label>
+        <mat-select formControlName="specialty">
+          <mat-option *ngFor="let spc of specialite" [value]="spc">{{spc}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="input-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Où ?</mat-label>
+        <mat-select formControlName="clinicAdress">
+          <mat-option *ngFor="let item of local" [value]="item">{{item}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-flat-button class="btn-search" type="submit">
+      Rechercher
+    </button>
+  </form>
+</div>
+-->
+
+
+

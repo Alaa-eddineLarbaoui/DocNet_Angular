@@ -26,6 +26,7 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { TestComponent } from './test/test.component';
+import { FilterFormComponent } from './filter-form/filter-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TestComponent } from './test/test.component';
     LoginComponent,
     DoctorDetailsComponent,
     MapDoctorComponent,
-    TestComponent
+    TestComponent,
+    FilterFormComponent
   ],
   imports: [
     BrowserModule,

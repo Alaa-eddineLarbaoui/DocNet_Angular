@@ -1,6 +1,8 @@
 <div class="filter-background">
-  <app-filter class="input-filter"></app-filter>
+  <h2 class="filter-title">Trouvez votre professionnel de santé</h2>
+  <app-filter-form class="input-filter"></app-filter-form>
 </div>
+
 
 <section class="d" *ngIf="!isNotDataFound">
 
@@ -119,12 +121,16 @@
       <app-map></app-map>
     </div>
   </section>
+
 </section>
 
 <section *ngIf="isNotDataFound" class="dataNotFound">
   <app-not-found></app-not-found>
 </section>
-<app-create-availability></app-create-availability>
+
+
+
+<app-create-availability ></app-create-availability>
 
 <footer>
 
