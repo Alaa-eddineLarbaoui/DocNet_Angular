@@ -82,7 +82,8 @@
   align-items: center;
   gap: 10px;
   box-shadow: 0 4px 10px rgba(0, 113, 220, 0.2);
-  height: 52px;
+  height: 50px;
+  margin-top: 2px;
 }
 
 .make-appointment-btn button:hover {
@@ -140,13 +141,42 @@
 /************************************************************/
 
 
+
 @media (max-width: 768px) {
+  .search_form {
+    padding: 15px;
+  }
+
   .search-fields {
     flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .search-field {
+    flex: 1 0 auto;
+  }
+
+  .form-control {
+    padding: 12px 12px 12px 40px;
+  }
+
+  .input-wrapper i {
+    font-size: 16px;
+  }
+
+  .search-hint {
+    margin-top: 4px;
   }
   
   .make-appointment-btn {
+    justify-content: stretch;
+    margin-top: 15px;
+  }
+
+  .make-appointment-btn button {
+    width: 100%;
+    padding: 12px 20px;
     justify-content: center;
-    margin-top: 20px;
   }
 }
