@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 
-<form [formGroup]="searchform" (ngSubmit)="searchDoctor()" class="search_form">
+<form [formGroup]="searchform" (ngSubmit)="searchOfDoctor()" class="search_form">
     <div class="search-fields">
       <!-- Specialty field -->
       <div class="search-field">
@@ -35,11 +35,11 @@
       <div class="make-appointment-btn " type="submit">
         <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
       </div>
-  
-      
+
+
     </div>
 
-  
+
     <!-- Error message -->
     <div *ngIf="errorMessage" class="error-message">
       <i class="fas fa-exclamation-circle"></i>

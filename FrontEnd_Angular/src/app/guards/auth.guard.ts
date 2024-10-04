@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, Router } from '@angular/router';
+import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from '../Service/login.service';
-import { jwtDecode } from 'jwt-decode';
-
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -11,43 +10,43 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(private authService: LoginService, private router: Router) {}
 
-  canActivate(): boolean {
-    return this.checkAuth();
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.checkAuth(state.url);
   }
 
-  canActivateChild(): boolean {
-    return this.checkAuth();
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.checkAuth(state.url);
   }
 
-  private checkAuth(): boolean {
+  private checkAuth(url: string): boolean {
     const token = localStorage.getItem('jwtData');
 
     if (token) {
-      const decodedToken: any = jwtDecode(token);
-      const roles = decodedToken.role || [];
-      console.log('Rôles de lutilisateur : ', roles);
+      try {
+        const decodedToken: any = jwtDecode(token);
+        const roles = decodedToken.role || [];
+        console.log('Rôles de l\'utilisateur : ', roles);
 
-      // Redirection selon le rôle
-      const requestedUrl = this.router.url;  // Récupérer l'URL demandée
-
-      if (requestedUrl.startsWith('/admin') && roles.includes('ADMIN')) {
-        return true;  // Accès autorisé pour Admin
-
-      } else if (requestedUrl.startsWith('/doctor') && roles.includes('DOCTOR')) {
-        return true;  // Accès autorisé pour Doctor
-
-      } else if (requestedUrl.startsWith('/patient') && roles.includes('PATIENT')) {
-        return true;  // Accès autorisé pour Patient
-
-      } else {
-        // Si le rôle n'est pas autorisé pour l'URL demandée
-        this.router.navigate(['/login']);
-
+        // Redirection selon le rôle et l'URL demandée
+        if (url.startsWith('/admin') && roles.includes('ADMIN')) {
+          return true;  // Accès autorisé pour Admin
+        } else if (url.startsWith('/doctor') && roles.includes('DOCTOR')) {
+          return true;  // Accès autorisé pour Doctor
+        } else if (url.startsWith('/patient') && roles.includes('PATIENT')) {
+          return true;  // Accès autorisé pour Patient
+        } else {
+          // Si le rôle n'est pas autorisé pour l'URL demandée
+          this.router.navigate(['/login'], { queryParams: { returnUrl: url } });
+          return false;
+        }
+      } catch (error) {
+        console.error('Erreur lors du décodage du token:', error);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: url } });
         return false;
       }
     } else {
       // Si pas de token, rediriger vers la page de login
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'], { queryParams: { returnUrl: url } });
       return false;
     }
   }

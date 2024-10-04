@@ -14,36 +14,32 @@
 
 
 <section style="background-color: black;">
-<div style="height: 90px;">hehhezhzeh</div>
+  <div style="height: 90px;">hehhezhzeh</div>
 </section>
 
 <!-- Section du contenu -->
 <section class="section_global">
 
-  <section class="section1">
-    <div>test</div>
-    <i class="fa-solid fa-location-dot"></i>
-  </section>
-
+ <section class="section1">
+   <div class="lottie-container">
+     <ng-lottie [options]="options"></ng-lottie>
+   </div>
+ </section>
 
 
   <section class="section2">
     <div id="container" class="container">
 
-      <div class="title-block" >
+      <div class="title-block">
         <h2 class="h2">Search Doctor,</h2>
         <h2 class="h2">Make an Appointment</h2>
         <p>Discover the best doctors, clinic & hospital the city nearest to you.</p>
       </div>
 
-       <app-filter></app-filter>
+      <app-filter></app-filter>
 
     </div>
   </section>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-
-
- 

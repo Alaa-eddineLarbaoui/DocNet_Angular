@@ -1,9 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { icon, marker, Marker, Map, divIcon } from 'leaflet';
+import { marker, Marker, Map, divIcon } from 'leaflet';
 import * as L from 'leaflet';
 import { DoctorService } from '../Service/doctor.service';
 import { GeocodingService } from '../Service/geocoding.service';
-import lottie from 'lottie-web';
 import { DoctorSharedService } from '../Service/doctor-shared.service';
 
 @Component({
@@ -43,15 +42,15 @@ export class MapComponent implements AfterViewInit, OnInit {
 
         // Création des marqueurs pour chaque docteur
         this.markers = data.map((doctor) => {
-          const lottieDiv = divIcon({
+          const icon = divIcon({
             className: '',
-            html: `<div id="lottie-marker-${doctor.id}" style="width: 45px; height: 45px;"></div>`,
+            html: `<img src="assets/img/icon_marker.png" style="width: 45px; height: 45px;" alt="Doctor Marker">`, // Chemin de votre image de marqueur
             iconSize: [45, 45],
             iconAnchor: [25, 25]
           });
 
           const docMarker = marker([doctor.latitude, doctor.longitude], {
-            icon: lottieDiv
+            icon: icon
           });
 
           // Liaison d'une popup aux marqueurs
@@ -67,17 +66,6 @@ export class MapComponent implements AfterViewInit, OnInit {
             </div>
           `);
 
-          // Charger l'animation Lottie lorsque le marqueur est ajouté à la carte
-          docMarker.on('add', () => {
-            lottie.loadAnimation({
-              container: document.getElementById(`lottie-marker-${doctor.id}`) as Element,
-              renderer: 'svg',
-              loop: true,
-              autoplay: true,
-              path: 'assets/img/Animation - 1725491917670.json' // Chemin correct de l'animation Lottie
-            });
-          });
-
           return docMarker;
         });
 
@@ -92,7 +80,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     if (!this.map) {
       this.map = L.map('map', {
         center: [latitude, longitude],
-        zoom: 10 // Zoom initial ajusté
+        zoom: 1 // Zoom initial ajusté
       });
 
       const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

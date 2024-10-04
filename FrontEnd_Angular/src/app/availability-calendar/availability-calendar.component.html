@@ -31,8 +31,9 @@
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
 
-          <button class="appointment-button" [routerLink]="['doctor', doctor.id]">
-            Book an appointment </button>
+          <button class="appointment-button" [routerLink]="['/patient/detailDoctor', doctor.id]">
+            Book an appointment
+          </button>
 
         </div>
 

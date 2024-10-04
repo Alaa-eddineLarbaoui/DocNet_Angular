@@ -22,7 +22,6 @@ export class FilterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private doctorService: DoctorService,
     private router: Router
   ) {}
 
@@ -67,8 +66,7 @@ export class FilterFormComponent implements OnInit {
 
 
 
-  searchDoctor(): void {
-    console.log("Recherche de médecin...");
+  searchOfDoctor(): void {
 
     if (this.searchform.valid) {
       const { specialty, clinicAdress } = this.searchform.value;
