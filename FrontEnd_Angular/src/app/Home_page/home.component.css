@@ -65,7 +65,7 @@ h2 {
 }
 
 h4 {
-  color: #1d3557;
+  color:#1d3557;
 }
 
 p {
@@ -80,4 +80,38 @@ img {
 }
 #img2{
   margin-bottom: 13px;
+}
+
+
+/************************************************************/
+/********************* CSS of Nav   *************************/
+/************************************************************/
+
+.custom-nav {
+  background-color: #117aca !important;
+}
+
+
+.logo-text {
+  font-style: italic;
+  font-size: 24px;
+}
+
+.navbar .btn {
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-item .nav-link {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item .nav-link i {
+  margin-right: 5px;
+}
+
+.navbar-nav .nav-item .btn {
+  padding: 5px 15px;
+  font-weight: 500;
 }
