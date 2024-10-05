@@ -35,7 +35,7 @@ const routes: Routes = [
   },
 
 
-{  path:'test',component:TestComponent},
+{  path:'',component:TestComponent},
 
 
 

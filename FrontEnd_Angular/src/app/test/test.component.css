@@ -54,3 +54,30 @@ body {
   margin-bottom: 30px;
 }
 
+
+/*////////////////////*/
+
+
+h2 {
+  font-weight: bold;
+  color: #1d3557;
+  margin-bottom: 50px;
+}
+
+h4 {
+  color: #1d3557;
+}
+
+p {
+  color: #6c757d;
+  /* Gray */
+  font-size: 16px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+#img2{
+  margin-bottom: 13px;
+}
