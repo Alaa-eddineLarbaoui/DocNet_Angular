@@ -23,7 +23,6 @@ export class LoginService {
   }
 
   isLoggedIn(): boolean {
-    console.log("is loggedddddddd")
     const token = localStorage.getItem('jwtData');
     return !!token; // Retourne true si le token existe (l'utilisateur est connecté)
   }

@@ -28,8 +28,9 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.local = Object.values(this.localisation).filter((value) => typeof value === 'string');
+    this.local= Object.values(this.localisation).filter((value) => typeof value === 'string');
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
+
 
     // Ajouter des écouteurs pour effacer le message d'erreur
     this.searchform.get('specialty')?.valueChanges.subscribe(() => {
