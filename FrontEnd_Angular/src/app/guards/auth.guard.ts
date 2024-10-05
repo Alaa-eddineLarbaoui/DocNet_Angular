@@ -30,10 +30,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         // Redirection selon le rôle et l'URL demandée
         if (url.startsWith('/admin') && roles.includes('ADMIN')) {
           return true;  // Accès autorisé pour Admin
+
         } else if (url.startsWith('/doctor') && roles.includes('DOCTOR')) {
           return true;  // Accès autorisé pour Doctor
+
         } else if (url.startsWith('/patient') && roles.includes('PATIENT')) {
           return true;  // Accès autorisé pour Patient
+
         } else {
           // Si le rôle n'est pas autorisé pour l'URL demandée
           this.router.navigate(['/login'], { queryParams: { returnUrl: url } });

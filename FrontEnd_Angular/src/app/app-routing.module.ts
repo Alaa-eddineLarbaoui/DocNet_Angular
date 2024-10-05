@@ -1,46 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AvailabilityCalendarComponent} from "./availability-calendar/availability-calendar.component";
-import {FilterComponent} from "./filter/filter.component";
-import {NotFoundComponent} from "./not-found/not-found.component";
-import {LoginComponent} from "./login/login.component";
-import {MapDoctorComponent} from "./map-doctor/map-doctor.component";
-import {DoctorDetailsComponent} from "./doctor-details/doctor-details.component";
-import {AuthGuard} from "./guards/auth.guard";
-import {AppointmentsComponent} from "./appointments/appointments.component";
-import {TestComponent} from "./test/test.component";
-import {Erole} from "./Enums/Erole";
+import { AvailabilityCalendarComponent } from "./availability-calendar/availability-calendar.component";
+import { FilterComponent } from "./filter/filter.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { LoginComponent } from "./login/login.component";
+import { MapDoctorComponent } from "./map-doctor/map-doctor.component";
+import { DoctorDetailsComponent } from "./doctor-details/doctor-details.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { AppointmentsComponent } from "./appointments/appointments.component";
+import { HomeComponent } from "./Home_page/home.component";
+import { Erole } from "./Enums/Erole";
+import {Page404Component} from "./page-404/page-404.component";
 
 
 
 const routes: Routes = [
 
-  { path: 'filter', component: FilterComponent },
-  { path: 'calendar', component: AvailabilityCalendarComponent},
+  { path: 'patient/filter', component: FilterComponent ,
+  canActivate:[AuthGuard],
+    data:{expectedRole:Erole.PATIENT}
+  },
+  { path: 'calendar', component: AvailabilityCalendarComponent },
 
   //{ path: '', redirectTo: '/filter', pathMatch: 'full' },
-  {  path:'login',component:LoginComponent},
-  { path: 'notFound' , component:NotFoundComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'notFound', component: NotFoundComponent },
 
-   //{ path: 'admin', component: CalendarComponent, canActivate: [AuthGuard] },  // Accessible seulement pour Admin */
+  //{ path: 'admin', component: CalendarComponent, canActivate: [AuthGuard] },  // Accessible seulement pour Admin */
   { path: 'doctor', component: NotFoundComponent, canActivate: [AuthGuard] },
- { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
+  { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
 
-  {path:'patient/detailDoctor/:id' ,component : DoctorDetailsComponent,
+  {
+    path: 'patient/detailDoctor/:id', component: DoctorDetailsComponent,
     canActivate: [AuthGuard],
-    data: {expectedRole: Erole.PATIENT}
-},
-  { path: 'appointment/:id' , component:AppointmentsComponent ,
+    data: { expectedRole: Erole.PATIENT }
+  },
+
+  {
+    path: 'appointment/:id', component: AppointmentsComponent,
 
   },
 
 
-{  path:'',component:TestComponent},
-
-
-
-
-  { path: '**' , component:NotFoundComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', component:Page404Component },
 
 
 ];

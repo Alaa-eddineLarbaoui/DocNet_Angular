@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -36,7 +37,6 @@ export class LoginComponent implements OnInit {
       const person: LoginRequest = this.loginForm.value;
       this.loginservice.Login(person).subscribe({
         next: (res: any) => {
-
           localStorage.setItem('jwtData', JSON.stringify(res));
 
           try {
@@ -47,14 +47,11 @@ export class LoginComponent implements OnInit {
 
             if (roles.includes(Erole.ADMIN)) {
               this.router.navigate(['/calendar']);
-
             } else if (roles.includes(Erole.DOCTOR)) {
               this.router.navigate(['/notFound']);
-
             } else if (roles.includes(Erole.PATIENT)) {
               console.log('Utilisateur avec rôle PATIENT connecté.');
               this.router.navigateByUrl(this.returnUrl);
-
             } else {
               console.warn('Aucun rôle reconnu dans le token.');
               this.errorMessage = 'Erreur autorisation. Contactez l\'administrateur.';
@@ -74,5 +71,4 @@ export class LoginComponent implements OnInit {
       console.log('Le formulaire est invalide.');
     }
   }
-
 }

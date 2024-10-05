@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,13 +25,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TestComponent } from './test/test.component';
+import { HomeComponent } from './Home_page/home.component';
 import { FilterFormComponent } from './filter-form/filter-form.component';
 
 // Import LottieModule
 import { LottieModule } from 'ngx-lottie';
-import player from 'lottie-web'; // Import directement le player
+import player from 'lottie-web';
+import { Page404Component } from './page-404/page-404.component';
+import {MatCardModule} from "@angular/material/card"; // Import directement le player
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +47,9 @@ import player from 'lottie-web'; // Import directement le player
     LoginComponent,
     DoctorDetailsComponent,
     MapDoctorComponent,
-    TestComponent,
-    FilterFormComponent
+    HomeComponent,
+    FilterFormComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import player from 'lottie-web'; // Import directement le player
     MatBadgeModule,
     MatTabsModule,
     MatSnackBarModule,
-    LottieModule.forRoot({ player: () => player }),
+    LottieModule.forRoot({player: () => player}),
+    MatCardModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
