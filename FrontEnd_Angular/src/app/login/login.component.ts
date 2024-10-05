@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string = '/';
 
   constructor(
-    private srv: LoginService,
+    public loginservice: LoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
@@ -34,25 +34,30 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const person: LoginRequest = this.loginForm.value;
-      this.srv.Login(person).subscribe({
+      this.loginservice.Login(person).subscribe({
         next: (res: any) => {
-          localStorage.setItem('jwtData', res.token);
+
+          localStorage.setItem('jwtData', JSON.stringify(res));
+
           try {
             const decodedToken: any = jwtDecode(res.token);
             console.log('Decoded Token:', decodedToken);
             const roles = decodedToken.role || [];
-            console.log('Rôles de l\'utilisateur:', roles);
+            console.log('Rôles de lutilisateur:', roles);
 
             if (roles.includes(Erole.ADMIN)) {
               this.router.navigate(['/calendar']);
+
             } else if (roles.includes(Erole.DOCTOR)) {
               this.router.navigate(['/notFound']);
+
             } else if (roles.includes(Erole.PATIENT)) {
               console.log('Utilisateur avec rôle PATIENT connecté.');
               this.router.navigateByUrl(this.returnUrl);
+
             } else {
               console.warn('Aucun rôle reconnu dans le token.');
-              this.errorMessage = 'Erreur d\'autorisation. Contactez l\'administrateur.';
+              this.errorMessage = 'Erreur autorisation. Contactez l\'administrateur.';
             }
           } catch (error) {
             console.error('Erreur lors du décodage du token:', error);
@@ -69,4 +74,5 @@ export class LoginComponent implements OnInit {
       console.log('Le formulaire est invalide.');
     }
   }
+
 }

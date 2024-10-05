@@ -7,6 +7,7 @@ import { JwtDto } from "../Models/JwtDto";
 import { AppointmentsComponent } from "../appointments/appointments.component";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {LoginService} from "../Service/login.service";
 
 
 @Component({
@@ -32,7 +33,9 @@ export class DoctorDetailsComponent implements OnInit {
     private doctorService: DoctorService,
     private viewportScroller: ViewportScroller,
     private dialog: MatDialog , // Ajout du MatDialog pour gérer la popup
-    private snackBar: MatSnackBar  // Injection de MatSnackBar
+    private snackBar: MatSnackBar , // Injection de MatSnackBar
+    public  logservice:LoginService
+
 
 ) {}
 
@@ -122,5 +125,8 @@ export class DoctorDetailsComponent implements OnInit {
       });
     });
   }
+
+
+  protected readonly caches = caches;
 }
 
