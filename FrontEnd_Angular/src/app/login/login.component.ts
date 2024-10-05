@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Erole } from "../Enums/Erole";
 import { LoginRequest } from "../Models/LoginRequest";
 import { LoginService } from "../Service/login.service";
@@ -15,12 +16,14 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   returnUrl: string = '/';
+  hidePassword = true;
 
   constructor(
     public loginservice: LoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
             const decodedToken: any = jwtDecode(res.token);
             console.log('Decoded Token:', decodedToken);
             const roles = decodedToken.role || [];
-            console.log('Rôles de lutilisateur:', roles);
+            console.log('Rôles de l\'utilisateur:', roles);
 
             if (roles.includes(Erole.ADMIN)) {
               this.router.navigate(['/calendar']);
@@ -54,21 +57,35 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl(this.returnUrl);
             } else {
               console.warn('Aucun rôle reconnu dans le token.');
-              this.errorMessage = 'Erreur autorisation. Contactez l\'administrateur.';
+              this.showError('Erreur d\'autorisation. Contactez l\'administrateur.');
             }
           } catch (error) {
             console.error('Erreur lors du décodage du token:', error);
-            this.errorMessage = 'Erreur lors de l\'authentification. Veuillez réessayer.';
+            this.showError('Erreur lors de l\'authentification. Veuillez réessayer.');
           }
         },
         error: (err) => {
-          this.errorMessage = 'Échec de la connexion. Veuillez réessayer.';
+          this.showError('Échec de la connexion. Veuillez réessayer.');
           console.error('Erreur de connexion:', err);
         }
       });
     } else {
-      this.errorMessage = 'Veuillez remplir tous les champs obligatoires.';
+      this.showError('Veuillez remplir tous les champs obligatoires.');
       console.log('Le formulaire est invalide.');
     }
+  }
+
+
+  getErrorMessage(field: string): string {
+    const control = this.loginForm.get(field);
+    if (control && control.hasError('required')) {
+      return 'Ce champ est requis';
+    }
+    return '';
+  }
+
+  private showError(message: string) {
+    this.errorMessage = message;
+    this.snackBar.open(message, 'Fermer', { duration: 5000 });
   }
 }

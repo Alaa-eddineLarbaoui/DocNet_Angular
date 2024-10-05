@@ -1,0 +1,36 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #c3e0ff 0%, #a9d6e5 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-image {
+  background-image: url("https://img.freepik.com/free-photo/doctor-presenting-something-isolated-white-background_1368-5834.jpg?size=626&ext=jpg&ga=GA1.1.452069438.1725290648&semt=ais_hybrid");
+  background-size: cover;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 90%;
+  }
+}
