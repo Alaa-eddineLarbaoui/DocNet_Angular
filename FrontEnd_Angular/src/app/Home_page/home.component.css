@@ -14,6 +14,7 @@ body {
 .section_global {
   display: flex;
   flex-direction: row;
+  margin-top:22px;
 }
 
 .section1 {
@@ -22,6 +23,7 @@ body {
 
 .section2 {
   width: 55%;
+  margin-right:46px;
 }
 
 .h2 {
@@ -29,7 +31,7 @@ body {
 }
 
 #container {
-  margin-right: 38px;
+  margin-right: 52px;
 }
 
 .title-block {
@@ -114,4 +116,32 @@ img {
 .navbar-nav .nav-item .btn {
   padding: 5px 15px;
   font-weight: 500;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .section1{
+    display:none;
+  }
+  .section2{
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .title-block {
+    align-items: center; 
+  }
+
+  .title-block h2 {
+    font-size: 32px; 
+    text-align: center; 
+  }
+
+  .title-block p {
+    font-size: 14px;
+    text-align: center; 
+  }
 }

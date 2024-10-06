@@ -31,6 +31,6 @@ export class LoginService {
     console.log("louuuugout")
     localStorage.removeItem('jwtData');
     alert("You are lougout oof this page")
-    this.router.navigate(['/filter']);
+    this.router.navigate(['/*']);
   }
 }
