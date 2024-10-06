@@ -78,6 +78,8 @@ export class AvailabilityCalendarComponent implements OnInit {
     });
   }
 
+
+  // logique for initialize calendar for doc tor
   initializeAllCalendars() {
     this.ListDoctors.forEach(doctor => {
       this.initializeCalendar(doctor.id);
@@ -95,7 +97,7 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   generateWeek(startDate: Date): { name: string, date: Date }[] {
     const days = [];
-    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const currentDate = new Date(startDate);
 
 

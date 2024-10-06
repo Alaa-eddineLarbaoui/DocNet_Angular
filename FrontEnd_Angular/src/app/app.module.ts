@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { CommonModule, DatePipe } from '@angular/common';
-import { CreateAvailabilityComponent } from './create-availability/create-availability.component';
+import { CreateAvailabilityComponent } from './doctor-dashboard/create-availability/create-availability.component';
 import { AvailabilityCalendarComponent } from './availability-calendar/availability-calendar.component';
 import { FilterComponent } from './filter/filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +32,8 @@ import { FilterFormComponent } from './filter-form/filter-form.component';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { Page404Component } from './page-404/page-404.component';
-import {MatCardModule} from "@angular/material/card"; // Import directement le player
+import {MatCardModule} from "@angular/material/card";
+import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
 
 // @ts-ignore
 @NgModule({
@@ -49,7 +50,8 @@ import {MatCardModule} from "@angular/material/card"; // Import directement le p
     MapDoctorComponent,
     HomeComponent,
     FilterFormComponent,
-    Page404Component
+    Page404Component,
+    PatientListComponent
   ],
   imports: [
     BrowserModule,
