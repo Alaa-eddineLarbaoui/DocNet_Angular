@@ -16,8 +16,7 @@ import { DoctorSharedService } from "../Service/doctor-shared.service";
   styleUrls: ['./availability-calendar.component.css']
 })
 export class AvailabilityCalendarComponent implements OnInit {
-  days: { name: string, date: Date, availableTimes?: string[] }[] = [];
-  currentDate: Date = new Date();
+  doctorCalendars: { [doctorId: number]: { startDate: Date, days: { name: string, date: Date }[] } } = {};
   ListDoctors: HealthProfessional[] = [];
   paginatedDoctors: HealthProfessional[] = [];
   availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
@@ -43,33 +42,27 @@ export class AvailabilityCalendarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadInitialData(); // Load the initial data
+    this.loadInitialData();
   }
 
-  // Load the initial data
   async loadInitialData() {
     await this.loadDoctors();
-    this.generateWeek();
+    this.initializeAllCalendars();
   }
 
-  // Load the doctors with a promise to use async/await
   loadDoctors(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.route.queryParams.subscribe(params => {
         this.specialty = params['specialty'];
         this.clinicAdress = params['clinicAdress'];
 
-        // Call the service to retrieve doctors based on the parameters
         this.doctorService.SearchDoctor(this.specialty, this.clinicAdress).subscribe(
           (data: HealthProfessional[]) => {
             this.ListDoctors = data;
-
-            // Send the filtered doctors to the shared service
             this.doctorSharedService.setFilteredDoctors(this.ListDoctors);
 
             if (this.ListDoctors.length === 0) {
               this.isNotDataFound = true;
-
             } else {
               this.isNotDataFound = false;
               this.totalDoctors = this.ListDoctors.length;
@@ -85,53 +78,58 @@ export class AvailabilityCalendarComponent implements OnInit {
     });
   }
 
-  // Generate the week and load the availabilities
-  generateWeek() {
-    this.days = [];
-    const startOfWeek = this.getStartOfWeek(this.currentDate);
-    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-    for (let i = 0; i < 7; i++) {
-      const day = new Date(startOfWeek);
-      day.setDate(startOfWeek.getDate() + i);
-      this.days.push({ name: dayNames[i], date: day });
-    }
-
-    // Load the availabilities after generating the week
-    this.loadAllAvailableTimes();
-  }
-
-  // Get the start of the week
-  getStartOfWeek(date: Date): Date {
-    const start = new Date(date);
-    const day = start.getDay();
-    const diff = (day === 0 ? 6 : day - 1);
-    start.setDate(start.getDate() - diff);
-    return start;
-  }
-
-  // Go to the previous week
-  previousWeek() {
-    this.currentDate.setDate(this.currentDate.getDate() - 7);
-    this.generateWeek();
-  }
-
-  // Go to the next week
-  nextWeek() {
-    this.currentDate.setDate(this.currentDate.getDate() + 7);
-    this.generateWeek();
-  }
-
-  // Load all availabilities
-  loadAllAvailableTimes() {
+  initializeAllCalendars() {
     this.ListDoctors.forEach(doctor => {
-      this.days.forEach(day => {
-        this.loadAvailableTimes(doctor.id, day.date);
-      });
+      this.initializeCalendar(doctor.id);
     });
   }
 
-  // Load availabilities for a given doctor and a given date
+  initializeCalendar(doctorId: number) {
+    const startDate = new Date();
+    this.doctorCalendars[doctorId] = {
+      startDate: startDate,
+      days: this.generateWeek(startDate)
+    };
+    this.loadAvailableTimesForDoctor(doctorId);
+  }
+
+  generateWeek(startDate: Date): { name: string, date: Date }[] {
+    const days = [];
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const currentDate = new Date(startDate);
+
+
+    for (let i = 0; i < 7; i++) {
+      days.push({
+        name: dayNames[i],
+        date: new Date(currentDate)
+      });
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return days;
+  }
+
+  previousWeek(doctorId: number) {
+    const calendar = this.doctorCalendars[doctorId];
+    calendar.startDate.setDate(calendar.startDate.getDate() - 7);
+    calendar.days = this.generateWeek(calendar.startDate);
+    this.loadAvailableTimesForDoctor(doctorId);
+  }
+
+  nextWeek(doctorId: number) {
+    const calendar = this.doctorCalendars[doctorId];
+    calendar.startDate.setDate(calendar.startDate.getDate() + 7);
+    calendar.days = this.generateWeek(calendar.startDate);
+    this.loadAvailableTimesForDoctor(doctorId);
+  }
+
+  loadAvailableTimesForDoctor(doctorId: number) {
+    this.doctorCalendars[doctorId].days.forEach(day => {
+      this.loadAvailableTimes(doctorId, day.date);
+    });
+  }
+
   loadAvailableTimes(doctorId: number, date: Date) {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate) {
@@ -147,7 +145,6 @@ export class AvailabilityCalendarComponent implements OnInit {
     }
   }
 
-  // Retrieve availabilities for a given doctor and a given date
   getAvailableTimes(doctorId: number, date: Date): Availability[] {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate && this.availabilities[doctorId]) {
@@ -156,14 +153,19 @@ export class AvailabilityCalendarComponent implements OnInit {
     return [];
   }
 
-  // Update the paginated doctors for display
   updatePaginatedDoctors(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedDoctors = this.ListDoctors.slice(startIndex, endIndex);
+
+    // Initialize calendars for the current page
+    this.paginatedDoctors.forEach(doctor => {
+      if (!this.doctorCalendars[doctor.id]) {
+        this.initializeCalendar(doctor.id);
+      }
+    });
   }
 
-  // Go to the next page
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -171,7 +173,6 @@ export class AvailabilityCalendarComponent implements OnInit {
     }
   }
 
-  // Go back to the previous page
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;

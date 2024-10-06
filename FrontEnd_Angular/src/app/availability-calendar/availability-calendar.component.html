@@ -2,18 +2,11 @@
   <app-filter-form class="inut-filter"></app-filter-form>
 </div>
 
-
 <section class="d" *ngIf="!isNotDataFound">
-
-
-
   <section class="section1">
-
     <div class="resultsNumber">
       {{ ListDoctors.length + " " + "results of your doctor search "}}
-      <!--  {{"Find a"+" "+ specialty+" "+ "in" +" "+ clinicAdress} -->
     </div>
-
 
     <div class="container">
       <div *ngFor="let doctor of paginatedDoctors" class="week-container">
@@ -25,7 +18,6 @@
             <div>
               <h3 class="h3">Dr {{doctor.username}}</h3>
             </div>
-
           </div>
           <p>{{doctor.specialty}}</p>
           <p>{{doctor.clinicAddress }}</p>
@@ -34,34 +26,26 @@
           <button class="appointment-button" [routerLink]="['/patient/detailDoctor', doctor.id]">
             Book an appointment
           </button>
-
         </div>
 
-        <!-- Navigation button to move to the previous week -->
-        <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek()">
+        <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek(doctor.id)">
           <div class="dl-icon-wrapper dl-position-relative">
             <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
-              <path
-                d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
-              </path>
+              <path d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z"></path>
             </svg>
           </div>
         </button>
 
         <div class="days">
-          <!-- Container for each day -->
-          <div *ngFor="let day of days" class="day-container">
+          <div *ngFor="let day of doctorCalendars[doctor.id].days" class="day-container">
             <div class="day">
               <div class="day-name">{{ day.name }}</div>
               <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
-              <!-- Available times for each day -->
               <div class="available-times">
                 <ng-container *ngIf="getAvailableTimes(doctor.id, day.date).length > 0; else noTimes">
-
                   <div class="slot" *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
                     {{ time }}
                   </div>
-
                 </ng-container>
                 <ng-template #noTimes>
                   <div class="no-available-times">
@@ -73,27 +57,19 @@
           </div>
         </div>
 
-        <!-- Navigation button to move to the next week -->
-        <button class="buttonWeek2" style="height: 20px;" (click)="nextWeek()">
+        <button class="buttonWeek2" style="height: 20px;" (click)="nextWeek(doctor.id)">
           <div class="dl-icon-wrapper dl-position-relative">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
-              <path
-                d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
-              </path>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
+              <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515"></path>
             </svg>
           </div>
         </button>
       </div>
 
-
       <div class="pagination">
         <button class="BtnPrev" (click)="previousPage()" [disabled]="currentPage === 1">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" focusable="false" class="icon">
-            <path
-              d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z">
-            </path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon">
+            <path d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z"></path>
           </svg>
           PREVIOUS
         </button>
@@ -102,45 +78,33 @@
 
         <button class="BtnNext" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">
           NEXT
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true" focusable="false" class="icon">
-            <path
-              d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
-            </path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon">
+            <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515"></path>
           </svg>
         </button>
       </div>
-
-
     </div>
   </section>
-
 
   <section class="section2">
     <div class="map-container">
       <app-map></app-map>
     </div>
   </section>
-
 </section>
 
 <section *ngIf="isNotDataFound" class="dataNotFound">
   <app-not-found></app-not-found>
 </section>
 
-
-
-<app-create-availability ></app-create-availability>
+<app-create-availability></app-create-availability>
 
 <footer>
-
   <p style="background-color: black;">hffffffffffffffn</p>
-
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
   <p>hffffffffffffffn</p>
-
 </footer>
