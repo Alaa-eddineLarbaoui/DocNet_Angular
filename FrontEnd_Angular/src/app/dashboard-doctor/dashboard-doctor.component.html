@@ -3,49 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdminKit Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <title>Document</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Boxicons CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
 
 </head>
-<body>
-<div class="wrapper">
-  <nav id="sidebar" class="collapse-horizontal show">
-    <button id="sidebarToggle" class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="true" aria-controls="sidebar">
-      <i class="bi bi-chevron-left"></i>
-    </button>
-    <div class="sidebar-content">
-      <a class="sidebar-brand" href="index.html">
-        <span class="align-middle">AdminKit</span>
-      </a>
-      <ul class="sidebar-nav">
-        <li class="sidebar-header">Pages</li>
-        <li class="sidebar-item active">
-          <a class="sidebar-link" href="index.html">
-            <i class="bi bi-sliders"></i> <span class="align-middle">Dashboard</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="pages-sign-up.html">
-            <i class="bi bi-person-plus"></i> <span class="align-middle">Sign Up</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="pages-blank.html">
-            <i class="bi bi-book"></i> <span class="align-middle">Blank</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+<body id="body-pd">
+<header class="header" id="header">
+  <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+  <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
+      class="nav_logo-name">BBBootstrap</span> </a>
+      <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span
+        class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i>
+        <span class="nav_name">Users</span> </a> <a href="#" class="nav_link"> <i
+        class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> <a href="#"
+                                                                                                         class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> <a
+        href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a> <a
+        href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
+        class="nav_name">Stats</span> </a> </div>
+    </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span>
+  </a>
   </nav>
-  <div class="main">
-    <h1>Welcome to AdminKit Dashboard</h1>
-    <p>This is your main content area.</p>
-  </div>
 </div>
+<!--Container Main start-->
+<section style="margin-top: 50px;">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="main" class="height-100 bg-light">
+    <div>
+      <h4>Main Components</h4>
 
+    </div>
+
+    <div style="color: red;">
+      <p>hello hello </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!--Container Main end-->
+<script src=""></script>
 </body>
 </html>
