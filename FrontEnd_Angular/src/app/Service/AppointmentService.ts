@@ -21,10 +21,10 @@ export class AppointmentService {
   }
 
 
-  getAllbyDoctorId(doctorId: number): Observable<Appointment> {
+  getAllByDoctorId(doctorId: number): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.apiUrl}/doctor/get/${doctorId}`)
   }
-  getAllbyPatientId(patientId: number): Observable<Appointment> {
+  getAllByPatientId(patientId: number): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.apiUrl}/doctor/get/${patientId}`)
   }
 
