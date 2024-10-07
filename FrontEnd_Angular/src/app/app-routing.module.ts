@@ -11,6 +11,7 @@ import { AppointmentsComponent } from "./appointments/appointments.component";
 import { HomeComponent } from "./Home_page/home.component";
 import { Erole } from "./Enums/Erole";
 import {Page404Component} from "./page-404/page-404.component";
+import {DashboardDoctorComponent} from "./dashboard-doctor/dashboard-doctor.component";
 
 
 
@@ -43,6 +44,9 @@ const routes: Routes = [
 
 
   { path: '', component: HomeComponent },
+
+  { path: 'home', component:DashboardDoctorComponent },
+
   { path: '**', component:Page404Component },
 
 
