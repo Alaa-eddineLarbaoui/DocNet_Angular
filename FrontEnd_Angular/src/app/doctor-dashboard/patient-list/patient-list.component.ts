@@ -15,13 +15,15 @@ export class PatientListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getIdPersonFromJwt()
-    this.getAppointment()
+    this.getAppointmentDoctor()
   }
 
   constructor(private appointmentService: AppointmentService) {
   }
-  getAppointment(){
-    return this.appointmentService.getAllByDoctorId(this.doctorId);
+  getAppointmentDoctor(): void {
+    this.appointmentService.getAllByDoctorId(this.doctorId).subscribe((data: Appointment[]) => {
+      this.listAppointmentOfDoctor = data;
+    });
   }
 
 

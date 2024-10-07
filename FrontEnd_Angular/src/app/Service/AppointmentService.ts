@@ -21,8 +21,8 @@ export class AppointmentService {
   }
 
 
-  getAllByDoctorId(doctorId: number): Observable<Appointment> {
-    return this.http.get<Appointment>(`${this.apiUrl}/doctor/get/${doctorId}`)
+  getAllByDoctorId(doctorId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/doctor/get/${doctorId}`)
   }
   getAllByPatientId(patientId: number): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.apiUrl}/doctor/get/${patientId}`)
