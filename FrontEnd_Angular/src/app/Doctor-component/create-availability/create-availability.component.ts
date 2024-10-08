@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AvailabilityService} from "../../Service/availability.service";
+import {JwtDto} from "../../Models/JwtDto";
 
 @Component({
   selector: 'app-create-availability',
   templateUrl: './create-availability.component.html',
   styleUrls: ['./create-availability.component.css']
 })
-export class CreateAvailabilityComponent {
+export class CreateAvailabilityComponent implements OnInit{
   availabilityForm: FormGroup;
   minDate: string;
+  professionalId !:number;
 
   constructor(
     private fb: FormBuilder,
@@ -26,17 +28,20 @@ export class CreateAvailabilityComponent {
 
   }
 
+  ngOnInit(): void {
+    this.getIdPersonFromJwt()
+    }
+
   onSubmit() {
     if (this.availabilityForm.valid) {
       const formValue = this.availabilityForm.value;
-      const professionalId = 7;
 
       console.log(formValue+"jdddddddddddddddddddd")
       console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl")
       console.log(this.availabilityForm.value.available)
 
 
-      this.availabilityService.createAvailability(formValue, professionalId)
+      this.availabilityService.createAvailability(formValue, this.professionalId)
 
         .subscribe(response => {
           console.log('Availability created successfully', response);
@@ -49,6 +54,16 @@ export class CreateAvailabilityComponent {
     }
   }
 
+  getIdPersonFromJwt() {
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData: JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.userId);
+      this.professionalId = jwtData.userId;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
+  }
 
-  
+
 }

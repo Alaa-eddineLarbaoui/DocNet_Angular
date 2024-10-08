@@ -22,7 +22,7 @@ const routes: Routes = [
   canActivate:[AuthGuard],
     data:{expectedRole:Erole.PATIENT}
   },
-  { path: 'calendar', component: AvailabilityCalendarComponent },
+  { path: '', component: AvailabilityCalendarComponent },
 
   //{ path: '', redirectTo: '/filter', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'homme', component: HomeComponent },
 
   { path: 'home', component:DashboardDoctorComponent },
-  { path: '', component:CreateAvailabilityComponent },
+  { path: 'dd', component:CreateAvailabilityComponent },
 
 
   { path: '**', component:Page404Component },

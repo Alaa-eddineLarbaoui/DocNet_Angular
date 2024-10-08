@@ -100,10 +100,16 @@ export class AvailabilityCalendarComponent implements OnInit {
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const currentDate = new Date(startDate);
 
+    // Obtenir le jour local (indice) du PC
+    const localDayIndex = currentDate.getDay(); // Obtenir le jour de la semaine actuel (0 = Dimanche, 6 = Samedi)
 
+    // Faire une rotation des noms des jours de la semaine pour commencer par le jour local
+    const rotatedDayNames = dayNames.slice(localDayIndex).concat(dayNames.slice(0, localDayIndex));
+
+    // Générer la semaine à partir du jour local
     for (let i = 0; i < 7; i++) {
       days.push({
-        name: dayNames[i],
+        name: rotatedDayNames[i],
         date: new Date(currentDate)
       });
       currentDate.setDate(currentDate.getDate() + 1);
@@ -111,6 +117,7 @@ export class AvailabilityCalendarComponent implements OnInit {
 
     return days;
   }
+
 
   previousWeek(doctorId: number) {
     const calendar = this.doctorCalendars[doctorId];

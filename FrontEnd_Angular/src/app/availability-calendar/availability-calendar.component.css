@@ -33,7 +33,7 @@
 }
 
 
-.appointment-button {
+.appointment-btn {
   margin-top: 10px;
   padding: 10px 15px;
   background-color: #007bff;
@@ -47,7 +47,7 @@
 
 
 
-.doctor-info {
+.doctor-inf {
   width: 30%;
   border-right: 1px solid #e0e0e0;
   /* align-content: center; */
@@ -55,20 +55,20 @@
   margin-top: 18px;
 }
 
-.doctor-info img {
+.doctor-inf img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
-.doctor-info p {
+.doctor-inf p {
   margin: 5px 0px 5px 12px;
   font-size: 14px;
   color: #555555;
 }
 
-.doctor-info button {
+.doctor-inf button {
   margin-top: 20px;
   padding: 10px 15px;
   background-color: #117aca;
@@ -81,7 +81,7 @@
   margin-left: 4px;
 }
 
-.doctor-info button:hover {
+.doctor-inf button:hover {
   background-color: #0170a4;
 
 }
@@ -130,7 +130,7 @@
 }
 
 
-.week-container {
+.weekContaine {
 
   max-width: 815px;
   border-radius: 8px;
@@ -145,7 +145,7 @@
 
 }
 
-.week-container:hover {
+.weekContaine:hover {
   border: 1.3px solid #8a65df;
   box-shadow: 3px 3px 3px rgba(13, 101, 150, 0.5);
 }
@@ -158,7 +158,7 @@
   /* background-color:rgb(164, 16, 205);*/
   /*max-width: 500px;  */
   width: 70%;
-  /* overflow-x: auto !important; */
+   overflow-x: auto !important;
 
 }
 
@@ -172,7 +172,7 @@
 
 }
 
-.day {
+.dday {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -265,12 +265,12 @@
   background-color: #3fafe2;
 }
 
-.day-container {
+.dayContain{
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+ /* padding: 10px;  */
   /*background-color: navajowhite;   */
   max-width: 76px;
 
@@ -522,7 +522,7 @@ width: 100%;
     flex-direction: column;
   }
 
-  .week-container {
+  .weekContaine {
     display: flex;
     flex-direction: column;
 
@@ -530,7 +530,7 @@ width: 100%;
     max-height: 527px;
   }
 
-  .doctor-info {
+  .doctor-inf {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -540,6 +540,7 @@ width: 100%;
     flex-wrap: nowrap;
     justify-content: space-around;
     width: 100%;
+    overflow-x: auto !important;
   }
 
   .section1 {
@@ -551,7 +552,7 @@ width: 100%;
 
   }
 
-  .day {
+  .dday {
     width: 53px;
     height: 100%;
   }
@@ -576,7 +577,7 @@ width: 100%;
     flex-direction: column;
   }
 
-  .week-container {
+  .weekContaine{
     display: flex;
     flex-direction: column;
 
@@ -584,7 +585,7 @@ width: 100%;
     max-height: 527px;
   }
 
-  .doctor-info {
+  .doctor-inf {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -594,6 +595,8 @@ width: 100%;
     flex-wrap: nowrap;
     justify-content: space-around;
     width: 100%;
+    overflow-x: auto !important;
+
   }
 
   .d {
@@ -611,7 +614,7 @@ width: 100%;
     background-color: black;
   }
 
-  .day {
+  .dday {
 
     width: 53px;
     height: 100%;
@@ -639,12 +642,12 @@ width: 100%;
     flex-direction: column;
   }
 
-  .week-container {
+  .weekContaine {
     display: flex;
     flex-direction: column;
   }
 
-  .doctor-info {
+  .doctor-inf {
     width: 100%;
     justify-content: center;
   }

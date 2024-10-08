@@ -1,6 +1,4 @@
-<div class="filter-bakground">
-  <app-filter-form class="inut-filter"></app-filter-form>
-</div>
+
 
 <section class="d" *ngIf="!isNotDataFound">
   <section class="section1">
@@ -9,8 +7,8 @@
     </div>
 
     <div class="container">
-      <div *ngFor="let doctor of paginatedDoctors" class="week-container">
-        <div class="doctor-info">
+      <div *ngFor="let doctor of paginatedDoctors" class="weekContaine">
+        <div class="doctor-inf">
           <div class="profile">
             <div>
               <i class="fa-solid fa-user-doctor" style="color: #117aca; font-size: 30px;"></i>
@@ -23,7 +21,7 @@
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
 
-          <button class="appointment-button" [routerLink]="['/patient/detailDoctor', doctor.id]">
+          <button class="appointment-btn" [routerLink]="['/patient/detailDoctor', doctor.id]">
             Book an appointment
           </button>
         </div>
@@ -37,8 +35,8 @@
         </button>
 
         <div class="days">
-          <div *ngFor="let day of doctorCalendars[doctor.id].days" class="day-container">
-            <div class="day">
+          <div *ngFor="let day of doctorCalendars[doctor.id].days" class="dayContain">
+            <div class="dday">
               <div class="day-name">{{ day.name }}</div>
               <div class="day-date">{{ day.date | date: 'dd/MM' }}</div>
               <div class="available-times">
