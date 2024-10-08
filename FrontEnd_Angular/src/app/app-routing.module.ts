@@ -12,6 +12,7 @@ import { HomeComponent } from "./Home_page/home.component";
 import { Erole } from "./Enums/Erole";
 import {Page404Component} from "./page-404/page-404.component";
 import {DashboardDoctorComponent} from "./dashboard-doctor/dashboard-doctor.component";
+import {CreateAvailabilityComponent} from "./Doctor-component/create-availability/create-availability.component";
 
 
 
@@ -46,11 +47,16 @@ const routes: Routes = [
   { path: 'homme', component: HomeComponent },
 
   { path: 'home', component:DashboardDoctorComponent },
+  { path: '', component:CreateAvailabilityComponent },
+
 
   { path: '**', component:Page404Component },
 
 
+
+
 ];
+
 
 @NgModule({
   imports: [
