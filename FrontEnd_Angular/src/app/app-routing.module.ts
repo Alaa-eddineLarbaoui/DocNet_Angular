@@ -43,7 +43,7 @@ const routes: Routes = [
   },
 
 
-  { path: '', component: HomeComponent },
+  { path: 'homme', component: HomeComponent },
 
   { path: 'home', component:DashboardDoctorComponent },
 
