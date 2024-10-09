@@ -23,7 +23,7 @@
                   <label for="time"><i class="far fa-clock mr-2"></i>Available Slot</label>
                   <select id="time" formControlName="time" class="form-control" required>
                     <option value="" disabled selected>Select a time slot</option>
-                    <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                    <option *ngFor="let time of availableTimes" [value]="time">{{ time.startTime }}</option>
                   </select>
                 </div>
               </div>
@@ -50,6 +50,6 @@
             </button>
           </form>
         </div>
-      
+
 
   </div>

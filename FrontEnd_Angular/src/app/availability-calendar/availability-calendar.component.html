@@ -46,7 +46,7 @@
               <div class="available-times">
                 <ng-container *ngIf="getAvailableTimes(doctor.id, day.date).length > 0; else noTimes">
                   <div class="slot" *ngFor="let time of getAvailableTimes(doctor.id, day.date)">
-                    {{ time }}
+                    {{ time.startTime }}
                   </div>
                 </ng-container>
                 <ng-template #noTimes>

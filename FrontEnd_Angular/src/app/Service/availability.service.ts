@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Availability} from "../Models/Availability";
+import {AvailabilityDto} from "../Models/AvailabilityDto";
 
 @Injectable({
   providedIn: 'root'
@@ -19,15 +20,15 @@ export class AvailabilityService {
     return this.http.post<Availability>(`${this.apiUrl}/create/${professionalId}`, availability);
   }
 
-  getTimes(date: string, professionalId: number ): Observable<Availability[]> {
-    return this.http.get<Availability[]>(`${this.apiUrl}/available-times`, {
+  getTimes(date: string, professionalId: number ): Observable<AvailabilityDto[]> {
+    return this.http.get<AvailabilityDto[]>(`${this.apiUrl}/available-times`, {
       params: {
         date: date,
         professionalId: professionalId.toString()
       }
     });
   }
-  DeleteAvailability(id:number):Observable<any>{
+  deleteAvailability(id:number):Observable<any>{
     return this.http.delete(`${this.apiUrl}/delete/`+id)
   }
 

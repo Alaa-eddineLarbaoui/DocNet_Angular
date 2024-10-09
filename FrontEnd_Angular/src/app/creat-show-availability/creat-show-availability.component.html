@@ -74,10 +74,7 @@
 
       <div>
         <form (submit)="onSubmit()">
-          <label for="doctor">Sélectionner un docteur :</label>
-          <select [(ngModel)]="doctorId" name="doctor" id="doctor" required>
-            <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
-          </select>
+
 
           <label for="date">Sélectionner une date :</label>
           <input type="date" [(ngModel)]="selectedDate" name="date" id="date" required>
@@ -86,12 +83,16 @@
         </form>
       </div>
 
-      <div *ngIf="timeAvailable[doctorId] && timeAvailable[doctorId][selectedDate]">
+      <div *ngIf="timeAvailable[doctorId] ">
         <h3>Heures disponibles pour le {{ selectedDate }} :</h3>
         <ul>
-          <li *ngFor="let time of timeAvailable[doctorId][selectedDate]" (click)="">{{ time }}</li>
+          <li *ngFor="let time of timeAvailable[doctorId][selectedDate]">{{ time.startTime }}
+         <button (click)="deleteAvailability(time.id)"> delete</button>
+
+          </li>
         </ul>
       </div>
+
     </div>
     </div>
 

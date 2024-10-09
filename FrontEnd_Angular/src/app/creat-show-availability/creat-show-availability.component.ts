@@ -3,6 +3,7 @@ import { AvailabilityService } from "../Service/availability.service";
 import { Availability } from "../Models/Availability";
 import { JwtDto } from "../Models/JwtDto";
 import { DatePipe } from '@angular/common';
+import {AvailabilityDto} from "../Models/AvailabilityDto";
 
 @Component({
   selector: 'app-creat-show-availability',
@@ -12,12 +13,9 @@ import { DatePipe } from '@angular/common';
 })
 export class CreatShowAvailabilityComponent implements OnInit {
   doctorId: number = 0; // Utilisez doctorId ici
-  selectedDate!: string;
-  timeAvailable: { [key: number]: { [key: string]: Availability[] } } = {};
-  doctors = [
-    { id: 1, name: 'Dr. Smith' },
-    { id: 2, name: 'Dr. Johnson' }
-  ];
+  selectedDate!: string ;
+  timeAvailable: { [key: number]: { [key: string]: AvailabilityDto[] } } = {};
+
 
   constructor(
     private availabilityService: AvailabilityService,
@@ -26,20 +24,20 @@ export class CreatShowAvailabilityComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
-    const dateObj = new Date(this.selectedDate); // Convertir la chaîne en objet Date
-
-    this.loadTimes(this.doctorId, dateObj);  // Charger les disponibilités pour la date actuelle
+    this.loadTimes(this.doctorId, new Date());  // Charger les disponibilités pour la date actuelle
   }
 
   loadTimes(doctorId: number, date: Date)  {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate) {
       this.availabilityService.getTimes(formattedDate, doctorId).subscribe(
-        (availabilities: Availability[]) => {
+        (availabilities: AvailabilityDto[]) => {
+
+          console.log(availabilities)
           if (!this.timeAvailable[doctorId]) {
             this.timeAvailable[doctorId] = {};
           }
-          this.timeAvailable[doctorId][formattedDate] = availabilities;
+           this.timeAvailable[doctorId][formattedDate] = availabilities;
         },
         error => console.error('Erreur lors du chargement des disponibilités', error)
       );
@@ -48,7 +46,7 @@ export class CreatShowAvailabilityComponent implements OnInit {
 
   onSubmit() {
     if (this.doctorId && this.selectedDate) {
-      const dateObj = new Date(this.selectedDate); // Convertir la chaîne en objet Date
+      const dateObj = new Date(this.selectedDate);
       this.loadTimes(this.doctorId, dateObj);
     }
   }
@@ -63,4 +61,26 @@ export class CreatShowAvailabilityComponent implements OnInit {
       console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
+
+  deleteAvailability(id: number): void {
+    this.availabilityService.deleteAvailability(id).subscribe(
+      response => {
+        console.log('Availability deleted successfully', response);
+        alert("Availability deleted successfully");
+        // Filtrer les disponibilités restantes
+      },
+      error => {
+        console.error('There was an error!', error);
+      }
+    );
+  }
+
 }
+
+
+
+
+
+
+
+

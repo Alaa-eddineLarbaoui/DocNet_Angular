@@ -9,6 +9,7 @@ import { Speciality } from "../Enums/Speciality";
 import { Localisation } from "../Enums/Localisation";
 import { DoctorSharedService } from "../Service/doctor-shared.service";
 import {DatePipe} from "@angular/common";
+import {AvailabilityDto} from "../Models/AvailabilityDto";
 
 @Component({
   selector: 'app-availability-calendar',
@@ -20,7 +21,7 @@ export class AvailabilityCalendarComponent implements OnInit {
   doctorCalendars: { [doctorId: number]: { startDate: Date, days: { name: string, date: Date }[] } } = {};
   ListDoctors: HealthProfessional[] = [];
   paginatedDoctors: HealthProfessional[] = [];
-  availabilities: { [key: number]: { [date: string]: Availability[] } } = {};
+  availabilities: { [key: number]: { [date: string]: AvailabilityDto[] } } = {};
 
   currentPage: number = 1;
   itemsPerPage: number = 7;
@@ -144,7 +145,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate) {
       this.availabilityService.getTimes(formattedDate, doctorId).subscribe(
-        (availabilities: Availability[]) => {
+        (availabilities: AvailabilityDto[]) => {
           if (!this.availabilities[doctorId]) {
             this.availabilities[doctorId] = {};
           }
@@ -155,7 +156,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     }
   }
 
-  getAvailableTimes(doctorId: number, date: Date): Availability[] {
+  getAvailableTimes(doctorId: number, date: Date): AvailabilityDto[] {
     const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     if (formattedDate && this.availabilities[doctorId]) {
       return this.availabilities[doctorId][formattedDate] || [];

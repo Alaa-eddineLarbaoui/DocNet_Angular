@@ -9,6 +9,7 @@ import {Availability} from "../Models/Availability";
 import {JwtDto} from "../Models/JwtDto";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {AvailabilityDto} from "../Models/AvailabilityDto";
 
 @Component({
   selector: 'app-appointments',
@@ -18,7 +19,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 export class AppointmentsComponent implements OnInit {
 
 
-  availableTimes: Availability[] = [];
+  availableTimes: AvailabilityDto[] = [];
   appointmentForm: FormGroup;
   submitted = false;
   successMessage: string | null = null;
