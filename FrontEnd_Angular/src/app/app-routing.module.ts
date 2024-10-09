@@ -21,8 +21,11 @@ const routes: Routes = [
   {  path: 'dashboard-doctor',
     component:DashboardDoctorComponent,
     children:[
+      {  path:'', component:HomeComponent},
       {  path:'creat', component:CreatShowAvailabilityComponent},
     ] },
+
+  { path: '', component: HomeComponent },
 
 
 
@@ -52,9 +55,8 @@ const routes: Routes = [
   },
 
 
-  { path: 'homme', component: HomeComponent },
 
-  { path: 'home', component:DashboardDoctorComponent },
+
   { path: 'dd', component:CreateAvailabilityComponent },
 
 
