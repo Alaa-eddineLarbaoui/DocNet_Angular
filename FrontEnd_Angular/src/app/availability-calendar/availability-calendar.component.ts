@@ -39,7 +39,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadInitialData();
@@ -97,7 +97,7 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   generateWeek(startDate: Date): { name: string, date: Date }[] {
     const days = [];
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesd', 'Thursday', 'Friday', 'Saturday'];
     const currentDate = new Date(startDate);
 
     // Obtenir le jour local (indice) du PC

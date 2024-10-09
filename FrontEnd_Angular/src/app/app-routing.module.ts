@@ -4,7 +4,6 @@ import { AvailabilityCalendarComponent } from "./availability-calendar/availabil
 import { FilterComponent } from "./filter/filter.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
-import { MapDoctorComponent } from "./map-doctor/map-doctor.component";
 import { DoctorDetailsComponent } from "./doctor-details/doctor-details.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { AppointmentsComponent } from "./appointments/appointments.component";
@@ -22,7 +21,7 @@ const routes: Routes = [
   canActivate:[AuthGuard],
     data:{expectedRole:Erole.PATIENT}
   },
-  { path: '', component: AvailabilityCalendarComponent },
+  { path: 'calendar', component: AvailabilityCalendarComponent },
 
   //{ path: '', redirectTo: '/filter', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -48,6 +47,9 @@ const routes: Routes = [
 
   { path: 'home', component:DashboardDoctorComponent },
   { path: 'dd', component:CreateAvailabilityComponent },
+
+  { path: 'dashboard-doctor', component:DashboardDoctorComponent },
+
 
 
   { path: '**', component:Page404Component },

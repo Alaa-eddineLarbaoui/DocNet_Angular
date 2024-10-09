@@ -46,37 +46,42 @@ export class LoginComponent implements OnInit {
             const decodedToken: any = jwtDecode(res.token);
             console.log('Decoded Token:', decodedToken);
             const roles = decodedToken.role || [];
-            console.log('Rôles de l\'utilisateur:', roles);
+            console.log('User roles:', roles);
 
             if (roles.includes(Erole.ADMIN)) {
-              this.router.navigate(['/calendar']);
+              this.router.navigate(['/home']);
+
             } else if (roles.includes(Erole.DOCTOR)) {
-              this.router.navigate(['/notFound']);
+              this.router.navigate(['/dashboard-doctor']);
+
             } else if (roles.includes(Erole.PATIENT)) {
-              console.log('Utilisateur avec rôle PATIENT connecté.');
+              console.log('User with PATIENT role connected.');
               this.router.navigateByUrl(this.returnUrl);
+              this.router.navigate(['/dd']);
+
             } else {
-              console.warn('Aucun rôle reconnu dans le token.');
-              this.showError('Erreur d\'autorisation. Contactez l\'administrateur.');
+              console.warn('No recognized role in the token.');
+
+              this.showError('Authorization error. Contact the administrator.');
             }
           } catch (error) {
-            console.error('Erreur lors du décodage du token:', error);
-            this.showError('Erreur lors de l\'authentification. Veuillez réessayer.');
+            console.error('Error decoding the token:', error);
+            this.showError('Error during authentication. Please try again.');
           }
         },
         error: (err) => {
-          this.showError('Échec de la connexion. Veuillez réessayer.');
-          console.error('Erreur de connexion:', err);
+          this.showError('Login failed. Please try again.');
+          console.error('Login error:', err);
         }
       });
     } else {
-      this.showError('Veuillez remplir tous les champs obligatoires.');
-      console.log('Le formulaire est invalide.');
+      this.showError('Please fill in all required fields.');
+      console.log('The form is invalid.');
     }
   }
 
 
-  getErrorMessage(field: string): string {
+    getErrorMessage(field: string): string {
     const control = this.loginForm.get(field);
     if (control && control.hasError('required')) {
       return 'Ce champ est requis';

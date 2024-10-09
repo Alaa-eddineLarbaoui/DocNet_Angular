@@ -1,4 +1,6 @@
-
+<div class="filter-bakground">
+  <app-filter-form class="inut-filter"></app-filter-form>
+</div>
 
 <section class="d" *ngIf="!isNotDataFound">
   <section class="section1">
@@ -29,7 +31,9 @@
         <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek(doctor.id)">
           <div class="dl-icon-wrapper dl-position-relative">
             <svg width="16" height="16" viewBox="0 0 16 16" class="dl-icon dl-icon-primary-110 dl-icon-small">
-              <path d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z"></path>
+              <path
+                d="M10.977 3.494c0 .211-.07.399-.211.54l-3.961 3.96 3.96 3.985a.723.723 0 0 1 0 1.054.723.723 0 0 1-1.054 0l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.055 0c.14.14.21.328.21.515Z">
+              </path>
             </svg>
           </div>
         </button>
@@ -57,8 +61,11 @@
 
         <button class="buttonWeek2" style="height: 20px;" (click)="nextWeek(doctor.id)">
           <div class="dl-icon-wrapper dl-position-relative">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
-              <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515"></path>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
+              <path
+                d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+              </path>
             </svg>
           </div>
         </button>
@@ -66,8 +73,11 @@
 
       <div class="pagination">
         <button class="BtnPrev" (click)="previousPage()" [disabled]="currentPage === 1">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon">
-            <path d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" focusable="false" class="icon">
+            <path
+              d="M10.994 3.482a.723.723 0 0 1 0 1.054L7.033 8.496l3.961 3.985a.723.723 0 0 1-1.054 1.054l-4.5-4.5a.723.723 0 0 1 0-1.054l4.5-4.5a.723.723 0 0 1 1.054 0z">
+            </path>
           </svg>
           PREVIOUS
         </button>
@@ -76,8 +86,11 @@
 
         <button class="BtnNext" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalDoctors">
           NEXT
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon">
-            <path d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515"></path>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" focusable="false" class="icon">
+            <path
+              d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
+            </path>
           </svg>
         </button>
       </div>

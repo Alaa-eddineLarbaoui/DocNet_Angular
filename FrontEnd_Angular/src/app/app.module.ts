@@ -35,6 +35,7 @@ import {MatCardModule} from "@angular/material/card";
 import { DashboardDoctorComponent } from './dashboard-doctor/dashboard-doctor.component';
 import { CreateAvailabilityComponent } from './Doctor-component/create-availability/create-availability.component';
 import { PatientListComponent } from './Doctor-component/patient-list/patient-list.component';
+import { CreatShowAvailabilityComponent } from './creat-show-availability/creat-show-availability.component';
 
 // @ts-ignore
 @NgModule({
@@ -53,7 +54,8 @@ import { PatientListComponent } from './Doctor-component/patient-list/patient-li
     FilterFormComponent,
     Page404Component,
     PatientListComponent,
-    DashboardDoctorComponent
+    DashboardDoctorComponent,
+    CreatShowAvailabilityComponent
   ],
   imports: [
     BrowserModule,

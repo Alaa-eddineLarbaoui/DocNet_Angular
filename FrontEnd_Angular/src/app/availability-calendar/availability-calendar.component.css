@@ -158,7 +158,8 @@
   /* background-color:rgb(164, 16, 205);*/
   /*max-width: 500px;  */
   width: 70%;
-   overflow-x: auto !important;
+  overflow-x: auto !important;
+  margin-top: 1px;
 
 }
 
@@ -265,12 +266,12 @@
   background-color: #3fafe2;
 }
 
-.dayContain{
+.dayContain {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
- /* padding: 10px;  */
+  /* padding: 10px;  */
   /*background-color: navajowhite;   */
   max-width: 76px;
 
@@ -313,7 +314,7 @@
 
 .map-container {
   position: sticky;
-  top:2px;
+  top: 2px;
   z-index: 10;
   height: 100%;
 }
@@ -367,8 +368,9 @@
 .BtnNext svg {
   margin-right: 8px;
 }
-.BtnPrev svg{
-margin-left: 8px;
+
+.BtnPrev svg {
+  margin-left: 8px;
 }
 
 .BtnPrev:hover,
@@ -416,7 +418,7 @@ margin-left: 8px;
 
 
 
-  /* background-image: linear-gradient(to bottom, #f7f7f7, #ffffff); */
+/* background-image: linear-gradient(to bottom, #f7f7f7, #ffffff); */
 
 
 
@@ -577,7 +579,7 @@ width: 100%;
     flex-direction: column;
   }
 
-  .weekContaine{
+  .weekContaine {
     display: flex;
     flex-direction: column;
 
