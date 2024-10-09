@@ -12,6 +12,7 @@ import { Erole } from "./Enums/Erole";
 import {Page404Component} from "./page-404/page-404.component";
 import {DashboardDoctorComponent} from "./dashboard-doctor/dashboard-doctor.component";
 import {CreateAvailabilityComponent} from "./Doctor-component/create-availability/create-availability.component";
+import {CreatShowAvailabilityComponent} from "./creat-show-availability/creat-show-availability.component";
 
 
 
@@ -50,7 +51,8 @@ const routes: Routes = [
 
   { path: 'dashboard-doctor', component:DashboardDoctorComponent },
 
-
+  // { path: 'creat-show-availability', component:CreatShowAvailabilityComponent },
+  { path: '', component:CreatShowAvailabilityComponent },
 
   { path: '**', component:Page404Component },
 

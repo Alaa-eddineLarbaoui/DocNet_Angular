@@ -1,11 +1,8 @@
-body {
-  background-color: #f8f9fa;
-}
+
 .form-container {
-  max-width: 500px;
+  width: 100%;
   /*margin: 2.5rem auto; */
   padding: 2rem;
-  background-color: #ffffff;
   border-radius: 0.75rem;
   box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -37,4 +34,9 @@ body {
 }
 .form-check-label i {
   color: #117aca;
+}
+/* ::::::::::::::::::::::::::::::*/
+#container{
+  margin-left: 0px;
+  padding-left: 0px;
 }
