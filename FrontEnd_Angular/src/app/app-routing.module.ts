@@ -18,6 +18,14 @@ import {CreatShowAvailabilityComponent} from "./creat-show-availability/creat-sh
 
 const routes: Routes = [
 
+  {  path: 'dashboard-doctor',
+    component:DashboardDoctorComponent,
+    children:[
+      {  path:'creat', component:CreatShowAvailabilityComponent},
+    ] },
+
+
+
   { path: 'patient/filter', component: FilterComponent ,
   canActivate:[AuthGuard],
     data:{expectedRole:Erole.PATIENT}
@@ -49,10 +57,8 @@ const routes: Routes = [
   { path: 'home', component:DashboardDoctorComponent },
   { path: 'dd', component:CreateAvailabilityComponent },
 
-  { path: 'dashboard-doctor', component:DashboardDoctorComponent },
 
   // { path: 'creat-show-availability', component:CreatShowAvailabilityComponent },
-  { path: '', component:CreatShowAvailabilityComponent },
 
   { path: '**', component:Page404Component },
 
