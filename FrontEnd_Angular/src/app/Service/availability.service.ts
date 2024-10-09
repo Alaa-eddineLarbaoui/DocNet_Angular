@@ -27,4 +27,9 @@ export class AvailabilityService {
       }
     });
   }
+  DeleteAvailability(id:number):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/delete/`+id)
+  }
+
+
 }

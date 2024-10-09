@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AvailabilityService } from "../Service/availability.service";
-import { DatePipe } from "@angular/common";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { DoctorService } from "../Service/doctor.service";
 import { Availability } from "../Models/Availability";
@@ -9,11 +8,13 @@ import { MatDialog } from "@angular/material/dialog";
 import { Speciality } from "../Enums/Speciality";
 import { Localisation } from "../Enums/Localisation";
 import { DoctorSharedService } from "../Service/doctor-shared.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-availability-calendar',
   templateUrl: './availability-calendar.component.html',
-  styleUrls: ['./availability-calendar.component.css']
+  styleUrls: ['./availability-calendar.component.css'],
+  providers: [DatePipe]
 })
 export class AvailabilityCalendarComponent implements OnInit {
   doctorCalendars: { [doctorId: number]: { startDate: Date, days: { name: string, date: Date }[] } } = {};
@@ -35,8 +36,8 @@ export class AvailabilityCalendarComponent implements OnInit {
     private availabilityService: AvailabilityService,
     private doctorService: DoctorService,
     private doctorSharedService: DoctorSharedService,
-    private datePipe: DatePipe,
     private route: ActivatedRoute,
+    private datePipe: DatePipe,
     private router: Router,
     private dialog: MatDialog
   ) { }

@@ -49,11 +49,51 @@
     </div>
 
     <div class="div2">
-<p>hed ehhe test tets test test</p>
+<!--
+      <div class="days">
+        <div class="dayContain">
+          <div class="dday">
+            <div class="day-name">{{  }}</div>
+            <div class="day-date">{{  | date: 'dd/MM' }}</div>
+            <div class="available-times">
+              <ng-container *ngIf="loadTimes(doctorId, .date) > 0; else noTimes">
+                <div class="slot" *ngFor="let time of loadTimes(doctorId, .date)">
+                  {{ time }}
+                </div>
+              </ng-container>
+              <ng-template #noTimes>
+                <div class="no-available-times">
+                  <div class="availabilities-empty-slot-dash"></div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+
+      <div>
+        <form (submit)="onSubmit()">
+          <label for="doctor">Sélectionner un docteur :</label>
+          <select [(ngModel)]="doctorId" name="doctor" id="doctor" required>
+            <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+          </select>
+
+          <label for="date">Sélectionner une date :</label>
+          <input type="date" [(ngModel)]="selectedDate" name="date" id="date" required>
+
+          <button type="submit">Afficher les disponibilités</button>
+        </form>
+      </div>
+
+      <div *ngIf="timeAvailable[doctorId] && timeAvailable[doctorId][selectedDate]">
+        <h3>Heures disponibles pour le {{ selectedDate }} :</h3>
+        <ul>
+          <li *ngFor="let time of timeAvailable[doctorId][selectedDate]" (click)="">{{ time }}</li>
+        </ul>
+      </div>
     </div>
-
-
-  </div>
+    </div>
 
 </section>
 
