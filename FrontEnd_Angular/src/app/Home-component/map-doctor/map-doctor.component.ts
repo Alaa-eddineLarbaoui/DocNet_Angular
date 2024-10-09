@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { divIcon, Map, marker, Marker } from 'leaflet';
-import { DoctorService } from '../Service/doctor.service';
 import lottie from 'lottie-web';
 import * as L from 'leaflet';
-import { HealthProfessional } from "../Models/HealthProfessional";
 import {ActivatedRoute} from "@angular/router";
+import {DoctorService} from "../../Service/doctor.service";
+import {HealthProfessional} from "../../Models/HealthProfessional";
 
 @Component({
   selector: 'app-map-doctor',

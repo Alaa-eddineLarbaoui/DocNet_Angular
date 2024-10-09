@@ -1,9 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { DoctorService } from "../Service/doctor.service";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Localisation } from "../Enums/Localisation";
-import { Speciality } from "../Enums/Speciality";
 import { Router } from '@angular/router';
+import {Localisation} from "../../Enums/Localisation";
+import {Speciality} from "../../Enums/Speciality";
 
 @Component({
   selector: 'app-filter-form',

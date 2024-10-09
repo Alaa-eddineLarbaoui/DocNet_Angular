@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AvailabilityCalendarComponent } from "./availability-calendar/availability-calendar.component";
-import { FilterComponent } from "./filter/filter.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
-import { DoctorDetailsComponent } from "./doctor-details/doctor-details.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { AppointmentsComponent } from "./appointments/appointments.component";
-import { HomeComponent } from "./Home_page/home.component";
 import { Erole } from "./Enums/Erole";
 import {Page404Component} from "./page-404/page-404.component";
-import {DashboardDoctorComponent} from "./dashboard-doctor/dashboard-doctor.component";
+import {DashboardDoctorComponent} from "./Dashboard/Doctor-Dashboard/dashboard-doctor.component";
 import {CreateAvailabilityComponent} from "./Doctor-component/create-availability/create-availability.component";
-import {CreatShowAvailabilityComponent} from "./creat-show-availability/creat-show-availability.component";
+import {CreatShowAvailabilityComponent} from "./Doctor-component/creat-show-availability/creat-show-availability.component";
+import {FilterComponent} from "./Home-component/filter/filter.component";
+import {DoctorDetailsComponent} from "./Home-component/doctor-details/doctor-details.component";
+import {HomeComponent} from "./Home-component/Home_page/home.component";
 
 
 

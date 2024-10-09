@@ -1,13 +1,13 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { DoctorService } from "../Service/doctor.service";
-import { HealthProfessional } from "../Models/HealthProfessional";
 import { ViewportScroller } from "@angular/common";
-import { JwtDto } from "../Models/JwtDto";
-import { AppointmentsComponent } from "../appointments/appointments.component";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {LoginService} from "../Service/login.service";
+import {HealthProfessional} from "../../Models/HealthProfessional";
+import {DoctorService} from "../../Service/doctor.service";
+import {LoginService} from "../../Service/login.service";
+import {JwtDto} from "../../Models/JwtDto";
+import {AppointmentsComponent} from "../../appointments/appointments.component";
 
 
 @Component({

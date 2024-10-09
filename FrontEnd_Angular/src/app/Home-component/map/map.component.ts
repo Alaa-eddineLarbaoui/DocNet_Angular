@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { marker, Marker, Map, divIcon } from 'leaflet';
 import * as L from 'leaflet';
-import { DoctorService } from '../Service/doctor.service';
-import { GeocodingService } from '../Service/geocoding.service';
-import { DoctorSharedService } from '../Service/doctor-shared.service';
+import {DoctorService} from "../../Service/doctor.service";
+import {DoctorSharedService} from "../../Service/doctor-shared.service";
+
 
 @Component({
   selector: 'app-map',
@@ -18,7 +18,6 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   constructor(
     private doctorService: DoctorService,
-    private geocodingService: GeocodingService,
     private doctorSharedService: DoctorSharedService
   ) {}
 
