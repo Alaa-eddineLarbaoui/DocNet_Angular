@@ -21,15 +21,17 @@ const routes: Routes = [
 
   {  path: 'dashboard-doctor',
     component:DashboardDoctorComponent,
+    canActivate: [AuthGuard],
     children:[
-      {  path:'', component:HomeComponent},
       { path: 'list-appointment', component: PatientListComponent },
       {  path:'creat', component:CreatShowAvailabilityComponent},
+
+
 
     ] },
 
   { path: '', component: HomeComponent },
-
+  { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
 
 
 
@@ -45,8 +47,7 @@ const routes: Routes = [
   { path: 'notFound', component: NotFoundComponent },
 
   //{ path: 'admin', component: CalendarComponent, canActivate: [AuthGuard] },  // Accessible seulement pour Admin */
-  { path: 'doctor', component: NotFoundComponent, canActivate: [AuthGuard] },
-  { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
+
 
   {
     path: 'patient/detailDoctor/:id', component: DoctorDetailsComponent,

@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         if (url.startsWith('/admin') && roles.includes('ADMIN')) {
           return true;  // Accès autorisé pour Admin
 
-        } else if (url.startsWith('/doctor') && roles.includes('DOCTOR')) {
+        } else if (url.startsWith('/dashboard-doctor') && roles.includes('DOCTOR')) {
           return true;  // Accès autorisé pour Doctor
 
         } else if (url.startsWith('/patient') && roles.includes('PATIENT')) {
