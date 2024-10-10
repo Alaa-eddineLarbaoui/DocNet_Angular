@@ -6,10 +6,10 @@ import {AppointmentStatus} from "../Enums/AppointmentStatus";
 import {AppointmentReason} from "../Enums/AppointmentReason";
 import {AvailabilityService} from "../Service/availability.service";
 import {Availability} from "../Models/Availability";
-import {JwtDto} from "../Models/JwtDto";
+import {JwtDto} from "../Dto-Entity/JwtDto";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {AvailabilityDto} from "../Models/AvailabilityDto";
+import {AvailabilityDto} from "../Dto-Entity/AvailabilityDto";
 
 @Component({
   selector: 'app-appointments',

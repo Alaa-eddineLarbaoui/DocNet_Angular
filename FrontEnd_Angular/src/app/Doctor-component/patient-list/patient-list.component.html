@@ -1,0 +1,44 @@
+<button (click)="getAppointmentDoctor()"> get list of appointment </button>
+
+  <div *ngFor="let day of listAppointmentOfDoctor" class="dayContain">
+
+<h1>
+  {{day.patient.email}}
+  {{day.patient.id}}
+  {{day.appointmentReason}}
+
+
+</h1>
+    {{day.time}}
+
+
+  </div>
+
+
+
+<div *ngFor="let appointment of listAppointmentOfDoctor" class="appointment-card">
+  <div class="card-header">
+    <h3>Rendez-vous du {{ appointment.date | date:'dd/MM/yyyy' }} à {{ appointment.time }}</h3>
+    <span class="status" [ngClass]="appointment.status">{{ appointment.status }}</span>
+  </div>
+  <div class="card-body">
+    <div class="patient-info">
+      <h4>Patient</h4>
+      <p><strong>Nom :</strong> {{ appointment.patient.username }}</p>
+      <p><strong>Email :</strong> {{ appointment.patient.email }}</p>
+      <p><strong>Genre :</strong> {{ appointment.patient.gender }}</p>
+      <p><strong>Date de naissance :</strong> {{ appointment.patient.birthDate | date:'dd/MM/yyyy' }}</p>
+    </div>
+    <div class="appointment-info">
+      <h4>Détails du rendez-vous</h4>
+      <p><strong>Raison :</strong> {{ appointment.appointmentReason }}</p>
+      <p><strong>Note :</strong> {{ appointment.note }}</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn-action" [disabled]="appointment.notificationEnvoyee">
+      Envoyer une notification
+    </button>
+  </div>
+</div>
+

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {JwtDto} from "../Models/JwtDto";
+import {JwtDto} from "../Dto-Entity/JwtDto";
 import {LoginRequest} from "../Models/LoginRequest";
 import {provideRouter, Router} from "@angular/router";
 

@@ -9,7 +9,7 @@ import { Speciality } from "../Enums/Speciality";
 import { Localisation } from "../Enums/Localisation";
 import { DoctorSharedService } from "../Service/doctor-shared.service";
 import {DatePipe} from "@angular/common";
-import {AvailabilityDto} from "../Models/AvailabilityDto";
+import {AvailabilityDto} from "../Dto-Entity/AvailabilityDto";
 
 @Component({
   selector: 'app-availability-calendar',

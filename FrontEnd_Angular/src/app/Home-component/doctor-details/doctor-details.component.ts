@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {HealthProfessional} from "../../Models/HealthProfessional";
 import {DoctorService} from "../../Service/doctor.service";
 import {LoginService} from "../../Service/login.service";
-import {JwtDto} from "../../Models/JwtDto";
+import {JwtDto} from "../../Dto-Entity/JwtDto";
 import {AppointmentsComponent} from "../../appointments/appointments.component";
 
 

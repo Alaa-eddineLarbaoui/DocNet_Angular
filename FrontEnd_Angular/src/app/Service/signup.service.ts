@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {LoginRequest} from "../Models/LoginRequest";
 import {Observable} from "rxjs";
-import {JwtDto} from "../Models/JwtDto";
+import {JwtDto} from "../Dto-Entity/JwtDto";
 
 @Injectable({
   providedIn: 'root'

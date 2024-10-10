@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AvailabilityService } from "../../Service/availability.service";
-import { JwtDto } from "../../Models/JwtDto";
+import { JwtDto } from "../../Dto-Entity/JwtDto";
 import { DatePipe } from '@angular/common';
-import {AvailabilityDto} from "../../Models/AvailabilityDto";
+import {AvailabilityDto} from "../../Dto-Entity/AvailabilityDto";
 
 @Component({
   selector: 'app-creat-show-availability',

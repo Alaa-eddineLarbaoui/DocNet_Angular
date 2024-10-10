@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AvailabilityService} from "../../Service/availability.service";
-import {JwtDto} from "../../Models/JwtDto";
+import {JwtDto} from "../../Dto-Entity/JwtDto";
 
 @Component({
   selector: 'app-create-availability',

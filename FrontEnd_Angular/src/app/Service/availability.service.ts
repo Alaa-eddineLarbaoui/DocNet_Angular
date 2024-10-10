@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Availability} from "../Models/Availability";
-import {AvailabilityDto} from "../Models/AvailabilityDto";
+import {AvailabilityDto} from "../Dto-Entity/AvailabilityDto";
 
 @Injectable({
   providedIn: 'root'

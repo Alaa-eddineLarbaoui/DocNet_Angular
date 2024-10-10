@@ -13,6 +13,7 @@ import {CreatShowAvailabilityComponent} from "./Doctor-component/creat-show-avai
 import {FilterComponent} from "./Home-component/filter/filter.component";
 import {DoctorDetailsComponent} from "./Home-component/doctor-details/doctor-details.component";
 import {HomeComponent} from "./Home-component/Home_page/home.component";
+import {PatientListComponent} from "./Doctor-component/patient-list/patient-list.component";
 
 
 
@@ -25,7 +26,9 @@ const routes: Routes = [
       {  path:'creat', component:CreatShowAvailabilityComponent},
     ] },
 
-  { path: '', component: HomeComponent },
+  { path: 'j', component: HomeComponent },
+  { path: '', component: PatientListComponent },
+
 
 
 
