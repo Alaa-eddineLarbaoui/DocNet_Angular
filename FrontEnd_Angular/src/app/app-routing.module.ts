@@ -23,11 +23,13 @@ const routes: Routes = [
     component:DashboardDoctorComponent,
     children:[
       {  path:'', component:HomeComponent},
+      { path: 'list-appointment', component: PatientListComponent },
       {  path:'creat', component:CreatShowAvailabilityComponent},
+
     ] },
 
   { path: 'j', component: HomeComponent },
-  { path: '', component: PatientListComponent },
+
 
 
 

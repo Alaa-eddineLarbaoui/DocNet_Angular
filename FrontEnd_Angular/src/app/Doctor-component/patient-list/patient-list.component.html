@@ -1,44 +1,64 @@
-<button (click)="getAppointmentDoctor()"> get list of appointment </button>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="listAppointmentOfDoctor" class="appointment-table">
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let appointment"> {{appointment.date | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
 
-  <div *ngFor="let day of listAppointmentOfDoctor" class="dayContain">
+    <!-- Time Column -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Heure </th>
+      <td mat-cell *matCellDef="let appointment"> {{appointment.time}} </td>
+    </ng-container>
 
-<h1>
-  {{day.patient.email}}
-  {{day.patient.id}}
-  {{day.appointmentReason}}
+    <!-- Patient Column -->
+    <ng-container matColumnDef="patient">
+      <th mat-header-cell *matHeaderCellDef> Patient </th>
+      <td mat-cell *matCellDef="let appointment"> {{appointment.patient.username}} </td>
+    </ng-container>
 
+    <!-- Reason Column -->
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef> Raison </th>
+      <td mat-cell *matCellDef="let appointment"> {{appointment.appointmentReason}} </td>
+    </ng-container>
 
-</h1>
-    {{day.time}}
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Statut </th>
+      <td mat-cell *matCellDef="let appointment">
+        <mat-chip-set>
+          <mat-chip-option [color]="getStatusColor(appointment.status)" selected>
+            {{appointment.status}}
+          </mat-chip-option>
+        </mat-chip-set>
+      </td>
+    </ng-container>
 
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let appointment">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="viewDetails(appointment)">
+            <mat-icon>visibility</mat-icon>
+            <span>Voir détails</span>
+          </button>
+          <button mat-menu-item [disabled]="appointment.notificationEnvoyee" >
+            <mat-icon>notifications</mat-icon>
+            <span>Envoyer notification</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
 
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-
-
-<div *ngFor="let appointment of listAppointmentOfDoctor" class="appointment-card">
-  <div class="card-header">
-    <h3>Rendez-vous du {{ appointment.date | date:'dd/MM/yyyy' }} à {{ appointment.time }}</h3>
-    <span class="status" [ngClass]="appointment.status">{{ appointment.status }}</span>
-  </div>
-  <div class="card-body">
-    <div class="patient-info">
-      <h4>Patient</h4>
-      <p><strong>Nom :</strong> {{ appointment.patient.username }}</p>
-      <p><strong>Email :</strong> {{ appointment.patient.email }}</p>
-      <p><strong>Genre :</strong> {{ appointment.patient.gender }}</p>
-      <p><strong>Date de naissance :</strong> {{ appointment.patient.birthDate | date:'dd/MM/yyyy' }}</p>
-    </div>
-    <div class="appointment-info">
-      <h4>Détails du rendez-vous</h4>
-      <p><strong>Raison :</strong> {{ appointment.appointmentReason }}</p>
-      <p><strong>Note :</strong> {{ appointment.note }}</p>
-    </div>
-  </div>
-  <div class="card-footer">
-    <button class="btn-action" [disabled]="appointment.notificationEnvoyee">
-      Envoyer une notification
-    </button>
-  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-

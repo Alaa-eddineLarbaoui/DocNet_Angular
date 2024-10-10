@@ -36,6 +36,11 @@ import { MapDoctorComponent } from './Home-component/map-doctor/map-doctor.compo
 import { HomeComponent } from './Home-component/Home_page/home.component';
 import { FilterFormComponent } from './Home-component/filter-form/filter-form.component';
 import { MapComponent } from './Home-component/map/map.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTableModule} from "@angular/material/table";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 // @ts-ignore
 @NgModule({
@@ -75,7 +80,12 @@ import { MapComponent } from './Home-component/map/map.component';
     MatTabsModule,
     MatSnackBarModule,
     LottieModule.forRoot({player: () => player}),
-    MatCardModule
+    MatCardModule,
+    MatMenuModule,
+    MatTableModule,
+    MatChipsModule,
+    MatPaginatorModule
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
