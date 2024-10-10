@@ -49,15 +49,26 @@ export class LoginComponent implements OnInit {
             console.log('User roles:', roles);
 
             if (roles.includes(Erole.ADMIN)) {
-              this.router.navigate(['/home']);
+
+
+                this.router.navigate(['/home']);
+
 
             } else if (roles.includes(Erole.DOCTOR)) {
-              this.router.navigate(['/dashboard-doctor']);
+
+
+                this.router.navigate(['/dashboard-doctor']);
+
+
 
             } else if (roles.includes(Erole.PATIENT)) {
               console.log('User with PATIENT role connected.');
-              this.router.navigateByUrl(this.returnUrl);
-              this.router.navigate(['/dd']);
+
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.router.navigate(['/dd']);
+              }
 
             } else {
               console.warn('No recognized role in the token.');

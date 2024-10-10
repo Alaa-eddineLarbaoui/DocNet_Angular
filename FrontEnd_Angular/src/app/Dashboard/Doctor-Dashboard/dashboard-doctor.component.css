@@ -76,7 +76,7 @@ a {
   width: 68px;
   /* --nav-width */
   height: 100vh;
-  background-color: #4723D9;
+  background-color: #00264c;
   padding: 0.5rem 1rem 0 0;
   transition: 0.5s;
   z-index: 100;
@@ -116,7 +116,7 @@ a {
 
 .nav_link {
   position: relative;
-  color: #AFA5D9;
+  color: #ffffff;
   margin-bottom: 1.5rem;
   transition: 0.3s;
 }

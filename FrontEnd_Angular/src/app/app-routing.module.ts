@@ -28,7 +28,7 @@ const routes: Routes = [
 
     ] },
 
-  { path: 'j', component: HomeComponent },
+  { path: '', component: HomeComponent },
 
 
 

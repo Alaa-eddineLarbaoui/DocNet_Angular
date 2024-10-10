@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import {LoginService} from "../../Service/login.service";
 
 @Component({
   selector: 'app-dashboard-doctor',
@@ -13,6 +14,8 @@ export class DashboardDoctorComponent implements OnInit {
   @ViewChild('header') header!: ElementRef;
   navLinks: NodeListOf<Element> | undefined;
 
+  constructor(public loginService: LoginService) {
+  }
   ngOnInit(): void {
     this.showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header');
     this.addLinkActive();
@@ -48,4 +51,7 @@ export class DashboardDoctorComponent implements OnInit {
 
     this.navLinks?.forEach(link => link.addEventListener('click', colorLink));
   }
+
+
+
 }
