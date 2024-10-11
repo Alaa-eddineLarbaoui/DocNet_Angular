@@ -15,7 +15,7 @@ import { jwtDecode } from "jwt-decode";
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
-  returnUrl: string = '/';
+  redirectUrl !: string ;
   hidePassword = true;
 
   constructor(
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/calendar';
+    this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/calendar';
   }
 
   onSubmit() {
@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
 
             } else if (roles.includes(Erole.PATIENT)) {
                 console.log('User with PATIENT role connected.');
-                console.log(this.returnUrl);
-                this.router.navigateByUrl(this.returnUrl);
+                console.log(this.redirectUrl);
+                this.router.navigateByUrl(this.redirectUrl);
 
 
             } else {

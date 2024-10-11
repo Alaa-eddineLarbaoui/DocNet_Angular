@@ -16,16 +16,16 @@ export class SignLoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/';
+    this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'] ;
     this.getReturnUrlFromLocalStorage();
   }
 
   navigateToSignUp() {
-    this.router.navigate(['/sign'], { queryParams: { returnUrl: this.redirectUrl } });
+    this.router.navigate(['/sign'], { queryParams: { redirectUrl: this.redirectUrl } });
   }
 
   navigateToLogin() {
-    this.router.navigate(['/login'], { queryParams: { returnUrl: this.redirectUrl } });
+    this.router.navigate(['/login'], { queryParams: { redirectUrl: this.redirectUrl } });
   }
 
   getReturnUrlFromLocalStorage() {

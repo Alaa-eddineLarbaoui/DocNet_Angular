@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.redirectUrl = params['returnUrl'] || '/';
+      this.redirectUrl = params['redirectUrl'] || '/';
     });
   }
 
@@ -53,10 +53,10 @@ export class SignupComponent implements OnInit {
           console.log("Inscription réussie", response);
 
           this.message = 'Inscription réussie !';
-          localStorage.setItem('returnUrl', this.redirectUrl);
+          localStorage.setItem('redirectUrl', this.redirectUrl);
 
           // Redirection vers la page de login après un petit délai
-          setTimeout(() => this.router.navigate(['/login']), 2000);
+          setTimeout(() => this.router.navigate(['/login']), 1);
         },
         error => {
           console.log('Erreur lors de l\'inscription : ', error);  // Affiche l'erreur dans la console
@@ -69,6 +69,6 @@ export class SignupComponent implements OnInit {
   }
 
   goToLogin() {
-    this.router.navigate(['/login'], { queryParams: { returnUrl: this.redirectUrl } });
+    this.router.navigate(['/login'], { queryParams: { redirectUrl: this.redirectUrl } });
   }
 }
