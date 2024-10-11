@@ -10,6 +10,7 @@ import { Localisation } from "../Enums/Localisation";
 import { DoctorSharedService } from "../Service/doctor-shared.service";
 import {DatePipe} from "@angular/common";
 import {AvailabilityDto} from "../Dto-Entity/AvailabilityDto";
+import {LoginService} from "../Service/login.service";
 
 @Component({
   selector: 'app-availability-calendar',
@@ -40,7 +41,8 @@ export class AvailabilityCalendarComponent implements OnInit {
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loginService: LoginService ,
   ) { }
 
   ngOnInit(): void {
@@ -190,4 +192,20 @@ export class AvailabilityCalendarComponent implements OnInit {
       this.updatePaginatedDoctors();
     }
   }
+
+
+  handleAppointmentClick(doctorId: number) {
+    if (this.loginService.isLoggedIn()) {
+
+      this.router.navigate(['/patient/detailDoctor', doctorId]);
+    } else {
+
+
+      localStorage.setItem('redirectUrl', `/patient/detailDoctor/${doctorId}`);
+      this.router.navigate(['/sign-login']);
+    }
+
+
 }
+}
+

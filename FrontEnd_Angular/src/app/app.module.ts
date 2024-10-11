@@ -41,6 +41,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { SignupComponent } from './signup/signup.component';
+import { SignLoginComponent } from './sign-login/sign-login.component';
 
 // @ts-ignore
 @NgModule({
@@ -60,7 +62,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     Page404Component,
     PatientListComponent,
     DashboardDoctorComponent,
-    CreatShowAvailabilityComponent
+    CreatShowAvailabilityComponent,
+    SignupComponent,
+    SignLoginComponent
   ],
   imports: [
     BrowserModule,

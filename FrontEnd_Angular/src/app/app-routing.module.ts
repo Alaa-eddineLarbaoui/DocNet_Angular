@@ -14,6 +14,8 @@ import {FilterComponent} from "./Home-component/filter/filter.component";
 import {DoctorDetailsComponent} from "./Home-component/doctor-details/doctor-details.component";
 import {HomeComponent} from "./Home-component/Home_page/home.component";
 import {PatientListComponent} from "./Doctor-component/patient-list/patient-list.component";
+import {SignupComponent} from "./signup/signup.component";
+import {SignLoginComponent} from "./sign-login/sign-login.component";
 
 
 
@@ -30,10 +32,11 @@ const routes: Routes = [
 
     ] },
 
+  { path: 'sign-login', component: SignLoginComponent },
   { path: '', component: HomeComponent },
   { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
 
-
+  { path:'sign' , component: SignupComponent},
 
 
   { path: 'patient/filter', component: FilterComponent ,

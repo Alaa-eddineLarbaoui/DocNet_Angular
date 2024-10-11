@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/calendar';
   }
 
   onSubmit() {
@@ -50,25 +50,17 @@ export class LoginComponent implements OnInit {
 
             if (roles.includes(Erole.ADMIN)) {
 
-
                 this.router.navigate(['/home']);
-
 
             } else if (roles.includes(Erole.DOCTOR)) {
 
-
                 this.router.navigate(['/dashboard-doctor']);
 
-
-
             } else if (roles.includes(Erole.PATIENT)) {
-              console.log('User with PATIENT role connected.');
-
-              if (this.returnUrl) {
+                console.log('User with PATIENT role connected.');
+                console.log(this.returnUrl);
                 this.router.navigateByUrl(this.returnUrl);
-              } else {
-                this.router.navigate(['/dd']);
-              }
+
 
             } else {
               console.warn('No recognized role in the token.');

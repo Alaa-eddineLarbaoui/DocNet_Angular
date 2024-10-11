@@ -15,7 +15,7 @@ import {AppointmentsComponent} from "../../appointments/appointments.component";
   templateUrl: './doctor-details.component.html',
   styleUrls: ['./doctor-details.component.css'],
 })
-export class DoctorDetailsComponent implements OnInit {
+export class DoctorDetailsComponent implements OnInit  {
   idProf!: number;
   doctorGet!: HealthProfessional;
 
@@ -127,6 +127,6 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
 
-  protected readonly caches = caches;
+
 }
 

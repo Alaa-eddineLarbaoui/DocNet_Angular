@@ -528,6 +528,12 @@ mat-tab {
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
+  .div-appointment{
+    width:100%;
+  }
+  .detail-body{
+    width:100%;
+  }
   .header-container {
     flex-direction: column;
     /* Stack the header items vertically on small screens */
@@ -560,9 +566,20 @@ mat-tab {
     /* Center tabs on smaller screens */
     gap: 30px;
   }
+  .detail-Section {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 @media (max-width: 480px) {
+  .div-appointment{
+    width:100%;
+  }
+  .detail-body{
+    width:100%;
+  }
+
   .header-container {
     flex-direction: column;
   }
