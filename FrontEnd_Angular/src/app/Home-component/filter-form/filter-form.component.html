@@ -5,48 +5,64 @@
 
 
 <form [formGroup]="searchform" (ngSubmit)="searchOfDoctor()" class="search_form">
-    <div class="search-fields">
-      <!-- Specialty field -->
-      <div class="search-field">
-        <div class="input-wrapper">
-          <i class="fas fa-stethoscope"></i>
-          <input type="text" id="specialty" formControlName="specialty" class="form-control" placeholder="Spécialité médicale" list="speciality-list">
-          <datalist id="speciality-list">
-            <option *ngFor="let spc of specialite  | slice:0:5" [value]="spc">{{ spc }}</option>
-          </datalist>
-        </div>
-        <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
-      </div>
 
-      <!-- Clinic Address field -->
-      <div class="search-field">
-        <div class="input-wrapper">
-          <i class="fas fa-map-marker-alt"></i>
-          <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control" placeholder="Adresse de la clinique" list="location-list">
-          <datalist id="location-list">
-            <option *ngFor="let item of local | slice:0:5" [value]="item">{{ item }}</option>
-          </datalist>
-        </div>
-        <div class="search-hint">Basé sur votre localisation</div>
+  <div class="header">
+    <a routerLink="/">
+    <div class="logo">Docnet</div>
+    </a>
+
+    <a routerLink="/login">
+
+    <div >Log in</div>
+
+  </a>
+
+  </div>
+
+  <div class="search-fields">
+    <!-- Specialty field -->
+    <div class="search-field">
+      <div class="input-wrapper">
+        <i class="fas fa-stethoscope"></i>
+        <input type="text" id="specialty" formControlName="specialty" class="form-control"
+          placeholder="Spécialité médicale" list="speciality-list">
+        <datalist id="speciality-list">
+          <option *ngFor="let spc of specialite  | slice:0:5" [value]="spc">{{ spc }}</option>
+        </datalist>
       </div>
+      <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
+    </div>
+
+    <!-- Clinic Address field -->
+    <div class="search-field">
+      <div class="input-wrapper">
+        <i class="fas fa-map-marker-alt"></i>
+        <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control"
+          placeholder="Adresse de la clinique" list="location-list">
+        <datalist id="location-list">
+          <option *ngFor="let item of local | slice:0:5" [value]="item">{{ item }}</option>
+        </datalist>
+      </div>
+      <div class="search-hint">Basé sur votre localisation</div>
+    </div>
 
 
     <!-- Submit button -->
-      <div class="make-appointment-btn " type="submit">
-        <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
-      </div>
-
-
+    <div class="make-appointment-btn " type="submit">
+      <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
     </div>
 
 
-    <!-- Error message -->
-    <div *ngIf="errorMessage" class="error-message">
-      <i class="fas fa-exclamation-circle"></i>
-      {{ errorMessage }}
-    </div>
+  </div>
 
-  </form>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">
+    <i class="fas fa-exclamation-circle"></i>
+    {{ errorMessage }}
+  </div>
+
+</form>
 
 
 
@@ -105,6 +121,3 @@
   </form>
 </div>
 -->
-
-
-
