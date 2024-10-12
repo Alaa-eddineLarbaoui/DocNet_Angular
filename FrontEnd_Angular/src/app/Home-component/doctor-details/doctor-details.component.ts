@@ -10,6 +10,7 @@ import {JwtDto} from "../../Dto-Entity/JwtDto";
 import {AppointmentsComponent} from "../../appointments/appointments.component";
 
 
+
 @Component({
   selector: 'app-doctor-details',
   templateUrl: './doctor-details.component.html',
@@ -125,6 +126,8 @@ export class DoctorDetailsComponent implements OnInit  {
       });
     });
   }
+
+
 
 
 

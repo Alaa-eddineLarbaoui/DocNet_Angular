@@ -23,7 +23,7 @@
                   <label for="time"><i class="far fa-clock mr-2"></i>Available Slot</label>
                   <select id="time" formControlName="time" class="form-control" required>
                     <option value="" disabled selected>Select a time slot</option>
-                    <option *ngFor="let time of availableTimes" [value]="time">{{ time.startTime }}</option>
+                    <option *ngFor="let time of availableTimes" [value]="time.startTime">{{ time.startTime }}</option>
                   </select>
                 </div>
               </div>
@@ -33,19 +33,20 @@
               <label for="appointment_reason"><i class="fas fa-clipboard-list mr-2"></i>Reason for Appointment</label>
               <select id="appointment_reason" formControlName="appointment_reason" class="form-control" required>
                 <option value="" disabled selected>Select a reason</option>
+                <option [value]="AppointmentReason.ROUTINE_CHECKUP">Routine Checkup</option>
+                <option [value]="AppointmentReason.FOLLOW_UP">Follow-up</option>
                 <option [value]="AppointmentReason.CONSULTATION">Consultation</option>
-                <option [value]="AppointmentReason.CHECKUP">Check-up</option>
-                <option [value]="AppointmentReason.SURGERY">Surgery</option>
+                <option [value]="AppointmentReason.EMERGENCY">Emergency</option>
+                <option [value]="AppointmentReason.OTHER">Other</option>
               </select>
             </div>
-
             <div class="form-group">
               <label for="note"><i class="fas fa-comment-medical mr-2"></i>Note</label>
               <textarea id="note" formControlName="note" class="form-control" rows="3"
                         placeholder="Add additional details if necessary"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="!appointmentForm.valid || submitted">
+            <button type="submit" class="btn btn-primary btn-block">
               <i class="fas fa-calendar-check mr-2"></i>Book Appointment
             </button>
           </form>

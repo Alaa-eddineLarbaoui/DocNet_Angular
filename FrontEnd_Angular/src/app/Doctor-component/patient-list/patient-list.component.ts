@@ -25,6 +25,7 @@ export class PatientListComponent implements OnInit {
   ngOnInit(): void {
     this.getIdPersonFromJwt()
     this.getAppointmentDoctor()
+    console.log(this.doctorId+"iddddd")
 
     this.dataSource = new MatTableDataSource(this.listAppointmentOfDoctor);
     this.dataSource.paginator = this.paginator;
@@ -34,8 +35,11 @@ export class PatientListComponent implements OnInit {
   }
 
   getAppointmentDoctor(): void {
+    console.log("djjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     this.appointmentService.getAllByDoctorId(this.doctorId).subscribe((data: Appointment[]) => {
+      console.log("ffffffffffffffffffffffffff")
       const appointments = this.listAppointmentOfDoctor = data;
+      console.log(data)
       appointments.forEach((appointment: Appointment) => {
         console.log(`ID: ${appointment.id}`);
         console.log(`Date: ${appointment.date}`);
