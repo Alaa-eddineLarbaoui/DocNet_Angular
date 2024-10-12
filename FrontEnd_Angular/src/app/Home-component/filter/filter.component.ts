@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import {Localisation} from "../../Enums/Localisation";
-import {Speciality} from "../../Enums/Speciality";
-import {DoctorService} from "../../Service/doctor.service";
+import { Localisation } from "../../Enums/Localisation";
+import { Speciality } from "../../Enums/Speciality";
+import { DoctorService } from "../../Service/doctor.service";
 
 @Component({
   selector: 'app-filter',
@@ -24,11 +24,11 @@ export class FilterComponent implements OnInit {
     private fb: FormBuilder,
     private doctorService: DoctorService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.local= Object.values(this.localisation).filter((value) => typeof value === 'string');
+    this.local = Object.values(this.localisation).filter((value) => typeof value === 'string');
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
 
 
@@ -50,7 +50,7 @@ export class FilterComponent implements OnInit {
 
   validateInputs(specialty: string, clinicAdress: string): boolean {
     const isSpecialtyValid = specialty === '' || this.specialite.includes(specialty);
-    const isClinicAddressValid = clinicAdress === '' ||  this.local.includes(clinicAdress);
+    const isClinicAddressValid = clinicAdress === '' || this.local.includes(clinicAdress);
 
     if (!isSpecialtyValid) {
       this.errorMessage = 'Veuillez entrer une spécialité valide.';

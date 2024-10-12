@@ -177,9 +177,12 @@
 }
 
 .make-appointment-btn i {
-  margin-left: 10px;
+  margin-left: 12px;
+  margin-top: 8px;
+  margin-right: 3px;
 }
-.location-list{
+
+.location-list {
   height: 10px;
   background-color: red;
 }
