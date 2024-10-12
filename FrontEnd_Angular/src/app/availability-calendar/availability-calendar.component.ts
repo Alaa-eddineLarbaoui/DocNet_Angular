@@ -11,6 +11,7 @@ import { DoctorSharedService } from "../Service/doctor-shared.service";
 import {DatePipe} from "@angular/common";
 import {AvailabilityDto} from "../Dto-Entity/AvailabilityDto";
 import {LoginService} from "../Service/login.service";
+import {Erole} from "../Enums/Erole";
 
 @Component({
   selector: 'app-availability-calendar',
@@ -33,6 +34,8 @@ export class AvailabilityCalendarComponent implements OnInit {
   specialty!: Speciality;
   clinicAdress!: Localisation;
   showPopUp: boolean = false;
+  role!: string ;
+
 
   constructor(
     private availabilityService: AvailabilityService,
@@ -47,6 +50,8 @@ export class AvailabilityCalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInitialData();
+    this.role = this.getUserRole();
+
   }
 
   async loadInitialData() {
@@ -207,5 +212,36 @@ export class AvailabilityCalendarComponent implements OnInit {
 
 
 }
+
+
+  getUserRole(): string {
+    const token = localStorage.getItem('jwtData');
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      console.log("Données du token décodé :", decodedToken);
+      return decodedToken?.role;
+    }
+    return '';
+  }
+
+  hasRole(roles: string): boolean {
+    // Si l'utilisateur est un DOCTOR, renvoie false pour cacher le bouton
+     // Ne pas afficher le bouton
+
+    // Vérifie si le rôle de l'utilisateur est inclus dans la liste des rôles
+    return this.role == roles;
+  }
+
+
+  private decodeToken(token: string): any {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      console.error('Error decoding token', e);
+      return null;
+    }
+  }
+
+  protected readonly Erole = Erole;
 }
 

@@ -23,9 +23,11 @@
           <p>{{doctor.clinicAddress }}</p>
           <p>Conventionné secteur 1</p>
 
-          <button class="appointment-btn" (click)="handleAppointmentClick(doctor.id)">
+          <button *ngIf="hasRole('PATIENT')" class="appointment-btn" (click)="handleAppointmentClick(doctor.id)">
             Book an appointment
           </button>
+
+
         </div>
 
         <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek(doctor.id)">
@@ -95,6 +97,7 @@
         </button>
       </div>
     </div>
+
   </section>
 
   <section class="section2">
