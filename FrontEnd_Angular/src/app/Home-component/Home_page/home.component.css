@@ -14,7 +14,7 @@ body {
 .section_global {
   display: flex;
   flex-direction: row;
-  margin-top:22px;
+  margin-top: 22px;
 }
 
 .section1 {
@@ -23,7 +23,7 @@ body {
 
 .section2 {
   width: 55%;
-  margin-right:46px;
+  margin-right: 46px;
 }
 
 .h2 {
@@ -67,7 +67,7 @@ h2 {
 }
 
 .h4 {
-  color:#1d3557;
+  color: #1d3557;
 }
 
 .p {
@@ -80,7 +80,8 @@ img {
   display: block;
   margin: 0 auto;
 }
-#img2{
+
+#img2 {
   margin-bottom: 13px;
 }
 
@@ -122,10 +123,11 @@ img {
 
 
 @media (max-width: 768px) {
-  .section1{
-    display:none;
+  .section1 {
+    display: none;
   }
-  .section2{
+
+  .section2 {
     width: 100%;
     justify-content: center;
     margin: 0 auto;
@@ -266,7 +268,7 @@ img {
   background-color: #ffd633;
 }
 
-#subscribe-form{
+#subscribe-form {
   gap: 10px;
 }
 
