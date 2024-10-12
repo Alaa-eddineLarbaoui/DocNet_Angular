@@ -353,7 +353,7 @@
 
 .BtnPrev,
 .BtnNext {
-  color: #007BFF;
+  color: #107aca;
   font-weight: 700;
   border: none;
   padding: 10px 20px;
@@ -416,104 +416,6 @@
 
 
 
-
-
-/* background-image: linear-gradient(to bottom, #f7f7f7, #ffffff); */
-
-
-
-/* Responsives : Media query   */
-
-/*
-
-!* Pour les grands écrans : afficher 6 jours *!
-@media (max-width: 1200px) {
-  !* .days {
-    !* display: flex; *!
-    !* width: 70%;
-
-  } *!
-  .week-container{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .d{
-    display: flex;
-    flex-direction: column;
-  }
- .section1{
-width: 100%;
- }
-}
-
-!* Pour les écrans moyens : afficher 5 jours *!
-@media (max-width: 992px) {
-  .days {
-    flex-wrap: nowrap;
-    justify-content: space-around;
-  }
-  .day-container {
-    display: none;
-  }
-  .day-container:nth-child(-n+5) {
-    display: flex; !* Show only 5 days *!
-  }
-   !*  jjjjjjjjjjjjjjjjj *!
-
-  .d{
-    display: flex;
-    flex-direction: column;
-  }
-
-}
-
-!* Pour les petits écrans : afficher 4 jours *!
-@media (max-width: 768px) {
-  .days {
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    overflow-x: auto; !* Enable scrolling on smaller screens *!
-  }
-
-
-     !*  jjjjjjjjjjjjjjjjj *!
-
-  .d{
-    display: flex;
-    flex-direction: column;
-  }
-  .container{
-    display: flex;
-    flex-direction: column;
-  }
-
-}
-
-
-
-!* Pour les très petits écrans : afficher 3 jours *!
-@media (max-width: 576px) {
-  .days {
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    overflow-x: auto; !* Enable scrolling on smaller screens *!
-  }
-  .day-container {
-    display: none;
-  }
-  .day-container:nth-child(-n+3) {
-    display: flex; !* Show only 3 days *!
-  }
-
-     !*  jjjjjjjjjjjjjjjjj *!
-
-     .d{
-      display: flex;
-      flex-direction: column;
-    }
-}
-*/
 
 /* /////////////////////////////////////////////////// */
 
@@ -613,7 +515,6 @@ width: 100%;
 
   .section2 {
     width: 100%;
-    background-color: black;
   }
 
   .dday {
@@ -656,5 +557,145 @@ width: 100%;
 
   .days {
     width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/************************************************************/
+/*********************** Css of Fotter   ********************/
+/************************************************************/
+
+
+.footer {
+  background: linear-gradient(135deg, #107aca, #0056b3);
+  color: white;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 25px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
+
+.footer h4 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #ffcc00;
+}
+
+.footer p,
+.footer ul li {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #ffcc00;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  color: white;
+  margin-right: 15px;
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 0.9em;
+}
+
+.newsletter-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #ffcc00;
+  color: #107aca;
+  font-weight: bold;
+  border-radius: 28px 10px 4px 0px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #ffd633;
+}
+
+#form-abonner {
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    width: 100%;
+    margin-bottom: 30px;
   }
 }

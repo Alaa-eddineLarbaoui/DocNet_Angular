@@ -63,7 +63,7 @@
 
         <button class="buttonWeek2" style="height: 20px;" (click)="nextWeek(doctor.id)">
           <div class="dl-icon-wrapper dl-position-relative">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentCor" xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true" focusable="false" class="dl-icon dl-icon-primary-110 dl-icon-small">
               <path
                 d="M5.006 12.518c0-.211.07-.399.21-.54l3.962-3.96-3.961-3.985a.723.723 0 0 1 0-1.054.723.723 0 0 1 1.054 0l4.5 4.5a.723.723 0 0 1 0 1.054l-4.5 4.5a.723.723 0 0 1-1.054 0 .73.73 0 0 1-.211-.515">
@@ -112,12 +112,45 @@
 </section>
 
 
-<footer>
-  <p style="background-color: black;">hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
-  <p>hffffffffffffffn</p>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>Contactez-nous</h4>
+      <p>Adresse : 123 Rue de la Santé, Paris</p>
+      <p>Téléphone : 01 23 45 67 89</p>
+      <p>Email : support@votresite.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Liens Rapides</h4>
+      <ul>
+        <li><a href="/rendez-vous">Prendre Rendez-vous</a></li>
+        <li><a href="/medecins">Nos Médecins</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/politique-confidentialite">Politique de Confidentialité</a></li>
+        <li><a href="/conditions-utilisation">Conditions d'Utilisation</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Suivez-nous</h4>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Abonnez-vous à notre Newsletter</h4>
+      <form id="form-abonner" class="newsletter-form">
+        <input type="email" placeholder="Votre email" />
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+    <div class="footer-section">
+      <h4>À Propos de Nous</h4>
+      <p>Notre mission est de faciliter l'accès aux soins de santé pour tous. Réservez votre rendez-vous facilement et rapidement avec des professionnels de santé qualifiés.</p>
+    </div>
+  </div>
 </footer>
