@@ -76,7 +76,7 @@ a {
   width: 68px;
   /* --nav-width */
   height: 100vh;
-  background-color: #00264c;
+  background-color: #00264c !important;
   padding: 0.5rem 1rem 0 0;
   transition: 0.5s;
   z-index: 100;
@@ -135,6 +135,7 @@ a {
 
 .body-pd {
   padding-left: calc(68px + 1rem);
+  background-color:#00264c!important;
 }
 
 .active {
@@ -155,12 +156,13 @@ a {
 }
 
 .main {
-  background: red;
+  background-color:#00264c!important;
 }
 
 
 .section-global{
-
+  background-color: #00264c !important;
+  margin-right: 5px;
 }
 
 
@@ -172,6 +174,7 @@ a {
   body {
     margin: calc(3rem + 1rem) 0 0 0;
     padding-left: calc(68px + 1rem);
+    background-color:#00264c!important;
   }
 
   .header {
@@ -199,5 +202,7 @@ a {
 
   .body-pd {
     padding-left: calc(68px + 170px);
+    background-color:#00264c!important;
+
   }
 }
