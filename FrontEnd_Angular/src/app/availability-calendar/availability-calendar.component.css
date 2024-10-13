@@ -6,7 +6,7 @@
   margin: 0 auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: rgb(248, 248, 248);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -90,7 +90,7 @@
 .profile {
   display: flex;
   gap: 12px;
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(248, 248, 248);
   margin-left: 10px;
   margin-bottom: 19px;
   text-align: center;
@@ -218,7 +218,7 @@
   width: 23px;
   margin-top: 28px;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(248, 248, 248);
   border: none;
 }
 
@@ -227,7 +227,7 @@
   width: 23px;
   margin-top: 28px;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(248, 248, 248);
   border: none;
 }
 
@@ -699,14 +699,6 @@
     margin-bottom: 30px;
   }
 }
-
-
-
-
-/************************************************************/
-/********************* CSS of Nav   *************************/
-/************************************************************/
-/* Style pour la barre de navigation */
 
 
 

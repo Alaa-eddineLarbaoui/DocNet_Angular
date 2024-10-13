@@ -1,7 +1,7 @@
 export enum AppointmentReason {
-  ROUTINE_CHECKUP = 'ROUTINE_CHECKUP',
-  FOLLOW_UP = 'FOLLOW_UP',
-  CONSULTATION = 'CONSULTATION',
-  EMERGENCY = 'EMERGENCY',
-  OTHER = 'OTHER',
+  routine_checkup = 'routine_checkup',
+  follow_up = 'follow_up',
+  consultation = 'consultation',
+  emergency = 'emergency',
+  other = 'other',
 }

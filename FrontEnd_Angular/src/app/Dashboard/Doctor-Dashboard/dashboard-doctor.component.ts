@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import {LoginService} from "../../Service/login.service";
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from "../../Service/login.service";
 
 @Component({
   selector: 'app-dashboard-doctor',
@@ -8,14 +8,10 @@ import {LoginService} from "../../Service/login.service";
 })
 export class DashboardDoctorComponent implements OnInit {
 
-  @ViewChild('headerToggle') headerToggle!: ElementRef;
-  @ViewChild('navBar') navBar!: ElementRef;
-  @ViewChild('bodyPd') bodyPd!: ElementRef;
-  @ViewChild('header') header!: ElementRef;
   navLinks: NodeListOf<Element> | undefined;
 
-  constructor(public loginService: LoginService) {
-  }
+  constructor(public loginService: LoginService) { }
+
   ngOnInit(): void {
     this.showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header');
     this.addLinkActive();
@@ -29,11 +25,11 @@ export class DashboardDoctorComponent implements OnInit {
 
     if (toggle && nav && bodypd && headerpd) {
       toggle.addEventListener('click', () => {
-        // Toggle navbar visibility
+        // Toggle la visibilité de la barre de navigation
         nav.classList.toggle('show');
-        // Toggle icon class
+        // Change la classe de l'icône
         toggle.classList.toggle('bx-x');
-        // Add/remove padding to body and header
+        // Ajoute/retire le padding du body et de l'en-tête
         bodypd.classList.toggle('body-pd');
         headerpd.classList.toggle('body-pd');
       });
@@ -45,13 +41,12 @@ export class DashboardDoctorComponent implements OnInit {
 
     const colorLink = (event: Event) => {
       this.navLinks?.forEach(link => link.classList.remove('active'));
-      const target = event.target as HTMLElement;
+      const target = event.currentTarget as HTMLElement; // Utilisez currentTarget pour obtenir le bon élément
       target.classList.add('active');
     };
 
-    this.navLinks?.forEach(link => link.addEventListener('click', colorLink));
+    this.navLinks?.forEach(link => {
+      link.addEventListener('click', colorLink);
+    });
   }
-
-
-
 }

@@ -39,10 +39,8 @@ const routes: Routes = [
   { path:'sign' , component: SignupComponent},
 
 
-  { path: 'patient/filter', component: FilterComponent ,
-  canActivate:[AuthGuard],
-    data:{expectedRole:Erole.PATIENT}
-  },
+  { path: 'patient/filter', component: FilterComponent },
+
   { path: 'calendar', component: AvailabilityCalendarComponent },
 
   //{ path: '', redirectTo: '/filter', pathMatch: 'full' },

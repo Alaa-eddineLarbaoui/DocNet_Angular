@@ -45,7 +45,7 @@ export class AvailabilityCalendarComponent implements OnInit {
     private datePipe: DatePipe,
     private router: Router,
     private dialog: MatDialog,
-    private loginService: LoginService ,
+    public loginService: LoginService ,
   ) { }
 
   ngOnInit(): void {

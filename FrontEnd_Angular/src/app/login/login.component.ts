@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const person: LoginRequest = this.loginForm.value;
-      this.loginservice.Login(person).subscribe({
+      this.loginservice.login(person).subscribe({
         next: (res: any) => {
           localStorage.setItem('jwtData', JSON.stringify(res));
 

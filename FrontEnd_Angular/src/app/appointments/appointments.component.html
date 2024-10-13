@@ -33,11 +33,11 @@
               <label for="appointmentReason"><i class="fas fa-clipboard-list mr-2"></i>Reason for Appointment</label>
               <select id="appointmentReason" formControlName="appointmentReason" class="form-control" required>
                 <option value="" disabled selected>Select a reason</option>
-                <option [value]="AppointmentReason.ROUTINE_CHECKUP">Routine Checkup</option>
-                <option [value]="AppointmentReason.FOLLOW_UP">Follow-up</option>
-                <option [value]="AppointmentReason.CONSULTATION">Consultation</option>
-                <option [value]="AppointmentReason.EMERGENCY">Emergency</option>
-                <option [value]="AppointmentReason.OTHER">Other</option>
+                <option [value]="AppointmentReason.routine_checkup">Routine Checkup</option>
+                <option [value]="AppointmentReason.follow_up">Follow-up</option>
+                <option [value]="AppointmentReason.consultation">Consultation</option>
+                <option [value]="AppointmentReason.emergency">Emergency</option>
+                <option [value]="AppointmentReason.other">Other</option>
               </select>
             </div>
             <div class="form-group">
@@ -45,8 +45,7 @@
               <textarea id="note" formControlName="note" class="form-control" rows="3"
                         placeholder="Add additional details if necessary"></textarea>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block">
+            <button type="submit" class="btn btn-primary btn-block" >
               <i class="fas fa-calendar-check mr-2"></i>Book Appointment
             </button>
           </form>

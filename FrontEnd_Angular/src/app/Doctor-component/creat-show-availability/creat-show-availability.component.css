@@ -18,11 +18,11 @@
  }
 
  .div1 {
-   background: #f0f8ff;  /* Un bleu très clair */
+   background: transparent;  /* Un bleu très clair */
  }
 
  .div2 {
-   background: #fff5f5;  /* Un rouge très clair */
+   background: transparent;  /* Un rouge très clair */
  }
 
  .section-title {

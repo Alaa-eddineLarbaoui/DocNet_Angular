@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 import {Localisation} from "../../Enums/Localisation";
 import {Speciality} from "../../Enums/Speciality";
+import {LoginService} from "../../Service/login.service";
 
 @Component({
   selector: 'app-filter-form',
@@ -21,7 +22,8 @@ export class FilterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    public loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
@@ -81,4 +83,15 @@ export class FilterFormComponent implements OnInit {
       console.log("Le formulaire est invalide");
     }
   }
+
+  // login(): void {
+  //   this.loginService.login();
+  // }
+  // toggleLogin(): void {
+  //   if (this.loginService.isLoggedIn()) {
+  //     this.loginService.logout();
+  //   } else {
+  //     this.login();
+  //   }
+  // }
 }

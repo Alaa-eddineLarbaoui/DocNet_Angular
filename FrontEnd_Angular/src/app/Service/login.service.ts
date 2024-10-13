@@ -18,7 +18,7 @@ export class LoginService {
   {}
 
   API_LOGIN = "http://localhost:8090/api/auth/login";
-  Login(login: LoginRequest): Observable<JwtDto> {
+  login(login: LoginRequest): Observable<JwtDto> {
     return this.http.post<JwtDto>(this.API_LOGIN, login);
   }
 
