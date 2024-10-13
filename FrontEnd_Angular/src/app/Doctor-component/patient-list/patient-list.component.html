@@ -1,5 +1,6 @@
 <div id="div-table" class="mat-elevation-z8">
   <table mat-table [dataSource]="listAppointmentOfDoctor" class="appointment-table">
+
     <!-- Date Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -48,7 +49,7 @@
             <mat-icon>visibility</mat-icon>
             <span>Voir détails</span>
           </button>
-          <button mat-menu-item [disabled]="appointment.notificationEnvoyee" >
+          <button mat-menu-item [disabled]="appointment.notificationEnvoyee">
             <mat-icon>notifications</mat-icon>
             <span>Envoyer notification</span>
           </button>
@@ -60,5 +61,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-<!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
+  <!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
 </div>

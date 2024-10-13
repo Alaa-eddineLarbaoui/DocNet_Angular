@@ -12,6 +12,10 @@ export interface HealthProfessional{
   registrationNumber:string
   latitude:number
   longitude:number
+  price:number
+  formation:string
+  bio : string
+
 }
 
 

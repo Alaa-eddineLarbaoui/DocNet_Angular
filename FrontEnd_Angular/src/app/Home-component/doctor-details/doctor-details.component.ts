@@ -71,6 +71,7 @@ export class DoctorDetailsComponent implements OnInit  {
   getDoctor() {
     this.doctorService.getHealthProfById(this.idProf).subscribe((doctor: HealthProfessional) => {
       this.doctorGet = doctor;
+      console.log(doctor)
     });
   }
 

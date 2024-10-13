@@ -17,10 +17,13 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
   latitude!: number;
   longitude!: number;
   idProf!: number;  // Health professional ID
+  listdoctor!:HealthProfessional
 
   constructor(private doctorService: DoctorService,private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit(): void {
     this.idProf = +this.route.snapshot.paramMap.get('id')!;
@@ -30,6 +33,8 @@ export class MapDoctorComponent implements AfterViewInit, OnInit {
   loadDoctor(): void {
     this.doctorService.getHealthProfById(this.idProf).subscribe((doctor: HealthProfessional) => {
       console.log('Doctor data received:', doctor);
+      this.listdoctor=doctor;
+      console.log(this.listdoctor)
 
       if (doctor) {
 

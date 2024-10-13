@@ -4,7 +4,7 @@
     <h4>Carte et informations d'accès</h4>
     <p><strong>Clinique mutualiste du Médoc</strong></p>
     <p>64 Rue Aristide Briand, 33340 Lesparre-Médoc</p>
-    <h5>Informations pratiques</h5>
+    <h5  *ngIf="listdoctor" style="color:red">{{listdoctor.phoneNumber}}</h5>
     <p>Entrée accessible</p>
   </div>
 

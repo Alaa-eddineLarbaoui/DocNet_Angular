@@ -94,7 +94,11 @@ import { InterceptorService } from './Service/interceptor.service';
   ],
   providers: [
     DatePipe,
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

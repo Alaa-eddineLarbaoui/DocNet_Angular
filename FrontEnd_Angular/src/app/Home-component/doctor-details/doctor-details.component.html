@@ -1,39 +1,3 @@
-<!--<div class="access-container">
-
-  <div class="info-container">
-    <h3 class="h3">
-      <div style="margin-top: 1px">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M9.875 6.5A1.866 1.866 0 0 1 8 8.375 1.851 1.851 0 0 1 6.125 6.5c0-1.031.82-1.875 1.875-1.875A1.88 1.88 0 0 1 9.875 6.5ZM8 5.75a.755.755 0 0 0-.75.75c0 .422.328.75.75.75.398 0 .75-.328.75-.75A.771.771 0 0 0 8 5.75Zm4.5.75c0 2.063-2.742 5.695-3.96 7.219a.707.707 0 0 1-1.102 0C6.218 12.195 3.5 8.563 3.5 6.5 3.5 4.016 5.492 2 8 2c2.484 0 4.5 2.016 4.5 4.5ZM8 3.125A3.376 3.376 0 0 0 4.625 6.5c0 .305.094.75.352 1.36.234.562.585 1.218.984 1.874A35.858 35.858 0 0 0 8 12.594c.563-.75 1.336-1.781 2.016-2.86.398-.656.75-1.312.984-1.875.258-.609.375-1.054.375-1.359A3.391 3.391 0 0 0 8 3.125Z">
-          </path>
-        </svg>
-      </div> Map and Access Information
-    </h3>
-    <p>10 Rue du Château d'Eau, 1240 Caen</p>
-    <div class="practical-info">
-      <h4>Practical Information</h4>
-      <ul>
-        <li>3rd floor with elevator</li>
-        <li>Accessible entrance</li>
-        <li>Free parking</li>
-      </ul>
-    </div>
-  </div>
-
-
-  <div class="map-container">
-    &lt;!&ndash; Google Maps Integration &ndash;&gt;
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.998558431119!2d-0.37067908412106665!3d49.18286367932409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480a42dc7b47636d%3A0x40c14484fb44180!2s10%20Rue%20du%20Ch%C3%A2teau%20d&#39;Eau%2C%2014000%20Caen%2C%20France!5e0!3m2!1sen!2sfr!4v1695653279872!5m2!1sen!2sfr"
-      width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-
-</div>-->
-
-
 
 
 
@@ -42,7 +6,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
   integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45zSRtKlVEQzoywRWBUApte9Wh2Avm" crossorigin="anonymous"></script>
-<section>
+
+<body class="detail-bod">
+<section >
   <!-- Barre de navigation avec Bootstrap -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Doctolib</a>
@@ -86,8 +52,8 @@
   <div class="profile-container">
     <img src="https://via.placeholder.com/150" alt="Doctor Profile" class="profile-pic">
     <div class="profile-details">
-      <h1>Dr Audrey PIOLLET</h1>
-      <p>Médecin généraliste</p>
+      <h1 *ngIf="doctorGet" >Dr {{ doctorGet.username }}</h1>
+      <p  *ngIf="doctorGet">{{doctorGet.specialty}}</p>
     </div>
   </div>
 
@@ -152,7 +118,7 @@
           <path
             d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
         </svg>
-       MA APPOINTMENT
+       MAKE APPOINTMENT
       </button>
 
 
@@ -179,9 +145,8 @@
           <i class="fas fa-align-left icon"></i>
           <h5 id="title_biographie" class="mb-0">Biographie</h5>
         </div>
-        <div class="card-body">
-          <p>Le docteur Damien FOUCAULT vous accueille dans son cabinet au sein du Centre Médical Villaroy à Guyancourt.
-            Le médecin générale.</p>
+        <div class="card-body" *ngIf="doctorGet">
+          <p>{{doctorGet.bio}}</p>
         </div>
       </div>
       <div class="cardFormation">
@@ -191,12 +156,9 @@
         </div>
         <div class="card-body">
           <div class="mb-2">
-            <strong>1985</strong> Docteur en Médecine - Spécialisé en Médecine Générale - Faculté de médecine de
-            Montpellier
+            {{doctorGet.formation}}
           </div>
-          <div>
-            <strong>1985</strong> D.U Echographie - Faculté de médecine de Montpellier
-          </div>
+
         </div>
       </div>
     </div>
@@ -214,13 +176,13 @@
           <h5>Legal information</h5>
         </div>
         <div class="row">
-          <div class="col-md-6 info-item">
+          <div class="col-md-6 info-item" *ngIf="doctorGet">
             <p class="mb-0"><strong>RPPS number</strong></p>
-            <p class="mb-0">10005154710</p>
+            <p class="mb-0">{{ doctorGet.registrationNumber }}</p>
           </div>
-          <div class="col-md-6 info-item">
+          <div class="col-md-6 info-item" *ngIf="doctorGet">
             <p class="mb-0"><strong>Numéro ADELI</strong></p>
-            <p class="mb-0">751939703</p>
+            <p class="mb-0">{{ doctorGet.phoneNumber }}</p>
           </div>
         </div>
       </div>
@@ -238,9 +200,9 @@
           </h2>
         </div>
         <div class="card-body">
-          <div class="rate-item">
+          <div class="rate-item" *ngIf="doctorGet">
             <span>Consultation</span>
-            <span><strong>25 MAD</strong></span>
+            <span ><strong>{{doctorGet.price}}MAD</strong></span>
           </div>
           <p class="rate-description mt-3 mb-0">
             These fees are provided to you for information purposes by the caregiver. They may vary depending on the
@@ -263,13 +225,46 @@
 </section>
 
 
-<div>
-  dhdhd <br>
-  dhdhd <br>
-  dhdhd <br>
-  dhdhd <br>
-  dhdhd <br>
 
-
-</div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Address: 123 Health Street, Morocco</p>
+      <p>Phone: 06 23 45 67 89</p>
+      <p>Email: support@yoursite.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/appointment">Book an Appointment</a></li>
+        <li><a href="/doctors">Our Doctors</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms-of-service">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Subscribe to Our Newsletter</h4>
+      <form id="subscribe-form" class="newsletter-form">
+        <input type="email" placeholder="Your email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-section">
+      <h4>About Us</h4>
+      <p>Our mission is to make healthcare accessible to everyone. Easily and quickly book your appointment with qualified healthcare professionals.</p>
+    </div>
+  </div>
+</footer>
+</body>
 
