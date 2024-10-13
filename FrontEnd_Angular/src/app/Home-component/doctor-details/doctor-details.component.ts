@@ -3,11 +3,11 @@ import { ActivatedRoute } from "@angular/router";
 import { ViewportScroller } from "@angular/common";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {HealthProfessional} from "../../Models/HealthProfessional";
-import {DoctorService} from "../../Service/doctor.service";
-import {LoginService} from "../../Service/login.service";
-import {JwtDto} from "../../Dto-Entity/JwtDto";
-import {AppointmentsComponent} from "../../appointments/appointments.component";
+import { HealthProfessional } from "../../Models/HealthProfessional";
+import { DoctorService } from "../../Service/doctor.service";
+import { LoginService } from "../../Service/login.service";
+import { JwtDto } from "../../Dto-Entity/JwtDto";
+import { AppointmentsComponent } from "../../appointments/appointments.component";
 
 
 
@@ -16,7 +16,7 @@ import {AppointmentsComponent} from "../../appointments/appointments.component";
   templateUrl: './doctor-details.component.html',
   styleUrls: ['./doctor-details.component.css'],
 })
-export class DoctorDetailsComponent implements OnInit  {
+export class DoctorDetailsComponent implements OnInit {
   idProf!: number;
   doctorGet!: HealthProfessional;
 
@@ -33,12 +33,12 @@ export class DoctorDetailsComponent implements OnInit  {
     private route: ActivatedRoute,
     private doctorService: DoctorService,
     private viewportScroller: ViewportScroller,
-    private dialog: MatDialog , // Ajout du MatDialog pour gérer la popup
-    private snackBar: MatSnackBar , // Injection de MatSnackBar
-    public  logservice:LoginService
+    private dialog: MatDialog, // Ajout du MatDialog pour gérer la popup
+    private snackBar: MatSnackBar, // Injection de MatSnackBar
+    public logservice: LoginService
 
 
-) {}
+  ) { }
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
@@ -64,7 +64,7 @@ export class DoctorDetailsComponent implements OnInit  {
 
     if (element) {
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
 

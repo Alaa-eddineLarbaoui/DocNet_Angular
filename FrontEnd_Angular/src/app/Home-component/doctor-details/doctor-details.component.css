@@ -8,11 +8,12 @@
   border: 1px solid #dfe3eb;
   max-width: 792px;
   max-height: 300px;
-  background-color: red
 }
-.hh{
-  background-color:#e4edf6 !important;
+
+.hh {
+  background-color: #e4edf6 !important;
 }
+
 .info-container {
   width: 45%;
 }
@@ -383,20 +384,20 @@ header {
 
 #formation_header {
   border-top: 1.5px solid #e4edf6;
-  color: red;
+  color: black;
   padding-bottom: 0px;
   margin-bottom: 12px;
 
 }
 
 #title_biographie {
-  color: red;
+  color: black;
   font-size: 15px;
   font-weight: bold;
 }
 
 #title_formation {
-  color: red;
+  color: black;
   font-size: 15px;
   font-weight: bold;
 }
@@ -530,12 +531,14 @@ mat-tab {
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .div-appointment{
-    width:100%;
+  .div-appointment {
+    width: 100%;
   }
-  .detail-body{
-    width:100%;
+
+  .detail-body {
+    width: 100%;
   }
+
   .header-container {
     flex-direction: column;
     /* Stack the header items vertically on small screens */
@@ -568,6 +571,7 @@ mat-tab {
     /* Center tabs on smaller screens */
     gap: 30px;
   }
+
   .detail-Section {
     display: flex;
     flex-direction: column-reverse;
@@ -575,11 +579,12 @@ mat-tab {
 }
 
 @media (max-width: 480px) {
-  .div-appointment{
-    width:100%;
+  .div-appointment {
+    width: 100%;
   }
-  .detail-body{
-    width:100%;
+
+  .detail-body {
+    width: 100%;
   }
 
   .header-container {
@@ -736,7 +741,7 @@ mat-tab {
   background-color: #ffd633;
 }
 
-#subscribe-form{
+#subscribe-form {
   gap: 10px;
 }
 
@@ -749,7 +754,31 @@ mat-tab {
     width: 100%;
     margin-bottom: 30px;
   }
+
+
+  #biographie {
+    margin: 1px -26px;
+  }
+
+  .card_Rates {
+    margin: 17px 22px;
+  }
+
+  .info-box {
+    margin: 17px 22px;
+  }
+
+  .cardBio {
+    margin: 17px 1px 1px 49px;
+  }
+
+  .card-body {
+    margin: 17px 22px;
+  }
+
+  .card-formation {
+    margin-left: 22px
+  }
+
+
 }
-
-
-

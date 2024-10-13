@@ -15,7 +15,7 @@ import { jwtDecode } from "jwt-decode";
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
-  redirectUrl !: string ;
+  redirectUrl !: string;
   hidePassword = true;
 
   constructor(
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -50,16 +50,16 @@ export class LoginComponent implements OnInit {
 
             if (roles.includes(Erole.ADMIN)) {
 
-                this.router.navigate(['/home']);
+              this.router.navigate(['/home']);
 
             } else if (roles.includes(Erole.DOCTOR)) {
 
-                this.router.navigate(['/dashboard-doctor']);
+              this.router.navigate(['/dashboard-doctor']);
 
             } else if (roles.includes(Erole.PATIENT)) {
-                console.log('User with PATIENT role connected.');
-                console.log(this.redirectUrl);
-                this.router.navigateByUrl(this.redirectUrl);
+              console.log('User with PATIENT role connected.');
+              console.log(this.redirectUrl);
+              this.router.navigateByUrl(this.redirectUrl);
 
 
             } else {
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-    getErrorMessage(field: string): string {
+  getErrorMessage(field: string): string {
     const control = this.loginForm.get(field);
     if (control && control.hasError('required')) {
       return 'Ce champ est requis';

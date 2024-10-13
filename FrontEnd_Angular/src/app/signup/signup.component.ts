@@ -58,9 +58,9 @@ export class SignupComponent implements OnInit {
           // Redirection vers la page de login après un petit délai
           setTimeout(() => {
             this.router.navigate(['/login'], { queryParams: { redirectUrl: this.redirectUrl } });
-             }, 1);
+          }, 1);
 
-          },
+        },
         error => {
           console.log('Erreur lors de l\'inscription : ', error);  // Affiche l'erreur dans la console
           this.message = 'Erreur lors de l\'inscription. Veuillez réessayer.';

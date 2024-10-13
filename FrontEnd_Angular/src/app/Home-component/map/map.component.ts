@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { marker, Marker, Map, divIcon } from 'leaflet';
 import * as L from 'leaflet';
-import {DoctorService} from "../../Service/doctor.service";
-import {DoctorSharedService} from "../../Service/doctor-shared.service";
+import { DoctorService } from "../../Service/doctor.service";
+import { DoctorSharedService } from "../../Service/doctor-shared.service";
 
 
 @Component({
@@ -19,9 +19,9 @@ export class MapComponent implements AfterViewInit, OnInit {
   constructor(
     private doctorService: DoctorService,
     private doctorSharedService: DoctorSharedService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     this.loadDoctors();
