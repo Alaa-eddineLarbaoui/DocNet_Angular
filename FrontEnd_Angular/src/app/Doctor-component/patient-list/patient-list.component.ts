@@ -1,12 +1,15 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AppointmentService} from "../../Service/AppointmentService";
-import {Appointment} from "../../Models/Appointment";
-import {JwtDto} from "../../Dto-Entity/JwtDto";
-import {legacyMixinTabIndex} from "@angular/material/legacy-core";
-import {AppointmentStatus} from "../../Enums/AppointmentStatus";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {ThemePalette} from "@angular/material/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AppointmentService } from "../../Service/AppointmentService";
+import { Appointment } from "../../Models/Appointment";
+import { JwtDto } from "../../Dto-Entity/JwtDto";
+import { AppointmentStatus } from "../../Enums/AppointmentStatus";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatPaginator } from "@angular/material/paginator";
+import { ThemePalette } from "@angular/material/core";
+import { MessageNotificationService } from "../../Service/message-notification.service";
+import {MatDialog} from "@angular/material/dialog";
+import {MessageDialogComponent} from "../../message-dialog/message-dialog.component";
+import {Notificatiion} from "../../Models/Notificatiion"; // Corrigez ici le nom du modèle
 
 @Component({
   selector: 'app-patient-list',
@@ -14,51 +17,40 @@ import {ThemePalette} from "@angular/material/core";
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-  listAppointmentOfDoctor: Appointment[] = []
+  listAppointmentOfDoctor: Appointment[] = [];
   doctorId!: number;
   displayedColumns: string[] = ['date', 'time', 'patient', 'reason', 'status', 'actions'];
   dataSource!: MatTableDataSource<Appointment>;
+  message!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(
+    private appointmentService: AppointmentService,
+    private messageService: MessageNotificationService,
+    private dialog: MatDialog,
+) {}
 
   ngOnInit(): void {
-    this.getIdPersonFromJwt()
-    this.getAppointmentDoctor()
-    console.log(this.doctorId+"iddddd")
+    this.getIdPersonFromJwt();
+    this.getAppointmentDoctor();
+    console.log(this.doctorId + " iddddd");
 
     this.dataSource = new MatTableDataSource(this.listAppointmentOfDoctor);
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private appointmentService: AppointmentService) {
-  }
-
   getAppointmentDoctor(): void {
-    console.log("djjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+    console.log("Récupération des rendez-vous du médecin");
     this.appointmentService.getAllByDoctorId(this.doctorId).subscribe((data: Appointment[]) => {
-      console.log("ffffffffffffffffffffffffff")
-      const appointments = this.listAppointmentOfDoctor = data;
-      console.log(data)
-      appointments.forEach((appointment: Appointment) => {
-        console.log(`ID: ${appointment.id}`);
-        console.log(`Date: ${appointment.date}`);
-        console.log(`Time: ${appointment.time}`);
-        console.log(`Status: ${appointment.status}`);
-        console.log(`Reason: ${appointment.appointmentReason}`);
-        console.log(`Notification: ${appointment.notificationEnvoyee}`);
-        console.log(`Note: ${appointment.note}`);
-        console.log(`Patient ID: ${appointment.patient}`);
-        console.log(`Professional ID: ${appointment.professional}`);
-        console.log('-----------------------'); // Séparation entre chaque rendez-vous
-
-      });
+      this.listAppointmentOfDoctor = data;
+      this.dataSource.data = this.listAppointmentOfDoctor; // Met à jour les données de la source
+      console.log(data);
     });
   }
 
-
   // Récupérer l'ID à partir du JWT
-  getIdPersonFromJwt() {
+  getIdPersonFromJwt(): void {
     const storedJwtData = localStorage.getItem('jwtData');
     if (storedJwtData) {
       const jwtData: JwtDto = JSON.parse(storedJwtData);
@@ -69,9 +61,8 @@ export class PatientListComponent implements OnInit {
     }
   }
 
-
-  viewDetails(appointment: Appointment) {
-
+  viewDetails(appointment: Appointment): void {
+    // Implémentez la logique pour afficher les détails du rendez-vous
   }
 
   getStatusColor(status: AppointmentStatus): ThemePalette {
@@ -85,5 +76,31 @@ export class PatientListComponent implements OnInit {
       default:
         return undefined;
     }
+  }
+
+  openMessageDialog(patientId: number): void {
+    const dialogRef = this.dialog.open(MessageDialogComponent, {
+      width: '300px',
+      data: { patientId: patientId, doctorId: this.doctorId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // L'utilisateur a cliqué sur Envoyer
+        this.sendMessage(result.patientId, result.doctorId, result.message);
+      }
+    });
+  }
+
+  sendMessage(patientId: number, doctorId: number, message: string): void {
+    console.log(this.doctorId)
+    this.messageService.sendNotification(patientId, this.doctorId, message).subscribe({
+      next: (response: Notificatiion) => {
+        alert('Notification sent successfully!');
+      },
+      error: (error) => {
+        console.error('Error sending notification:', error);
+      }
+    });
   }
 }

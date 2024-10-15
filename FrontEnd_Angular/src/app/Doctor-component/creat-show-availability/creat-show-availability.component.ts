@@ -23,7 +23,7 @@ export class CreatShowAvailabilityComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
-    this.loadTimes(this.doctorId, new Date());  // Charger les disponibilités pour la date actuelle
+    this.loadTimes(this.doctorId, new Date());
   }
 
   loadTimes(doctorId: number, date: Date)  {

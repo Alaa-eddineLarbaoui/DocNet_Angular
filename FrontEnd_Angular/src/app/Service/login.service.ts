@@ -33,4 +33,6 @@ export class LoginService {
     alert("You are lougout oof this page")
     this.router.navigate(['/']);
   }
+
+
 }

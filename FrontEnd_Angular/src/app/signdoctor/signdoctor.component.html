@@ -1,0 +1,79 @@
+<div class="signup-container">
+  <h2>Inscription Docteur</h2>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" formControlName="username" placeholder="Entrez votre nom d'utilisateur" />
+      <div *ngIf="signUpForm.get('username')?.invalid && signUpForm.get('username')?.touched">
+        <small class="error">Le nom d'utilisateur est requis.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" placeholder="Entrez votre email" />
+      <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+        <small class="error">Une adresse email valide est requise.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe" />
+      <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+        <small class="error">Le mot de passe doit comporter au moins 6 caractères.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="clinicAddress">Adresse de la clinique</label>
+      <input type="text" id="clinicAddress" formControlName="clinicAddress" placeholder="Entrez l'adresse de la clinique" />
+      <div *ngIf="signUpForm.get('clinicAddress')?.invalid && signUpForm.get('clinicAddress')?.touched">
+        <small class="error">L'adresse de la clinique est requise.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Numéro de téléphone</label>
+      <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Entrez votre numéro de téléphone" />
+      <div *ngIf="signUpForm.get('phoneNumber')?.invalid && signUpForm.get('phoneNumber')?.touched">
+        <small class="error">Un numéro de téléphone valide est requis.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="specialty">Spécialité</label>
+      <select id="specialty" formControlName="specialty">
+        <option *ngFor="let specialty of specialite" [value]="specialty">{{ specialty }}</option>
+      </select>
+      <div *ngIf="signUpForm.get('specialty')?.invalid && signUpForm.get('specialty')?.touched">
+        <small class="error">La spécialité est requise.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="registrationNumber">Numéro d'enregistrement</label>
+      <input type="text" id="registrationNumber" formControlName="registrationNumber" placeholder="Entrez votre numéro d'enregistrement" />
+      <div *ngIf="signUpForm.get('registrationNumber')?.invalid && signUpForm.get('registrationNumber')?.touched">
+        <small class="error">Le numéro d'enregistrement est requis.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="localisation">Localisation</label>
+      <select id="localisation" formControlName="localisation">
+        <option *ngFor="let localisation of local" [value]="localisation">{{ localisation }}</option>
+      </select>
+      <div *ngIf="signUpForm.get('localisation')?.invalid && signUpForm.get('localisation')?.touched">
+        <small class="error">La localisation est requise.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
+
+    <div *ngIf="message" class="message">{{ message }}</div>
+  </form>
+
+  <p>Vous avez déjà un compte ? <a (click)="goToLogin()">Connectez-vous ici</a></p>
+</div>

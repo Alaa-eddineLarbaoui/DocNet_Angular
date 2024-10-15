@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AvailabilityService } from "../Service/availability.service";
 import { HealthProfessional } from "../Models/HealthProfessional";
 import { DoctorService } from "../Service/doctor.service";
-import { Availability } from "../Models/Availability";
-import { ActivatedRoute, Router } from '@angular/router';
+ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from "@angular/material/dialog";
 import { Speciality } from "../Enums/Speciality";
 import { Localisation } from "../Enums/Localisation";
@@ -72,6 +71,7 @@ export class AvailabilityCalendarComponent implements OnInit {
 
             if (this.ListDoctors.length === 0) {
               this.isNotDataFound = true;
+
             } else {
               this.isNotDataFound = false;
               this.totalDoctors = this.ListDoctors.length;
@@ -109,11 +109,10 @@ export class AvailabilityCalendarComponent implements OnInit {
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesd', 'Thursday', 'Friday', 'Saturday'];
     const currentDate = new Date(startDate);
 
-    // Obtenir le jour local (indice) du PC
-    const localDayIndex = currentDate.getDay(); // Obtenir le jour de la semaine actuel (0 = Dimanche, 6 = Samedi)
+     const localDayIndex = currentDate.getDay();
 
-    // Faire une rotation des noms des jours de la semaine pour commencer par le jour local
-    const rotatedDayNames = dayNames.slice(localDayIndex).concat(dayNames.slice(0, localDayIndex));
+ //for beginin by local day
+     const rotatedDayNames = dayNames.slice(localDayIndex).concat(dayNames.slice(0, localDayIndex));
 
     // Générer la semaine à partir du jour local
     for (let i = 0; i < 7; i++) {

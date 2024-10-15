@@ -16,6 +16,7 @@ import {HomeComponent} from "./Home-component/Home_page/home.component";
 import {PatientListComponent} from "./Doctor-component/patient-list/patient-list.component";
 import {SignupComponent} from "./signup/signup.component";
 import {SignLoginComponent} from "./sign-login/sign-login.component";
+import {SigndoctorComponent} from "./signdoctor/signdoctor.component";
 
 
 
@@ -28,13 +29,13 @@ const routes: Routes = [
       { path: 'list-appointment', component: PatientListComponent },
       {  path:'creat', component:CreatShowAvailabilityComponent},
 
-
-
     ] },
+
+  { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
+
 
   { path: 'sign-login', component: SignLoginComponent },
   { path: '', component: HomeComponent },
-  { path: 'patient', component: AppointmentsComponent, canActivate: [AuthGuard] },
 
   { path:'sign' , component: SignupComponent},
 
@@ -43,12 +44,9 @@ const routes: Routes = [
 
   { path: 'calendar', component: AvailabilityCalendarComponent },
 
-  //{ path: '', redirectTo: '/filter', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'notFound', component: NotFoundComponent },
-
-  //{ path: 'admin', component: CalendarComponent, canActivate: [AuthGuard] },  // Accessible seulement pour Admin */
-
+  {path:"signdoctor", component:SigndoctorComponent},
 
   {
     path: 'patient/detailDoctor/:id', component: DoctorDetailsComponent,
@@ -61,13 +59,7 @@ const routes: Routes = [
 
   },
 
-
-
-
   { path: 'dd', component:CreateAvailabilityComponent },
-
-
-  // { path: 'creat-show-availability', component:CreatShowAvailabilityComponent },
 
   { path: '**', component:Page404Component },
 

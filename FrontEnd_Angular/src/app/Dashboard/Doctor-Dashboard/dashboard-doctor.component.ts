@@ -25,11 +25,11 @@ export class DashboardDoctorComponent implements OnInit {
 
     if (toggle && nav && bodypd && headerpd) {
       toggle.addEventListener('click', () => {
-        // Toggle la visibilité de la barre de navigation
-        nav.classList.toggle('show');
-        // Change la classe de l'icône
-        toggle.classList.toggle('bx-x');
-        // Ajoute/retire le padding du body et de l'en-tête
+
+         nav.classList.toggle('show');
+
+         toggle.classList.toggle('bx-x');
+
         bodypd.classList.toggle('body-pd');
         headerpd.classList.toggle('body-pd');
       });
@@ -41,7 +41,7 @@ export class DashboardDoctorComponent implements OnInit {
 
     const colorLink = (event: Event) => {
       this.navLinks?.forEach(link => link.classList.remove('active'));
-      const target = event.currentTarget as HTMLElement; // Utilisez currentTarget pour obtenir le bon élément
+      const target = event.currentTarget as HTMLElement;
       target.classList.add('active');
     };
 

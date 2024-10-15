@@ -73,16 +73,13 @@ export class AppointmentsComponent implements OnInit {
 
 
     console.log(date);
-    console.log("hhhhhhhhhhhhh");
-    //const professionalId = this.appointmentForm.get('professionalId')?.value;
+     //const professionalId = this.appointmentForm.get('professionalId')?.value;
 
 
         if (date && this.idProfessional) {
 
           this.availabilityService.getTimes(date, this.idProfessional).subscribe(times => {
             this.availableTimes = times;
-            console.log("heeeeeeeeuuuuuuu")
-            console.log(times)
 
             // Disable or enable the 'time' field based on the availability of slots.
 
@@ -143,6 +140,7 @@ export class AppointmentsComponent implements OnInit {
       const jwtData : JwtDto = JSON.parse(storedJwtData);
       console.log('JWT Data:', jwtData.userId);
       this.idPatient = jwtData.userId;
+      console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+this.idPatient)
     } else {
       console.log('Aucun JWT trouvé dans le localStorage');
     }

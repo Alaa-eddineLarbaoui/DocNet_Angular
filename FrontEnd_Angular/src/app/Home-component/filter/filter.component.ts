@@ -32,7 +32,6 @@ export class FilterComponent implements OnInit {
     this.specialite = Object.values(this.speciality).filter((value) => typeof value === 'string');
 
 
-    // Ajouter des écouteurs pour effacer le message d'erreur
     this.searchform.get('specialty')?.valueChanges.subscribe(() => {
       this.errorMessage = '';
     });
@@ -69,7 +68,6 @@ export class FilterComponent implements OnInit {
 
 
   searchDoctor(): void {
-    console.log("Recherche de médecin...");
 
     if (this.searchform.valid) {
       const { specialty, clinicAdress } = this.searchform.value;

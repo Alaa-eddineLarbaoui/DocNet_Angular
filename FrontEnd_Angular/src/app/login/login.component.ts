@@ -48,11 +48,7 @@ export class LoginComponent implements OnInit {
             const roles = decodedToken.role || [];
             console.log('User roles:', roles);
 
-            if (roles.includes(Erole.ADMIN)) {
-
-              this.router.navigate(['/home']);
-
-            } else if (roles.includes(Erole.DOCTOR)) {
+           if (roles.includes(Erole.DOCTOR)) {
 
               this.router.navigate(['/dashboard-doctor']);
 

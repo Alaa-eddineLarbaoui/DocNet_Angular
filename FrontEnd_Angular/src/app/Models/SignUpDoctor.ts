@@ -1,4 +1,6 @@
 import {Speciality} from "../Enums/Speciality";
+import {Localisation} from "../Enums/Localisation";
+import {Erole} from "../Enums/Erole";
 
 export interface SignUpDoctor{
   username : string,
@@ -8,6 +10,7 @@ export interface SignUpDoctor{
   phoneNumber: string
   specialty : Speciality
   registrationNumber:string
-  latitude:number
-  longitude:number
+  localisation :Localisation;
+  role:Erole,
+
 }

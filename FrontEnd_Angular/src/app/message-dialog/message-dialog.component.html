@@ -1,0 +1,12 @@
+<!-- Modal for sending message -->
+<h1 mat-dialog-title>Send Message</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <textarea matInput [(ngModel)]="message"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onSend()">Send</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

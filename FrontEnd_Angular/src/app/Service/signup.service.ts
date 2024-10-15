@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {LoginRequest} from "../Models/LoginRequest";
 import {Observable} from "rxjs";
-import {JwtDto} from "../Dto-Entity/JwtDto";
 import {HttpClient} from "@angular/common/http";
 import {SignUpPatient} from "../Models/SignUpPatient";
+import {SignUpDoctor} from "../Models/SignUpDoctor";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,9 @@ export class SignupService {
   registerPatient(signUp:SignUpPatient): Observable<SignUpPatient[]> {
     console.log(signUp)
     return this.http.post<SignUpPatient[]>(`${this.API_SignUp}/signup`,signUp);
+  }
+  registerDoctor(signUp:SignUpDoctor): Observable<SignUpDoctor[]> {
+     return this.http.post<SignUpDoctor[]>(`${this.API_SignUp}/signupdoctor`,signUp);
   }
 }
 

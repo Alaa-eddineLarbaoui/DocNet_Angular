@@ -49,9 +49,9 @@
             <mat-icon>visibility</mat-icon>
             <span>Voir détails</span>
           </button>
-          <button mat-menu-item [disabled]="appointment.notificationEnvoyee">
-            <mat-icon>notifications</mat-icon>
-            <span>Envoyer notification</span>
+          <button mat-menu-item (click)="openMessageDialog(appointment.patient.id)">
+            <mat-icon>send</mat-icon>
+            <span>Send message</span>
           </button>
         </mat-menu>
       </td>

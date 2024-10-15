@@ -8,6 +8,9 @@ import { DoctorService } from "../../Service/doctor.service";
 import { LoginService } from "../../Service/login.service";
 import { JwtDto } from "../../Dto-Entity/JwtDto";
 import { AppointmentsComponent } from "../../appointments/appointments.component";
+import {AppointmentService} from "../../Service/AppointmentService";
+import {Appointment} from "../../Models/Appointment";
+import {MessageService} from "primeng/api";
 
 
 
@@ -19,6 +22,7 @@ import { AppointmentsComponent } from "../../appointments/appointments.component
 export class DoctorDetailsComponent implements OnInit {
   idProf!: number;
   doctorGet!: HealthProfessional;
+  appoinPatient: Appointment[] = []; // Initialisation comme tableau vide
 
   @ViewChild('stickyDiv') stickyDiv!: ElementRef;
   @ViewChild('section') section!: ElementRef;
@@ -29,13 +33,15 @@ export class DoctorDetailsComponent implements OnInit {
   sticky: boolean = false;
   idPatient!: number;
 
+
   constructor(
     private route: ActivatedRoute,
     private doctorService: DoctorService,
     private viewportScroller: ViewportScroller,
     private dialog: MatDialog, // Ajout du MatDialog pour gérer la popup
     private snackBar: MatSnackBar, // Injection de MatSnackBar
-    public logservice: LoginService
+    public logservice: LoginService,
+    private appoinService:AppointmentService,
 
 
   ) { }
@@ -49,6 +55,7 @@ export class DoctorDetailsComponent implements OnInit {
     if (this.stickyDiv) {
       this.stickyDiv.nativeElement.classList.remove("sticky");
     }
+    this.getAppointmentofPatient();
   }
 
   ngAfterViewInit() {
@@ -128,6 +135,14 @@ export class DoctorDetailsComponent implements OnInit {
     });
   }
 
+
+
+
+  getAppointmentofPatient() :void{
+    this.appoinService.getAllByPatientId(this.idPatient).subscribe((appointment:Appointment[])=>{
+      this.appoinPatient =appointment
+    })
+  }
 
 
 

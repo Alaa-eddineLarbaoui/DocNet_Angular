@@ -44,6 +44,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { SignupComponent } from './signup/signup.component';
 import { SignLoginComponent } from './sign-login/sign-login.component';
 import { InterceptorService } from './Service/interceptor.service';
+import { MessageDialogComponent } from './message-dialog/message-dialog.component';
+import { SigndoctorComponent } from './signdoctor/signdoctor.component';
 
 // @ts-ignore
 @NgModule({
@@ -65,7 +67,9 @@ import { InterceptorService } from './Service/interceptor.service';
     DashboardDoctorComponent,
     CreatShowAvailabilityComponent,
     SignupComponent,
-    SignLoginComponent
+    SignLoginComponent,
+    MessageDialogComponent,
+    SigndoctorComponent
   ],
   imports: [
     BrowserModule,
