@@ -79,7 +79,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     if (!this.map) {
       this.map = L.map('map', {
         center: [latitude, longitude],
-        zoom: 1 // Zoom initial ajusté
+        zoom: 5 // Zoom initial ajusté
       });
 
       const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
