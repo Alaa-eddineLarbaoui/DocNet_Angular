@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b4331a1-8d62-4b06-a7ca-ebaf1ac2f4d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/availability-calendar/availability-calendar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/map/map.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/map/map.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd_Angular/src/app/map/map.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd_Angular/src/app/map/map.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="5b4331a1-8d62-4b06-a7ca-ebaf1ac2f4d3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,6 +83,7 @@
       <workItem from="1725984139569" duration="16000" />
       <workItem from="1726699279750" duration="17000" />
       <workItem from="1726936304508" duration="10000" />
+      <workItem from="1727820440792" duration="2937000" />
     </task>
     <servers />
   </component>
