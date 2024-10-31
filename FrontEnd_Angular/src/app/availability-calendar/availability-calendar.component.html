@@ -29,9 +29,6 @@
           <button *ngIf="hasRole('PATIENT') || !loginService.isLoggedIn()" class="appointment-btn" (click)="handleAppointmentClick(doctor.id)">
             Book an appointment
           </button>
-
-
-
         </div>
 
         <button class="buttonWeek1" style="height: 20px;" (click)="previousWeek(doctor.id)">
