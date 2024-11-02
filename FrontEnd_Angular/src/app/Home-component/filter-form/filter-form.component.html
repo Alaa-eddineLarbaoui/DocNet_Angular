@@ -1,40 +1,38 @@
+<!-- Google Fonts and Font Awesome -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Lien pour Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-
 
 <form [formGroup]="searchform" (ngSubmit)="searchOfDoctor()" class="search_form">
 
+  <!-- Header with Logo -->
   <div class="header">
     <a routerLink="/">
-    <div class="logo">Docnet</div>
+      <div class="logo">Docnet</div>
     </a>
-
-
-
   </div>
 
+  <!-- Search Fields Section -->
   <div class="search-fields">
-    <!-- Specialty field -->
+
+    <!-- Specialty Field -->
     <div class="search-field">
       <div class="input-wrapper">
         <i class="fas fa-stethoscope"></i>
         <input type="text" id="specialty" formControlName="specialty" class="form-control"
-          placeholder="Spécialité médicale" list="speciality-list">
+               placeholder="Spécialité médicale" list="speciality-list">
         <datalist id="speciality-list">
-          <option *ngFor="let spc of specialite  | slice:0:5" [value]="spc">{{ spc }}</option>
+          <option *ngFor="let spc of specialite | slice:0:5" [value]="spc">{{ spc }}</option>
         </datalist>
       </div>
       <div class="search-hint">Ex: Dentaire ou Contrôle du diabète, etc.</div>
     </div>
 
-    <!-- Clinic Address field -->
+    <!-- Clinic Address Field -->
     <div class="search-field">
       <div class="input-wrapper">
         <i class="fas fa-map-marker-alt"></i>
         <input type="text" id="clinicAddress" formControlName="clinicAdress" class="form-control"
-          placeholder="Adresse de la clinique" list="location-list">
+               placeholder="Adresse de la clinique" list="location-list">
         <datalist id="location-list">
           <option *ngFor="let item of local | slice:0:5" [value]="item">{{ item }}</option>
         </datalist>
@@ -42,24 +40,20 @@
       <div class="search-hint">Basé sur votre localisation</div>
     </div>
 
-
-    <!-- Submit button -->
-    <div class="make-appointment-btn " type="submit">
-      <button class="make-appointment-btn "> Make Appointment <i class="fa-solid fa-handshake"></i> </button>
+    <!-- Submit Button -->
+    <div class="search-field">
+      <button type="submit" class="make-appointment-btn">
+        Make Appointment <i class="fa-solid fa-handshake"></i>
+      </button>
     </div>
-
-
   </div>
 
-
-  <!-- Error message -->
+  <!-- Error Message Display -->
   <div *ngIf="errorMessage" class="error-message">
     <i class="fas fa-exclamation-circle"></i>
     {{ errorMessage }}
   </div>
-
 </form>
-
 
 
 
