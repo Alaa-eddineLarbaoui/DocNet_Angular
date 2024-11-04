@@ -3,10 +3,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <body>
-<div  id="container" class="container">
+<div id="container" class="container">
   <div class="form-container">
     <h2 class="text-center form-title">
-      <i class="fas fa-calendar-alt me-2"></i>Créer une disponibilité
+      <i class="fas fa-calendar-alt me-2"></i>Create Availability
     </h2>
     <form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
@@ -18,13 +18,13 @@
       <div class="row mb-3">
         <div class="col">
           <label for="startTime" class="form-label">
-            <i class="fas fa-clock me-2"></i>Heure de début:
+            <i class="fas fa-clock me-2"></i>Start Time:
           </label>
           <input type="time" class="form-control" id="startTime" formControlName="startTime">
         </div>
         <div class="col">
           <label for="endTime" class="form-label">
-            <i class="fas fa-clock me-2"></i>Heure de fin:
+            <i class="fas fa-clock me-2"></i>End Time:
           </label>
           <input type="time" class="form-control" id="endTime" formControlName="endTime">
         </div>
@@ -32,11 +32,11 @@
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="available" formControlName="available">
         <label class="form-check-label" for="available">
-          <i class="fas fa-check-circle me-2"></i>Disponible
+          <i class="fas fa-check-circle me-2"></i>Available
         </label>
       </div>
       <button type="submit" class="btn btn-primary w-100" [disabled]="availabilityForm.invalid">
-        <i class="fas fa-plus-circle me-2"></i>Créer la disponibilité
+        <i class="fas fa-plus-circle me-2"></i>Create Availability
       </button>
     </form>
   </div>
