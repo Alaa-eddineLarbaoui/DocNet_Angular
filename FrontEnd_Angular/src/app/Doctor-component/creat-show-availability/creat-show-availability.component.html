@@ -1,28 +1,28 @@
 <!--Container Main start-->
 <div id="main" class="height-100 bg-light">
   <div class="div1">
-    <h2 class="section-title">Créer une disponibilité</h2>
+    <h2 class="section-title">Create Availability</h2>
     <app-create-availability></app-create-availability>
   </div>
 
   <div class="div2">
-    <h2 class="section-title">Gérer les disponibilités</h2>
+    <h2 class="section-title">Manage Availabilities</h2>
     <div class="availability-form">
       <form (submit)="onSubmit()">
         <div class="form-group">
-          <label for="date">Sélectionner une date :</label>
+          <label for="date">Select a date:</label>
           <input type="date" [(ngModel)]="selectedDate" name="date" id="date" required>
         </div>
-        <button type="submit" class="btn-submit">Afficher les disponibilités</button>
+        <button type="submit" class="btn-submit">Show Availabilities</button>
       </form>
     </div>
 
     <div *ngIf="timeAvailable[doctorId]" class="availability-list">
-      <h3>Heures disponibles pour le {{ selectedDate | date:'dd/MM/yyyy' }} :</h3>
+      <h3>Available times for {{ selectedDate | date:'MM/dd/yyyy' }}:</h3>
       <ul>
         <li *ngFor="let time of timeAvailable[doctorId][selectedDate]">
           <span>{{ time.startTime }}</span>
-          <button (click)="deleteAvailability(time.id)" class="btn-delete">Supprimer</button>
+          <button (click)="deleteAvailability(time.id)" class="btn-delete">Delete</button>
         </li>
       </ul>
     </div>
