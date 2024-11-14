@@ -1,169 +1,177 @@
-<!-- External CSS and JS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45zSRtKlVEQzoywRWBUApte9Wh2Avm" crossorigin="anonymous"></script>
 
 <body class="detail-bod">
-
-<!-- Navbar -->
 <section>
+  <!-- Barre de navigation avec Bootstrap -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Doctolib</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Appointments</a>
+          <a class="nav-link" href="#">Mes rendez-vous</a>
         </li>
+        <button (click)="logservice.logout()" class="btn btn-primary">
+          logout
+        </button>
       </ul>
-      <button (click)="logservice.logout()" class="btn btn-primary">Logout</button>
       <div class="user-profile d-flex align-items-center">
         <span>alaa edd</span>
         <div class="notification-bubble ml-2">1</div>
       </div>
     </div>
   </nav>
-</section>
 
-<!-- Doctor Profile Section -->
-<section class="profile-container">
-  <img src="https://via.placeholder.com/150" alt="Doctor Profile" class="profile-pic">
-  <div class="profile-details">
-    <h1 *ngIf="doctorGet">Dr {{ doctorGet.username }}</h1>
-    <p *ngIf="doctorGet">{{doctorGet.specialty}}</p>
-  </div>
-</section>
-
-<!-- Navigation Links (Map, Biography, Legal, Rates) -->
-<section class="navv">
-  <mat-tab-group id="container">
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('map')">Map</button>
-      </ng-template>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('biographie')">Biographie</button>
-      </ng-template>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('legal')">Legal Information</button>
-      </ng-template>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <button class="btnmap" mat-button (click)="scrollToSection('rates')">Rates</button>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
-</section>
-
-<!-- Appointment Summary Section -->
-<section class="div-appointment">
-  <div #Appointement class="card">
-    <h2>En résumé</h2>
-    <div class="info">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-      </svg>
-      Accepts New Patients
-    </div>
-    <div class="info">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-      416 Boulevard National, 13003 Marseille
-    </div>
-    <button class="buttonAppointment" (click)="openAppointmentDialog()">MAKE APPOINTMENT</button>
-  </div>
-</section>
-
-<!-- Map, Biography, Legal Info, and Rates Sections -->
-<section id="detail-section" class="detail-section">
-  <div><app-map-doctor></app-map-doctor></div>
-
-  <!-- Biography and Formation Card -->
-  <div id="biographie" class="container mt-3">
-    <div class="cardBio">
-      <div class="card-header d-flex align-items-center">
-        <i class="fas fa-align-left icon"></i>
-        <h5 class="mb-0">Biographie</h5>
-      </div>
-      <div class="card-body" *ngIf="doctorGet">
-        <p>{{doctorGet.bio}}</p>
-      </div>
-    </div>
-    <div class="cardFormation">
-      <div class="card-header d-flex align-items-center">
-        <i class="fas fa-graduation-cap icon"></i>
-        <h5 class="mb-0">Formation</h5>
-      </div>
-      <div class="card-body">
-        <div>{{doctorGet.formation}}</div>
-      </div>
+  <!-- Doctor Profile Section -->
+  <div class="profile-container">
+    <img src="https://via.placeholder.com/150" alt="Doctor Profile" class="profile-pic">
+    <div class="profile-details">
+      <h1 *ngIf="doctorGet">Dr {{ doctorGet.username }}</h1>
+      <p *ngIf="doctorGet">{{doctorGet.specialty}}</p>
     </div>
   </div>
-
-  <!-- Legal Information Card -->
-  <div id="legal" class="container mt-3">
-    <div class="info-box">
-      <div class="d-flex align-items-center mb-3">
-        <i class="fas fa-info-circle me-2" style="color: #4b739b;"></i>
-        <h5>Legal Information</h5>
+  <!-- Navigation Links -->
+  <div #stickyDiv class="navv">
+    <mat-tab-group id="container">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('map')">Map</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('biographie')">Biographie</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('legal')">Legal information</button>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <button class="btnmap" mat-button (click)="scrollToSection('rates')">Rates</button>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>
+<section id="section" class="detail-Section">
+  <section class="div-appointment">
+    <!--   card of appointment    -->
+    <div #Appointement class="card">
+      <h2>En résumé</h2>
+      <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+        Accepte les nouveaux patients
       </div>
-      <div class="row">
-        <div class="col-md-6" *ngIf="doctorGet">
-          <p><strong>RPPS Number</strong>: {{ doctorGet.registrationNumber }}</p>
+      <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+        416 Boulevard National, 13003 Marseille
+      </div>
+      <button     class="buttonAppointment" (click)="openAppointmentDialog()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+             style="fill: white; vertical-align: middle; margin-right: 5px;">
+          <path
+            d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
+        </svg>
+        MAKE APPOINTMENT
+      </button>
+    </div>
+  </section>
+  <section #detail class="detail-body">
+    <div>
+      <app-map-doctor></app-map-doctor>
+    </div>
+    <!--   card of bio and formation   -->
+    <div id="biographie" style="margin-top: 17px;" class="container mt-17 ">
+      <div class="cardBio">
+        <div id="bio_header" class="card-header d-flex align-items-center">
+          <i class="fas fa-align-left icon"></i>
+          <h5 id="title_biographie" class="mb-0">Biographie</h5>
         </div>
-        <div class="col-md-6" *ngIf="doctorGet">
-          <p><strong>Numéro ADELI</strong>: {{ doctorGet.phoneNumber }}</p>
+        <div class="card-body" *ngIf="doctorGet">
+          <p>{{doctorGet.bio}}</p>
+        </div>
+      </div>
+      <div class="cardFormation">
+        <div id="formation_header" class="card-header d-flex align-items-center">
+          <i class="fas fa-graduation-cap icon"></i>
+          <h5 id="title_formation" class="mb-0">Formation</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-2">
+            {{doctorGet.formation}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Rates Section -->
-  <div id="rates" class="container mt-3">
-    <div class="card_Rates">
-      <div class="card-Header">
-        <h2 class="section-title">
-          <i class="fas fa-dollar-sign" style="color: #4b739b;"></i> Rates
-        </h2>
-      </div>
-      <div class="card-body" *ngIf="doctorGet">
-        <div class="rate-item">
-          <span>Consultation</span>
-          <span><strong>{{doctorGet.price}} MAD</strong></span>
+    <!--   card of Legal information    -->
+    <div id="legal" #section class="container">
+      <div class="info-box">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fas fa-info-circle me-2" style="color: #4b739b;"></i>
+          <h5>Legal information</h5>
         </div>
-        <p class="rate-description mt-3">
-          These fees are provided for information purposes. They may vary based on the care provided.
-        </p>
+        <div class="row">
+          <div class="col-md-6 info-item" *ngIf="doctorGet">
+            <p class="mb-0"><strong>RPPS number</strong></p>
+            <p class="mb-0">{{ doctorGet.registrationNumber }}</p>
+          </div>
+          <div class="col-md-6 info-item" *ngIf="doctorGet">
+            <p class="mb-0"><strong>Numéro ADELI</strong></p>
+            <p class="mb-0">{{ doctorGet.phoneNumber }}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <!--   card of Rates    -->
+    <div id="rates" class="container">
+      <div class="card_Rates">
+        <div class="card-Header">
+          <h2 class="section-title mb-0">
+            <i style="color: #4b739b;" class="fas fa-dollar-sign"></i>
+            Rates
+          </h2>
+        </div>
+        <div class="card-body">
+          <div class="rate-item" *ngIf="doctorGet">
+            <span>Consultation</span>
+            <span><strong>{{doctorGet.price}}MAD</strong></span>
+          </div>
+          <p class="rate-description mt-3 mb-0">
+            These fees are provided to you for information purposes by the caregiver. They may vary depending on the
+            type of care ultimately provided in the office, the number of consultations and any additional procedures
+            required. If the fees are exceeded, the caregiver must notify the patient in advance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
-
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-container">
-    <!-- Contact Us Section -->
     <div class="footer-section">
       <h4>Contact Us</h4>
       <p>Address: 123 Health Street, Morocco</p>
       <p>Phone: 06 23 45 67 89</p>
       <p>Email: support@yoursite.com</p>
     </div>
-    <!-- Quick Links -->
     <div class="footer-section">
       <h4>Quick Links</h4>
       <ul>
@@ -174,19 +182,26 @@
         <li><a href="/terms-of-service">Terms of Service</a></li>
       </ul>
     </div>
-    <!-- Social Media -->
     <div class="footer-section">
       <h4>Follow Us</h4>
-      <ul class="social-icons">
-        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-      </ul>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Subscribe to Our Newsletter</h4>
+      <form id="subscribe-form" class="newsletter-form">
+        <input type="email" placeholder="Your email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-section">
+      <h4>About Us</h4>
+      <p>Our mission is to make healthcare accessible to everyone. Easily and quickly book your appointment with
+        qualified healthcare professionals.</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; 2023 Your Site. All Rights Reserved.</p>
-  </div>
 </footer>
-</body>
